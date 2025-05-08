@@ -20,4 +20,13 @@ Route::get('/inscription', function () {
 Route::get('/connexion', function () {
     return view('pages.front-end.connexion');
 });
+Route::get('/reset', function () {
+    return view('pages.front-end.reset-password');
+});
+Route::get('/c', function () {
+    return view('pages.front-end.contact');
+});
+Route::get('/prestation', function () {
+    return view('pages.front-end.prestation');
+});
 

@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- [Head] start -->
 
 <head>
-  <title>Login | Light Able Admin & Dashboard Template</title>
+  <title>Reset Password | Light Able Admin & Dashboard Template</title>
   <!-- [Meta] -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
@@ -20,16 +21,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- [Tabler Icons] https://tablericons.com -->
-<link rel="stylesheet" href="{{asset('../assets/fonts/tabler-icons.min.css')}}" >
+<link rel="stylesheet" href="{{asset('../assets/fonts/tabler-icons.min.cssjs')}}" >
 <!-- [Feather Icons] https://feathericons.com -->
-<link rel="stylesheet" href="{{asset('../assets/fonts/feather.css')}}" >
+<link rel="stylesheet" href="{{asset('../assets/fonts/feather.cssjs')}}" >
 <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-<link rel="stylesheet" href="{{asset('../assets/fonts/fontawesome.css')}}" >
+<link rel="stylesheet" href="{{asset('../assets/fonts/fontawesome.cssjs')}}" >
 <!-- [Material Icons] https://fonts.google.com/icons -->
-<link rel="stylesheet" href="{{asset('../assets/fonts/material.css')}}" >
+<link rel="stylesheet" href="{{asset('../assets/fonts/material.cssjs')}}" >
 <!-- [Template CSS Files] -->
-<link rel="stylesheet" href="{{asset('../assets/css/style.css')}}" id="main-style-link" >
-<link rel="stylesheet" href="{{asset('../assets/css/style-preset.css')}}" >
+<link rel="stylesheet" href="{{asset('../assets/css/style.cssjs')}}" id="main-style-link" >
+<link rel="stylesheet" href="{{asset('../assets/css/style-preset.cssjs')}}" >
 
 </head>
 <!-- [Head] end -->
@@ -49,7 +50,7 @@
     <div class="auth-wrapper">
       <div class="auth-sidecontent">
         <div class="auth-sidefooter">
-          <img src="{{asset('../assets/images/logo-dark.svg')}}" class="img-brand img-fluid" alt="images" />
+          <img src="{{asset('../assets/images/logo-dark.svgjs')}}" class="img-brand img-fluid" alt="images" />
           <hr class="mb-3 mt-4" />
           <div class="row">
             <div class="col my-1">
@@ -69,25 +70,18 @@
       <div class="auth-form">
         <div class="card my-5 mx-3">
           <div class="card-body">
-            <h4 class="f-w-500 mb-1">Login with your email</h4>
-            <p class="mb-3">Don't have an Account? <a href="../pages/register-v2.html" class="link-primary ms-1">Create Account</a></p>
+            <h4 class="f-w-500 mb-1">Reset password</h4>
+            <p class="mb-3">Back to <a href="../pages/login-v2.html" class="link-primary">Log in</a></p>
             <div class="mb-3">
-              <input type="email" class="form-control" id="floatingInput" placeholder="Email Address">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" id="floatingInput" placeholder="Password">
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" id="floatingInput1" placeholder="Password">
-            </div>
-            <div class="d-flex mt-1 justify-content-between align-items-center">
-              <div class="form-check">
-                <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="">
-                <label class="form-check-label text-muted" for="customCheckc1">Remember me?</label>
-              </div>
-              <a href="../pages/forgot-password-v2.html">
-                <h6 class="text-secondary f-w-400 mb-0">Forgot Password?</h6>
-              </a>
+              <label class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="floatingInput1" placeholder="Confirm Password">
             </div>
             <div class="d-grid mt-4">
-              <button type="button" class="btn btn-primary">Login</button>
+              <button type="button" class="btn btn-primary">Reset Password</button>
             </div>
              <div class="saprator my-3">
               <span>Or continue with</span>
@@ -118,11 +112,11 @@
   </div>
   <!-- [ Main Content ] end -->
   <!-- Required Js -->
-  <script src="{{asset('../assets/js/plugins/popper.min.js')}}"></script>
-  <script src="{{asset('../assets/js/plugins/simplebar.min.js')}}"></script>
-  <script src="{{asset('../assets/js/plugins/bootstrap.min.js')}}"></script>
-  <script src="{{asset('../assets/js/fonts/custom-font.js')}}"></script>
-  <script src="{{asset('../assets/js/pcoded.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/popper.min.jsjs')}}"></script>
+  <script src="{{asset('../assets/js/plugins/simplebar.min.jsjs')}}"></script>
+  <script src="{{asset('../assets/js/plugins/bootstrap.min.jsjs')}}"></script>
+  <script src="{{asset('../assets/js/fonts/custom-font.jsjs')}}"></script>
+  <script src="{{asset('../assets/js/pcoded.jsjs')}}"></script>
   <script src="{{asset('../assets/js/plugins/feather.min.js')}}"></script>
 
   
