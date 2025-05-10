@@ -37,4 +37,13 @@ Route::get('/propos', function () {
 Route::get('/dashboard-admin', function () {
     return view('pages.front-end.admin.dashboardAdmin');
 })->name('dashboard-admin');
+Route::get('/dashboard-secretaire', function () {
+    return view('pages.front-end.Secretaire.DashboardSecretaire');
+})->name('dashboard-secretaire');
+Route::get('/dashboard-medecin', function () {
+    return view('pages.front-end.medecin.DashboardMedecin');
+})->name('dashboard-medecin');
+Route::get('/dashboard-patient', function () {
+    return view('pages.front-end.patient.DashboardPatient');
+})->name('dashboard-patient');
 

@@ -53,8 +53,10 @@
       <div class="auth-form">
         <div class="card my-5 mx-3">
           <div class="card-body">
+            {{-- <img src="{{asset('../assets/images/authentication/img-auth-login.png')}}" alt="images" class="img-fluid mb-3"> --}}
             <h4 class="f-w-500 mb-1">Inscrire par Email</h4>
-            <p class="mb-3">Tu as deja un compte? <a href="{{route('login')}}" class="link-primary">Log in</a></p>
+            {{-- <p class="mb-3">Tu as deja un compte? <a href="{{route('login')}}" class="link-primary">Log in</a></p> --}}
+            <p> </p>
             <div class="row">
               <div class="col-sm-6">
                 <div class="mb-3">
