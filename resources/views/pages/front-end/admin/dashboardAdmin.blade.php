@@ -69,13 +69,7 @@
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
             <span class="pc-badge">2</span>
           </a>
-          <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">creer medecin</a></li>
-            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">lister medecin</a></li>
-            <li class="pc-item"><a class="pc-link" href="../dashboard/finance.html">voir rendez-vous</a></li>
-            <li class="pc-item"><a class="pc-link" href="../admins/helpdesk-dashboard.html">recette et depense</a></li>
-            <li class="pc-item"><a class="pc-link" href="../dashboard/invoice.html">lister patient du jour</a></li>
-          </ul>
+        
         </li>
         <li class="pc-item pc-hasmenu">
           <a href="#!" class="pc-link">
@@ -118,6 +112,20 @@
           </a>
           <ul class="pc-submenu">
             <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">lister patient du jour</a></li>
+            
+          </ul>
+        </li>
+            <li class="pc-item pc-hasmenu">
+          <a href="#!" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-gauge"></i>
+            </span>
+            <span class="pc-mtext">Finance</span>
+            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+            <span class="pc-badge">2</span>
+          </a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">recettes et depenses</a></li>
             
           </ul>
         </li>

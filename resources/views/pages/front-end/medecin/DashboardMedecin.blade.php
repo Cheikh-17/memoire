@@ -62,19 +62,63 @@
         </li>
         <li class="pc-item pc-hasmenu">
           <a href="#!" class="pc-link">
-            <span class="pc-micon">
+            <span class="pc-min">
               <i class="ph-duotone ph-gauge"></i>
             </span>
             <span class="pc-mtext">Dashboard</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
             <span class="pc-badge">2</span>
           </a>
+        
+        </li>
+          <li class="pc-item pc-hasmenu">
+          <a href="#!" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-gauge"></i>
+            </span>
+            <span class="pc-mtext">rendez-vous</span>
+            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+            <span class="pc-badge">2</span>
+          </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">Analytics</a></li>
-            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">Affiliate</a></li>
-            <li class="pc-item"><a class="pc-link" href="../dashboard/finance.html">Finance</a></li>
-            <li class="pc-item"><a class="pc-link" href="../admins/helpdesk-dashboard.html">Helpdesk</a></li>
-            <li class="pc-item"><a class="pc-link" href="../dashboard/invoice.html">Invoice</a></li>
+            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">donner rendez-vous</a></li>
+            {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/finance.html">prescrire ordonnance</a></li> --}}
+            {{-- <li class="pc-item"><a class="pc-link" href="../admins/helpdesk-dashboard.html">gerer dossier patient </a></li> --}}
+            
+          </ul>
+        </li>
+         <li class="pc-item pc-hasmenu">
+          <a href="#!" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-gauge"></i>
+            </span>
+            <span class="pc-mtext">ordonnance</span>
+            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+            <span class="pc-badge">2</span>
+          </a>
+          <ul class="pc-submenu">
+            
+            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">prescrire ordonnance</a></li>
+            {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/finance.html">prescrire ordonnance</a></li> --}}
+            {{-- <li class="pc-item"><a class="pc-link" href="../admins/helpdesk-dashboard.html">gerer dossier patient </a></li> --}}
+            
+          </ul>
+        </li>
+         <li class="pc-item pc-hasmenu">
+          <a href="#!" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-gauge"></i>
+            </span>
+            <span class="pc-mtext">dossier patient</span>
+            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+            <span class="pc-badge">2</span>
+          </a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">lister patient</a></li>
+            {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">donner rendez-vous</a></li>
+            <li class="pc-item"><a class="pc-link" href="../dashboard/finance.html">prescrire ordenance</a></li>
+            <li class="pc-item"><a class="pc-link" href="../admins/helpdesk-dashboard.html">gerer dossier patient </a></li>
+             --}}
           </ul>
         </li>
         {{-- <li class="pc-item pc-hasmenu">
