@@ -4,7 +4,7 @@
 <!-- [Head] start -->
 
 <head>
-  <title>Reset Password | Light Able Admin & Dashboard Template</title>
+  <title>Modifier mot de passe</title>
   <!-- [Meta] -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
@@ -21,16 +21,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- [Tabler Icons] https://tablericons.com -->
-<link rel="stylesheet" href="{{asset('../assets/fonts/tabler-icons.min.cssjs')}}" >
+<link rel="stylesheet" href="{{asset('../assets/fonts/tabler-icons.min.css')}}" >
 <!-- [Feather Icons] https://feathericons.com -->
-<link rel="stylesheet" href="{{asset('../assets/fonts/feather.cssjs')}}" >
+<link rel="stylesheet" href="{{asset('../assets/fonts/feather.css')}}" >
 <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-<link rel="stylesheet" href="{{asset('../assets/fonts/fontawesome.cssjs')}}" >
+<link rel="stylesheet" href="{{asset('../assets/fonts/fontawesome.css')}}" >
 <!-- [Material Icons] https://fonts.google.com/icons -->
-<link rel="stylesheet" href="{{asset('../assets/fonts/material.cssjs')}}" >
+<link rel="stylesheet" href="{{asset('../assets/fonts/material.css')}}" >
 <!-- [Template CSS Files] -->
-<link rel="stylesheet" href="{{asset('../assets/css/style.cssjs')}}" id="main-style-link" >
-<link rel="stylesheet" href="{{asset('../assets/css/style-preset.cssjs')}}" >
+<link rel="stylesheet" href="{{asset('../assets/css/style.css')}}" id="main-style-link" >
+<link rel="stylesheet" href="{{asset('../assets/css/style-preset.css')}}" >
 
 </head>
 <!-- [Head] end -->
@@ -49,8 +49,8 @@
     <div class="bg-overlay bg-dark"></div>
     <div class="auth-wrapper">
       <div class="auth-sidecontent">
-        <div class="auth-sidefooter">
-          <img src="{{asset('../assets/images/logo-dark.svgjs')}}" class="img-brand img-fluid" alt="images" />
+        {{-- <div class="auth-sidefooter">
+          <img src="{{asset('../assets/images/logo-dark.svg')}}" class="img-brand img-fluid" alt="images" />
           <hr class="mb-3 mt-4" />
           <div class="row">
             <div class="col my-1">
@@ -64,14 +64,15 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> --}}
 
       </div>
       <div class="auth-form">
         <div class="card my-5 mx-3">
           <div class="card-body">
-            <h4 class="f-w-500 mb-1">Reset password</h4>
-            <p class="mb-3">Back to <a href="../pages/login-v2.html" class="link-primary">Log in</a></p>
+            <h4 class="f-w-500 mb-1">Modifier mot de passe</h4>
+            {{-- <p class="mb-3">Back to <a href="../pages/login-v2.html" class="link-primary">Se connecter</a></p> --}}
+            <p> </p>
             <div class="mb-3">
               <label class="form-label">Password</label>
               <input type="password" class="form-control" id="floatingInput" placeholder="Password">
@@ -81,7 +82,7 @@
               <input type="password" class="form-control" id="floatingInput1" placeholder="Confirm Password">
             </div>
             <div class="d-grid mt-4">
-              <button type="button" class="btn btn-primary">Reset Password</button>
+              <button type="button" class="btn btn-primary">Modifier</button>
             </div>
              <div class="saprator my-3">
               <span>Or continue with</span>
@@ -112,11 +113,11 @@
   </div>
   <!-- [ Main Content ] end -->
   <!-- Required Js -->
-  <script src="{{asset('../assets/js/plugins/popper.min.jsjs')}}"></script>
-  <script src="{{asset('../assets/js/plugins/simplebar.min.jsjs')}}"></script>
-  <script src="{{asset('../assets/js/plugins/bootstrap.min.jsjs')}}"></script>
-  <script src="{{asset('../assets/js/fonts/custom-font.jsjs')}}"></script>
-  <script src="{{asset('../assets/js/pcoded.jsjs')}}"></script>
+  {{-- <script src="{{asset('../assets/js/plugins/popper.min.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/simplebar.min.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/bootstrap.min.js')}}"></script>
+  <script src="{{asset('../assets/js/fonts/custom-font.js')}}"></script>
+  <script src="{{asset('../assets/js/pcoded.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/feather.min.js')}}"></script>
 
   
@@ -307,7 +308,7 @@
       </ul>
     </div>
   </div>
-</div>
+</div> --}}
 </body>
 <!-- [Body] end -->
 
