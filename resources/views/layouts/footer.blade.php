@@ -3,10 +3,10 @@
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4">Address</h5>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i> BAMBEY, SEN</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>331261012</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>baobab.dentaire@example.com</p>
+                <h5 class="text-light mb-4">Adresse</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Bambey, Sénégal</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>33 126 10 12</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>baobab.dentaire@gmail.com</p>
                 <div class="d-flex pt-2">
                     <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
@@ -15,27 +15,27 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4">Services</h5>
-                <a class="btn btn-link" href="">Cardiology</a>
-                <a class="btn btn-link" href="">Pulmonary</a>
-                <a class="btn btn-link" href="">Neurology</a>
-                <a class="btn btn-link" href="">Orthopedics</a>
-                <a class="btn btn-link" href="">Laboratory</a>
+                <h5 class="text-light mb-4">Nos Services</h5>
+                <a class="btn btn-link" href="">Soins Dentaires</a>
+                <a class="btn btn-link" href="">Implantologie</a>
+                <a class="btn btn-link" href="">Orthodontie</a>
+                <a class="btn btn-link" href="">Prothèses Dentaires</a>
+                <a class="btn btn-link" href="">Radiologie Dentaire</a>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4">Quick Links</h5>
-                <a class="btn btn-link" href="">About Us</a>
-                <a class="btn btn-link" href="">Contact Us</a>
-                <a class="btn btn-link" href="">Our Services</a>
-                <a class="btn btn-link" href="">Terms & Condition</a>
+                <h5 class="text-light mb-4">Liens Rapides</h5>
+                <a class="btn btn-link" href="">À Propos</a>
+                <a class="btn btn-link" href="">Contactez-nous</a>
+                <a class="btn btn-link" href="">Nos Services</a>
+                <a class="btn btn-link" href="">Conditions Générales</a>
                 <a class="btn btn-link" href="">Support</a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4">Newsletter</h5>
-                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                <p>Inscrivez-vous pour recevoir nos dernières actualités et offres.</p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Votre email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">S'inscrire</button>
                 </div>
             </div>
         </div>
