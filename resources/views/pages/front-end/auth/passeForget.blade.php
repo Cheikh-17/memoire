@@ -3,7 +3,9 @@
 <!-- [Head] start -->
 
 <head>
-  <title>Incription</title>
+  <title>passeForget
+
+  </title>
   <!-- [Meta] -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
@@ -54,16 +56,16 @@
         <div class="card my-5 mx-3">
           <div class="card-body">
             {{-- <img src="{{asset('../assets/images/authentication/img-auth-login.png')}}" alt="images" class="img-fluid mb-3"> --}}
-            <h4 class="f-w-500 mb-1">Inscrire par Email</h4>
+            <h4 class="f-w-500 mb-1">Entrer votre Email</h4>
             {{-- <p class="mb-3">Tu as deja un compte? <a href="{{route('login')}}" class="link-primary">Log in</a></p> --}}
             <p> </p>
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-12">
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="First Name">
+                  <input type="text" class="form-control" placeholder="email">
                 </div>
               </div>
-              <div class="col-sm-6">
+              {{-- <div class="col-sm-6">
                 <div class="mb-3">
                   <input type="text" class="form-control" placeholder="Last Name">
                 </div>
@@ -85,12 +87,15 @@
               <div class="form-check">
                 <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="">
                 <label class="form-check-label text-muted" for="customCheckc1">Se souvenir de moi</label>
-              </div>
+              </div> --}}
             </div>
             <div class="d-grid mt-4">
-              <button type="button" class="btn btn-primary">Creer un compte</button>
+              <a href="{{route('reset')}}" class="btn btn-primary"> modifier mot de passe </a>
             </div>
-             <div class="saprator my-3">
+            <div class="d-grid mt-4">
+              <a href="{{route('login')}}" class="btn btn-danger"> annuler</a>
+            </div>
+             {{-- <div class="saprator my-3">
               <span>Continue avec</span>
             </div>
             <div class="text-center">
@@ -111,7 +116,7 @@
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>

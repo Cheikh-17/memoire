@@ -66,7 +66,7 @@
                 <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="">
                 <label class="form-check-label text-muted" for="customCheckc1">Se souvenir de moi?</label>
               </div>
-              <a href="{{route('reset')}}"><h6 class="f-w-400 mb-0">Forgot Password?</h6></a>
+              <a href="{{route('passeForget')}}"><h6 class="f-w-400 mb-0">Forgot Password?</h6></a>
             </div>
             <div class="d-grid mt-4">
               <button type="button" class="btn btn-primary">Se connecter</button>

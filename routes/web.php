@@ -14,13 +14,15 @@ Route::get('/home', function () {
 Route::get('/loginAdmin', function () {
     return view('pages.front-end.admin.loginAdmin');
 })->name('loginAdmin');
-Route::get('/inscription', function () {
-    return view('pages.front-end.auth.inscription');
-})->name('inscription');
-
+Route::get('/passeForget', function () {
+    return view('pages.front-end.auth.passeForget');
+})->name('passeForget');
+//middleware auth
+Route::middleware(['auth'])->group(function () {
 Route::get('/connexion', function () {
     return view('pages.front-end.auth.connexion');
 })->name('login');
+});
 
 Route::get('/reset', function () {
     return view('pages.front-end.Accueil.reset-password');
