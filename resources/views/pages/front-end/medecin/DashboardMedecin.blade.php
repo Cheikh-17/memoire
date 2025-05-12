@@ -62,8 +62,8 @@
         </li>
         <li class="pc-item pc-hasmenu">
           <a href="#!" class="pc-link">
-            <span class="pc-min">
-              <i class="ph-duotone ph-house"></i>
+            <span class="pc-micon">
+              <i class="ph-duotone ph-gauge"></i>
             </span>
             <span class="pc-mtext">Dashboard</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
@@ -80,7 +80,11 @@
             <span class="pc-badge">2</span>
           </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">Donner rendez-vous</a></li>
+            {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/index.html"> </a></li> --}}
+            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">donner rendez-vous</a></li>
+            {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/finance.html">prescrire ordonnance</a></li> --}}
+            {{-- <li class="pc-item"><a class="pc-link" href="../admins/helpdesk-dashboard.html">gerer dossier patient </a></li> --}}
+            
           </ul>
         </li>
         <li class="pc-item pc-hasmenu">

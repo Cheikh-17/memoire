@@ -11,13 +11,24 @@ class ProfilMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string|null  $profil
+     * @return mixed
      */
-    public function handle(Request $request, Closure $next, $profil): Response
+    public function handle(Request $request, Closure $next, string $profil = null)
     {
+        // Vérifie si l'utilisateur est authentifié
+        if ($request->user()) {
+            // Si un profil est spécifié et ne correspond pas, retourne une erreur
+            if ($profil && $request->user()->profil !== $profil) {
+                return response('Unauthorized.', 403);
+            }
 
-        if ($request->user() && $request->user()->profil !== $profil) {
-            return response('Unauthorized.', 403);
+            // Empêche l'accès à la page de connexion si l'utilisateur est déjà connecté
+            if ($request->route()->getName() === 'login') {
+                return redirect('/home'); // Redirige vers une autre page (par exemple, tableau de bord)
+            }
         }
 
         return $next($request);
