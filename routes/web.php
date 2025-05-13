@@ -49,3 +49,6 @@ Route::get('/dashboard-patient', function () {
     return view('pages.front-end.patient.DashboardPatient');
 })->name('dashboard-patient');
 
+Route::get('/create' , function () {
+    return view('pages.front-end.admin.create');
+})->name('create');

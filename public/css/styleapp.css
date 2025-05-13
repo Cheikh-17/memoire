@@ -45,11 +45,14 @@
 .btn {
     font-weight: 500;
     transition: .5s;
+    background-color: var(--primary);
+    color: #FFFFFF;
 }
 
 .btn.btn-primary,
 .btn.btn-secondary {
     color: #FFFFFF;
+    background-color: var(--primary);
 }
 
 .btn-square {
@@ -237,7 +240,7 @@
 .page-header {
     background: url(../img/header-page.jpg) top center no-repeat;
     background-size: cover;
-    text-shadow: 0 0 30px rgba(0, 0, 0, .1);
+    text-shadow: 0 0 30px #026952;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -462,6 +465,10 @@
 
 
 /*** Footer ***/
+.footer {
+    background-color: var(--primary);
+}
+
 .footer .btn.btn-social {
     margin-right: 5px;
     width: 35px;
@@ -504,16 +511,18 @@
     box-shadow: none;
 }
 
-.footer .copyright {
-    padding: 25px 0;
-    font-size: 15px;
-    border-top: 1px solid rgba(256, 256, 256, .1);
+/* Navbar blue color overrides to #026952 */
+.navbar .text-primary {
+    color: #026952 !important;
 }
 
-.footer .copyright a {
-    color: var(--light);
+.navbar .btn-primary {
+    background-color: #026952 !important;
+    border-color: #026952 !important;
 }
 
-.footer .copyright a:hover {
-    color: var(--primary);
+.navbar .btn-primary:hover,
+.navbar .btn-primary:focus {
+    background-color: #024d40 !important; /* Slightly darker shade for hover */
+    border-color: #024d40 !important;
 }
