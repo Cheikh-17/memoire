@@ -54,8 +54,14 @@
       <a href="{{asset('../dashboard/index.html')}}" class="b-brand text-primary">
         <!-- ========   Change your logo from here   ============ -->
       </a>
+      <a href="{{ route('home') }}" class="b-brand text-primary d-flex align-items-center">
+        <img src="assets/images/dent.png" alt="Logo Cabinet" style="height:40px; width:auto; margin-right:10px;">
+        <span class="fw-bold fs-5">BAOBAB DENTAIRE</span>
+      </a>
     </div>
+    
     <div class="navbar-content">
+      
       <ul class="pc-navbar">
         <li class="pc-item pc-caption">
           <label>Navigation</label>
@@ -80,7 +86,7 @@
             <span class="pc-badge">2</span>
           </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">creer medecin</a></li>
+            <li class="pc-item"><a class="pc-link" href="">creer medecin</a></li>
             <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">lister medecin </a></li>
           </ul>
         </li>
@@ -94,7 +100,7 @@
             <span class="pc-badge">2</span>
           </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">creer secretaire</a></li>
+            <li class="pc-item"><a class="pc-link" href="{{route('creerSecretaire')}}">creer secretaire</a></li>
             <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">lister secretaire</a></li>
           </ul>
         </li>
