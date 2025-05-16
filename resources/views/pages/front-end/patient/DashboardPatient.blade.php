@@ -54,6 +54,10 @@
       <a href="{{asset('../dashboard/index.html')}}" class="b-brand text-primary">
         <!-- ========   Change your logo from here   ============ -->
       </a>
+       <a href="{{ route('home') }}" class="b-brand text-primary d-flex align-items-center">
+        <img src="assets/images/dent.png" alt="Logo Cabinet" style="height:40px; width:auto; margin-right:10px;">
+        <span class="fw-bold fs-5">BAOBAB DENTAIRE</span>
+      </a>
     </div>
     <div class="navbar-content">
       <ul class="pc-navbar">

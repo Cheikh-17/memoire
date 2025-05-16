@@ -1,12 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SecretaireController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/hom', function () {
     return view('app');
+});
+Route::get('/ho', function () {
+    return view('app1');
 });
 Route::get('/home', function () {
     return view('pages.front-end.Accueil.home');
@@ -50,5 +54,18 @@ Route::get('/dashboard-patient', function () {
 })->name('dashboard-patient');
 
 Route::get('/create' , function () {
-    return view('pages.front-end.admin.create');
+    return view('pages.front-end.admin.medecin.createMedecin');
 })->name('create');
+// creation de  secretaire
+ Route::get('/creerSecretaire' , function () {
+    return view('pages.front-end.admin.secretaire.creerSecretaire');
+})->name('creerSecretaire');
+
+//cretion de patient
+Route::get('/creerPatient' , function () {
+    return view('pages.front-end.Secretaire.patient.creerPatient');
+})->name('creerPatient');
+ 
+//route pour faire un enregistrement secretaire
+// Route::resource('/creerSecretaire', SecretaireController::class)->name('creerSecretaire');
+
