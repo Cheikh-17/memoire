@@ -19,7 +19,7 @@ class devisController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.front-end.admin.createDevis');
     }
 
     /**
