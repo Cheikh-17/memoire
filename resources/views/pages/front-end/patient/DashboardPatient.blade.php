@@ -205,9 +205,9 @@
                   <div class="flex-shrink-0">
                     <img src="{{asset('../assets/images/user/avatar-2.jpg')}}" alt="image-utilisateur" class="wid-50 rounded-circle" />
                   </div>
-                  <div class="flex-grow-1 mx-3">
-                    <h5 class="mb-0">Cheikh</h5>
-                    <a class="link-primary" href="mailto:carson.darrin@company.io">cheikhmbaye.diop@uadb.edu.sn</a>
+                 <div class="flex-grow-1 mx-3">
+                    <h5 class="mb-0">{{ Auth::user()->name }}</h5>
+                    <a class="link-primary" href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a>
                   </div>
                   <span class="badge bg-primary">PRO</span>
                 </div>
@@ -302,12 +302,13 @@
                     <span>Ajouter un compte</span>
                   </span>
                 </a>
-                <a href="#" class="dropdown-item">
-                  <span class="d-flex align-items-center">
-                    <i class="ph-duotone ph-power"></i>
-                    <span>Déconnexion</span>
-                  </span>
-                </a>
+<form method="POST" action="{{ route('logout') }}">
+  @csrf
+  <button type="submit" class="dropdown-item btn btn-link d-flex align-items-center p-0" style="color: inherit; text-decoration: none;">
+    <i class="ph-duotone ph-power"></i>
+    <span>Déconnexion</span>
+  </button>
+</form>
               </li>
             </ul>
           </div>

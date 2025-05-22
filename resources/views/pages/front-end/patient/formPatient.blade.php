@@ -4,7 +4,7 @@
  
         <div class="card-header">Créer un patient</div>
         <div class="card-body">
-            <form action="{{ route('creerSecretaire') }}" method="POST">
+            <form action="{{ route('formPatient') }}" method="POST">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-6">
