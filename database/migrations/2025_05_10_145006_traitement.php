@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('traitements', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idUser');
-            $table->date('date');
-            $table->time('heure');
+            $table->unsignedBigInteger('consultation_id');
             $table->text('observation');
             $table->text('description');
             $table->string('is_hidden')->default(false);
             $table->timestamps();
 
-            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('consultation_id')->references('id')->on('consultations')->onDelete('cascade');
         });
     }
 

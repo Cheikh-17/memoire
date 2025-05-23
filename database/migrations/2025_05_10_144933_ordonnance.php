@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('ordonnances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('idUser');
-            $table->date('date-emis');
+            $table->unsignedBigInteger('consultation_id');
             $table->text('contenu');
             $table->boolean('is_hidden')->default(false);
             $table->timestamps();
 
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('consultation_id')->references('id')->on('consultations')->onDelete('cascade');
         });
     }
 

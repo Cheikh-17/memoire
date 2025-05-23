@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('factures', function (Blueprint $table) {
+        Schema::create('consultations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('idUser');
-            $table->unsignedBigInteger('consultation_id'); // Ajoute cette ligne
-            $table->string('nemero-paiement');
-            $table->decimal('montant', 10, 2);
-            $table->boolean('is_hidden')->default(false);
+            $table->string('diagnostic')->nullable();
+            $table->string('motif')->nullable();
+            $table->date('date');
+            $table->time('heure')->nullable(); // Ajoute cette ligne
             $table->timestamps();
 
+            // Relations (adapte selon tes modèles)
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('consultation_id')->references('id')->on('consultations')->onDelete('cascade');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('factures');
+        Schema::dropIfExists('consultations');
     }
 };

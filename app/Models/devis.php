@@ -16,11 +16,11 @@ class devis extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(User::class);
     }
 
     public function devisDetails()
     {
-        return $this->hasMany(DevisDetail::class);
+        return $this->hasMany(Devis::class);
     }
 }

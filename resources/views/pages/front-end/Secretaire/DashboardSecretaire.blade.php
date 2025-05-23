@@ -356,6 +356,48 @@
             </div>
           </div>
         </div>
+        {{-- filepath: resources/views/pages/front-end/Secretaire/DashboardSecretaire.blade.php --}}
+
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Consultations du jour</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Heure</th>
+                                <th>Patient</th>
+                                <th>Médecin</th>
+                                <th>Motif</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($consultations as $consultation)
+                                <tr>
+                                    <td>{{ $consultation->heure }}</td>
+                                    <td>{{ $consultation->patient->nom }} {{ $consultation->patient->prenom }}</td>
+                                    <td>{{ $consultation->medecin->nom }} {{ $consultation->medecin->prenom }}</td>
+                                    <td>{{ $consultation->motif }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Aucune consultation prévue aujourd'hui.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
         <!-- [ Main Content ] end -->
     <footer class="pc-footer">
       <div class="footer-wrapper container-fluid">

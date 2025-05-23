@@ -77,6 +77,9 @@ Route::get('/create' , function () {
     return view('pages.front-end.admin.secretaire.creerSecretaire');
 })->name('creerSecretaire');
 
+
+Route::get('/dashboard-secretaire', [SecretaireController::class, 'dashboard'])->name('dashboard-secretaire');
+
 //cretion de patient
 Route::get('/creerPatient' , function () {
     return view('pages.front-end.Secretaire.patient.creerPatient');
