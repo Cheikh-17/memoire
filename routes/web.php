@@ -35,7 +35,6 @@ Route::get('/loginAdmin', function () {
     return view('pages.front-end.admin.loginAdmin');
 })->name('loginAdmin');
 
-// Page mot de passe oublié
 Route::get('/passeForget', function () {
     return view('pages.front-end.auth.passeForget');
 })->name('passeForget');
@@ -80,7 +79,6 @@ Route::get('/connexion', function () {
     return view('pages.front-end.auth.connexion');
 })->name('login');
 
-// Page de réinitialisation du mot de passe
 Route::get('/reset', function () {
     return view('pages.front-end.Accueil.reset-password');
 })->name('reset');

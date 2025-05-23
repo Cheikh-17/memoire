@@ -2,7 +2,7 @@
 
 @section('content')
  
-        <div class="card-header">Créer un secretaire</div>
+        <div class="card-header">Créer un Utilisateurs</div>
         <div class="card-body">
             <form action="{{ route('form') }}" method="POST">
                 @csrf
