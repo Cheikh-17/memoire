@@ -342,7 +342,7 @@
                 <img src="{{asset('../assets/images/widget/img-status-5.svg')}}" alt="img" class="img-fluid img-bg mb-3">
                 <h5 class="mb-3">Factures & Paiements</h5>
                 <p class="text-muted mb-3">Gérez les factures des patients, suivez les paiements et reliez-les à chaque dossier.</p>
-                <a href="{{ route('factures.index') }}" class="btn btn-success">Voir les factures</a>
+                <a href="#" class="btn btn-success">Voir les factures</a>
               </div>
             </div>
           </div>
@@ -378,7 +378,7 @@
                                 <th>Motif</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        {{-- <tbody>
                             @forelse($consultations as $consultation)
                                 <tr>
                                     <td>{{ $consultation->heure }}</td>
@@ -391,7 +391,7 @@
                                     <td colspan="4" class="text-center">Aucune consultation prévue aujourd'hui.</td>
                                 </tr>
                             @endforelse
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
             </div>
