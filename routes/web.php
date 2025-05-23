@@ -147,7 +147,7 @@ Route::get('/create' , function () {
 //route secretaire pour le patient
 Route::get('/patients/create', [PatientController::class, 'create'])->name('patients.create');
 Route::get('/patients', [PatientController::class, 'store'])->name('patients.store');
-//Route::get('/factures', [FactureControllerr::class, 'index'])->name('factures.index');
+Route::get('/#');
 //Route::get('/devis/create', [devisController::class, 'create'])->name('devis.create');
 Route::resource('devis', App\Http\Controllers\devisController::class);
 Route::get('/create' , function () {

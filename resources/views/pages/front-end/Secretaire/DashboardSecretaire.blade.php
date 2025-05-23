@@ -361,7 +361,7 @@
         {{-- filepath: resources/views/pages/front-end/Secretaire/DashboardSecretaire.blade.php --}}
 
 
-<div class="row mt-4">
+{{-- <div class="row mt-4">
     <div class="col-12">
         <div class="card shadow">
             <div class="card-header bg-primary text-white">
@@ -370,8 +370,8 @@
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-striped mb-0">
-                        <thead>
-                            <tr>
+                        <thead> --}}
+                            {{-- <tr>
                                 <th>Heure</th>
                                 <th>Patient</th>
                                 <th>Médecin</th>
@@ -390,7 +390,7 @@
                                 <tr>
                                     <td colspan="4" class="text-center">Aucune consultation prévue aujourd'hui.</td>
                                 </tr>
-                            @endforelse
+                            @endforelse --}}
                         </tbody>
                     </table>
                 </div>
