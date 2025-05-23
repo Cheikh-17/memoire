@@ -79,6 +79,20 @@
         <li class="pc-item pc-hasmenu">
           <a href="#!" class="pc-link">
             <span class="pc-micon">
+                <i class="ph-duotone ph-users-three"></i>
+            </span>
+            <span class="pc-mtext">Users</span>
+            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+            <span class="pc-badge">2</span>
+          </a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="{{route('form')}}">creer Users</a></li>
+            {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">lister medecin </a></li> --}}
+          </ul>
+        </li>
+        <li class="pc-item pc-hasmenu">
+          <a href="#!" class="pc-link">
+            <span class="pc-micon">
               <i class="ph-duotone ph-stethoscope"></i>
             </span>
             <span class="pc-mtext">Medecin</span>
@@ -86,8 +100,8 @@
             <span class="pc-badge">2</span>
           </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="">creer medecin</a></li>
-            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">lister medecin </a></li>
+            {{-- <li class="pc-item"><a class="pc-link" href="">creer medecin</a></li> --}}
+            <li class="pc-item"><a class="pc-link" href="{{route('medecin.index')}}">lister medecin </a></li>
           </ul>
         </li>
         <li class="pc-item pc-hasmenu">
@@ -100,8 +114,8 @@
             <span class="pc-badge">2</span>
           </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="{{route('creerSecretaire')}}">creer secretaire</a></li>
-            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">lister secretaire</a></li>
+            {{-- <li class="pc-item"><a class="pc-link" href="{{route('creerSecretaire')}}">creer secretaire</a></li> --}}
+            <li class="pc-item"><a class="pc-link" href="{{route('secretaire.index')}}">lister secretaire</a></li>
           </ul>
         </li>
         <li class="pc-item pc-hasmenu">
@@ -114,7 +128,8 @@
             <span class="pc-badge">2</span>
           </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">lister patient du jour</a></li>
+            <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">lister patient</a></li>
+            <li class="pc-item"><a class="pc-link" href="">lister les patients du jours</a></li>
           </ul>
         </li>
         <li class="pc-item pc-hasmenu">
@@ -222,8 +237,8 @@
                     <img src="{{asset('../assets/images/user/avatar-2.jpg')}}" alt="image-utilisateur" class="wid-50 rounded-circle" />
                   </div>
                   <div class="flex-grow-1 mx-3">
-                    <h5 class="mb-0">Cheikh</h5>
-                    <a class="link-primary" href="mailto:carson.darrin@company.io">cheikhmbaye.diop@uadb.edu.sn</a>
+                    <h5 class="mb-0">{{ Auth::user()->name }}</h5>
+                    <a class="link-primary" href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a>
                   </div>
                   <span class="badge bg-primary">PRO</span>
                 </div>
@@ -318,12 +333,13 @@
                     <span>Ajouter un compte</span>
                   </span>
                 </a>
-                <a href="#" class="dropdown-item">
-                  <span class="d-flex align-items-center">
-                    <i class="ph-duotone ph-power"></i>
-                    <span>Déconnexion</span>
-                  </span>
-                </a>
+<form method="POST" action="{{ route('logout') }}">
+  @csrf
+  <button type="submit" class="dropdown-item btn btn-link d-flex align-items-center p-0" style="color: inherit; text-decoration: none;">
+    <i class="ph-duotone ph-power"></i>
+    <span>Déconnexion</span>
+  </button>
+</form>
               </li>
             </ul>
           </div>

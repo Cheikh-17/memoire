@@ -19,7 +19,22 @@
                 <a href="{{route('contacter')}}" class="nav-item nav-link">Contact</a>
             @endif
         </div>
-        <a href="{{route('login')}}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Connexion<i class="fa fa-arrow-right ms-3"></i></a>
+        @if(Auth::check())
+            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                    Déconnexion <i class="fa fa-arrow-right ms-3"></i>
+                </button>
+            </form>
+        @else
+        
+            <a href="{{ route('login') }}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                Connexion <i class="fa fa-arrow-right ms-3"></i>
+            </a>
+        @endif
+        {{-- @Auth
+        {{Auth::user()->email}}
+        @endAuth --}}
     </div>
 </nav>
 <!-- Navbar End -->

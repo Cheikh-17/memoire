@@ -2,9 +2,9 @@
 
 @section('content')
  
-        <div class="card-header">Créer un secretaire</div>
+        <div class="card-header">Créer un Utilisateurs</div>
         <div class="card-body">
-            <form action="{{ route('creerSecretaire') }}" method="POST">
+            <form action="{{ route('form') }}" method="POST">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-6">
@@ -48,6 +48,24 @@
                         <input type="text" class="form-control" id="password" name="password" required>
                     </div>
                 </div>
+                <div class="row mb-3" id="specialite-container" style="display:none;">
+                    <div class="col-md-6">
+                        <label for="specialite" class="form-label">Spécialité</label>
+                        <select class="form-control" id="specialite" name="specialite">
+                            <option value="" disabled selected>Choisissez une spécialité</option>
+                            <option value="Cardiologie">Cardiologie</option>
+                            <option value="Dermatologie">Dermatologie</option>
+                            <option value="Neurologie">Neurologie</option>
+                            <option value="Pédiatrie">Pédiatrie</option>
+                            <option value="Psychiatrie">Psychiatrie</option>
+                            <option value="Radiologie">Radiologie</option>
+                            <option value="Gynécologie">Gynécologie</option>
+                            <option value="Orthopédie">Orthopédie</option>
+                            <option value="Urologie">Urologie</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-6 mb-2">
                         <button type="submit" class="btn btn-primary w-100">Créer</button>
@@ -60,4 +78,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('profil').addEventListener('change', function() {
+        var specialiteContainer = document.getElementById('specialite-container');
+        if (this.value === 'MEDECIN') {
+            specialiteContainer.style.display = 'block';
+            document.getElementById('specialite').setAttribute('required', 'required');
+        } else {
+            specialiteContainer.style.display = 'none';
+            document.getElementById('specialite').removeAttribute('required');
+        }
+    });
+</script>
 @endsection

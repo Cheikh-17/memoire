@@ -49,16 +49,17 @@
             </div>
 
             <!-- Login Form -->
-            <form>
+            <form method="POST" action="{{ route('login.post') }}">
+              @csrf
               <div class="mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="Email Address">
+                <input type="email" name="email" class="form-control" placeholder="Email Address" required>
               </div>
               <div class="mb-3">
-                <input type="password" class="form-control" id="floatingInput1" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
               </div>
               <div class="d-flex mt-1 justify-content-between align-items-center">
                 <div class="form-check">
-                  <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="">
+                  <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked>
                   <label class="form-check-label text-muted" for="customCheckc1">Se souvenir de moi?</label>
                 </div>
                 <a href="{{ route('passeForget') }}">
@@ -66,7 +67,7 @@
                 </a>
               </div>
               <div class="d-grid mt-4">
-                <button type="button" class="btn btn-primary">Se connecter</button>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
               </div>
             </form>
 

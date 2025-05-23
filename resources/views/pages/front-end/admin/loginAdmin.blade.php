@@ -89,7 +89,7 @@
               </a>
             </div>
             <div class="d-grid mt-4">
-              <button type="button" class="btn btn-primary">Se connecter</button>
+              <a href="{{route('dashboard-admin')}}" class="btn btn-primary">Se connecter</a>
             </div>
              <div class="saprator my-3">
               <span>Or continue with</span>

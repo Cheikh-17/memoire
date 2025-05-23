@@ -84,7 +84,8 @@
             <span class="pc-badge">2</span>
           </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">Créer dossier et compte patient</a></li>
+            <li class="pc-item"><a class="pc-link" href="{{route('formPatient')}}">Créer dossier et compte patient</a></li>
+            <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">lister patients</a></li>
             <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">Paiement et facture</a></li>
             <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">Devis avant soins</a></li>
           </ul>
@@ -182,8 +183,8 @@
                     <img src="{{asset('../assets/images/user/avatar-2.jpg')}}" alt="image-utilisateur" class="wid-50 rounded-circle" />
                   </div>
                   <div class="flex-grow-1 mx-3">
-                    <h5 class="mb-0">Cheikh</h5>
-                    <a class="link-primary" href="mailto:carson.darrin@company.io">cheikhmbaye.diop@uadb.edu.sn</a>
+                    <h5 class="mb-0">{{ Auth::user()->name }}</h5>
+                    <a class="link-primary" href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a>
                   </div>
                   <span class="badge bg-primary">PRO</span>
                 </div>
@@ -278,12 +279,13 @@
                     <span>Ajouter un compte</span>
                   </span>
                 </a>
-                <a href="#" class="dropdown-item">
-                  <span class="d-flex align-items-center">
-                    <i class="ph-duotone ph-power"></i>
-                    <span>Déconnexion</span>
-                  </span>
-                </a>
+<form method="POST" action="{{ route('logout') }}">
+  @csrf
+  <button type="submit" class="dropdown-item btn btn-link d-flex align-items-center p-0" style="color: inherit; text-decoration: none;">
+    <i class="ph-duotone ph-power"></i>
+    <span>Déconnexion</span>
+  </button>
+</form>
               </li>
             </ul>
           </div>

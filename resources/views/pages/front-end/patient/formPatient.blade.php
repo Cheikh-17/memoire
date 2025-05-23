@@ -1,14 +1,20 @@
 @extends('app1')
 
 @section('content')
-    <div class="card-header">Créer un patient</div>
-    <div class="card-body">
-        <form action="{{ route('creerSecretaire') }}" method="POST">
-            @csrf
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="nom" class="form-label">nom</label>
-                    <input type="text" class="form-control" id="nom" name="nom" required>
+ 
+        <div class="card-header">Créer un patient</div>
+        <div class="card-body">
+            <form action="{{ route('formPatient') }}" method="POST">
+                @csrf
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="nom" class="form-label">nom</label>
+                        <input type="text" class="form-control" id="nom" name="nom" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="prenom" class="form-label">prénom</label>
+                        <input type="text" class="form-control" id="prenom" name="prenom" required>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <label for="prenom" class="form-label">prénom</label>
