@@ -93,7 +93,7 @@ class medecinController extends Controller
     public function edit(string $id)
     {
         $medecin = Medecin::findOrFail($id);
-        return view('medecin.edit', compact('medecin'));
+        return view('pages.front-end.medecin.edit', compact('medecin'));
     }
 
     /**
