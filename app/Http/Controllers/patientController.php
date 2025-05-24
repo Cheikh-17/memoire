@@ -4,12 +4,46 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class PatientController extends Controller
 {
     public function create()
     {
         // Affiche le formulaire de création de patient
         return view('pages.front-end.patient.create');
+    }
+
+    public function index()
+    {
+        $patients = User::where('profil', 'patient')->get();
+        return view('pages.front-end.patient.index', compact('patients'));
+    }
+
+    public function show($id)
+    {
+        $patient = User::where('profil', 'patient')->findOrFail($id);
+        return view('pages.front-end.patient.show', compact('patient'));
+    }
+
+    public function edit($id)
+    {
+        $patient = User::where('profil', 'patient')->findOrFail($id);
+        return view('pages.front-end.patient.edit', compact('patient'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $patient = User::where('profil', 'patient')->findOrFail($id);
+        $patient->update($request->all());
+        return redirect()->route('patients.index')->with('success', 'Patient mis à jour avec succès.');
+    }
+
+    public function destroy($id)
+    {
+        $patient = User::where('profil', 'patient')->findOrFail($id);
+        $patient->delete();
+        return redirect()->route('patients.index')->with('success', 'Patient supprimé avec succès.');
     }
 
     public function store(Request $request)
