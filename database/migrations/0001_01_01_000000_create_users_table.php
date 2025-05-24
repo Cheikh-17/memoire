@@ -53,8 +53,20 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
+        Schema::disableForeignKeyConstraints();
+
+        Schema::dropIfExists('factures');
+        Schema::dropIfExists('paiements');
+        Schema::dropIfExists('ordonnances');
+        Schema::dropIfExists('consultations');
+        Schema::dropIfExists('devis');
+        Schema::dropIfExists('rendezvous');
+        Schema::dropIfExists('medecins');
+
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('users');
+
+        Schema::enableForeignKeyConstraints();
     }
 };

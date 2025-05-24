@@ -16,10 +16,7 @@
                         <input type="text" class="form-control" id="prenom" name="prenom" required>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="prenom" class="form-label">prénom</label>
-                    <input type="text" class="form-control" id="prenom" name="prenom" required>
-                </div>
+                {{--   --}}
             </div>
             <div class="row mb-3">
                 <div class="col-md-6">
