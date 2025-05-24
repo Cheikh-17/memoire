@@ -36,9 +36,13 @@ Route::get('/loginAdmin', function () {
     return view('pages.front-end.admin.loginAdmin');
 })->name('loginAdmin');
 
-Route::get('/passeForget', function () {
-    return view('pages.front-end.auth.passeForget');
-})->name('passeForget');
+use App\Http\Controllers\PasswordResetController;
+
+Route::get('/passeForget', [PasswordResetController::class, 'showForgetPasswordForm'])->name('passeForget');
+Route::post('/passeForget', [PasswordResetController::class, 'submitForgetPasswordForm'])->name('passeForget.post');
+
+Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('password.reset');
+Route::post('/reset-password', [PasswordResetController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
 // Groupe de routes protégées par le middleware 'auth'
