@@ -104,13 +104,10 @@ class UserController extends Controller
             // Redirection selon le profil
             switch ($user->profil) {
                 case 'ADMINISTRATEUR':
-                    return redirect()->route('dashboard-admin');
                 case 'MEDECIN':
-                    return redirect()->route('dashboard-medecin');
                 case 'PATIENT':
-                    return redirect()->route('dashboard-patient');
                 case 'SECRETAIRE':
-                    return redirect()->route('dashboard-secretaire');
+                    return redirect()->route('dashboard');
                 default:
                     Auth::logout();
                     return redirect()->route('login')->withErrors([
