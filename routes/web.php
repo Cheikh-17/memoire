@@ -46,35 +46,40 @@ Route::post('/reset-password', [PasswordResetController::class, 'submitResetPass
 
 
 // Groupe de routes protégées par le middleware 'auth'
-Route::middleware(['auth'])->group(function () {
-    // Déconnexion
-    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::middleware(['auth'])->group(function () {
+        // Déconnexion
+        Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-    // Dashboards protégés par middleware auth et profil
-    Route::middleware(['profil:ADMINISTRATEUR'])->group(function () {
-        Route::get('/dashboard-admin', function () {
-            return view('pages.front-end.admin.dashboardAdmin');
-        })->name('dashboard-admin');
-    });
+        // Route unique dashboard
+        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-    Route::middleware(['profil:SECRETAIRE'])->group(function () {
-        Route::get('/dashboard-secretaire', function () {
-            return view('pages.front-end.Secretaire.DashboardSecretaire');
-        })->name('dashboard-secretaire');
-    });
+        /*
+        // Dashboards protégés par middleware auth et profil
+        Route::middleware(['profil:ADMINISTRATEUR'])->group(function () {
+            Route::get('/dashboard-admin', function () {
+                return view('pages.front-end.admin.dashboardAdmin');
+            })->name('dashboard-admin');
+        });
 
-    Route::middleware(['profil:MEDECIN'])->group(function () {
-        Route::get('/dashboard-medecin', function () {
-            return view('pages.front-end.medecin.DashboardMedecin');
-        })->name('dashboard-medecin');
-    });
+        Route::middleware(['profil:SECRETAIRE'])->group(function () {
+            Route::get('/dashboard-secretaire', function () {
+                return view('pages.front-end.Secretaire.DashboardSecretaire');
+            })->name('dashboard-secretaire');
+        });
 
-    Route::middleware(['profil:PATIENT'])->group(function () {
-        Route::get('/dashboard-patient', function () {
-            return view('pages.front-end.patient.DashboardPatient');
-        })->name('dashboard-patient');
+        Route::middleware(['profil:MEDECIN'])->group(function () {
+            Route::get('/dashboard-medecin', function () {
+                return view('pages.front-end.medecin.DashboardMedecin');
+            })->name('dashboard-medecin');
+        });
+
+        Route::middleware(['profil:PATIENT'])->group(function () {
+            Route::get('/dashboard-patient', function () {
+                return view('pages.front-end.patient.DashboardPatient');
+            })->name('dashboard-patient');
+        });
+        */
     });
-});
 
 // Route POST pour traiter la connexion
 Route::post('/connexion', [UserController::class, 'login'])->name('login.post');
@@ -103,6 +108,7 @@ Route::get('/propos', function () {
     return view('pages.front-end.Accueil.propos');
 })->name('propos');
 
+/*
 // Dashboard administrateur
 Route::get('/dashboard-admin', function () {
     return view('pages.front-end.admin.dashboardAdmin');
@@ -112,6 +118,7 @@ Route::get('/dashboard-admin', function () {
 Route::get('/dashboard-secretaire', function () {
     return view('pages.front-end.Secretaire.DashboardSecretaire');
 })->name('dashboard-secretaire');
+*/
 
 // Route pour afficher la liste des secrétaires
 Route::get('/secretaire', [SecretaireController::class, 'dashboard'])->name('secretaire.index');
@@ -127,6 +134,13 @@ Route::get('/dashboard-medecin', function () {
     return view('pages.front-end.medecin.DashboardMedecin');
 })->name('dashboard-medecin');
 
+/*
+// Dashboard médecin
+Route::get('/dashboard-medecin', function () {
+    return view('pages.front-end.medecin.DashboardMedecin');
+})->name('dashboard-medecin');
+*/
+
 // Route pour afficher la liste des médecins
 Route::get('/medecin', [medecinController::class, 'index'])->name('medecin.index');
 
@@ -139,6 +153,13 @@ Route::delete('/medecin/{id}', [medecinController::class, 'destroy'])->name('med
 Route::get('/dashboard-patient', function () {
     return view('pages.front-end.patient.DashboardPatient');
 })->name('dashboard-patient');
+
+/*
+// Dashboard patient
+Route::get('/dashboard-patient', function () {
+    return view('pages.front-end.patient.DashboardPatient');
+})->name('dashboard-patient');
+*/
 
 // Formulaire de création de médecin (admin)
 Route::get('/create' , function () {
@@ -159,7 +180,10 @@ Route::get('/create' , function () {
     return view('pages.front-end.admin.medecin.createMedecin');
 })->name('create');
 
-// Formulaire de création de secrétaire (admin)
+
+
+
+//Formulaire de création de secrétaire (admin)
 
 
 // Formulaire de création de patient (secrétaire)
