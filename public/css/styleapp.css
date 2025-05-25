@@ -526,3 +526,8 @@
     background-color: #024d40 !important; /* Slightly darker shade for hover */
     border-color: #024d40 !important;
 }
+.card-body {
+    padding-left: 314px;
+    padding-top: 100px;
+    padding-right: 214px;
+}

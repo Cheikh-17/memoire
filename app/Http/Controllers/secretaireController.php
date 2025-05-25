@@ -10,7 +10,7 @@ class SecretaireController extends Controller
 {
     public function dashboard()
     {
-        $consultations = Consultation::with(['patient', 'medecin'])
+        $consultation = Consultation::with(['patient', 'medecin'])
             ->whereDate('date', now()->toDateString())
             ->orderBy('heure')
             ->get();

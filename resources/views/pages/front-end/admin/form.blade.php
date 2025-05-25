@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <div class="card-header">Créer un Utilisateurs</div>
-        <div class="card-body">
-            <form action="{{ route('form') }}" method="POST">
+    <div class="card-header" style="padding-top: 80px; padding-left: 314px;">Créer un Utilisateurs</div>
+        <div class="card-body " style="padding-left: 314px; padding-right: 200px; padding-top: 20px; ">
+            <form action="{{ route('form') }}" method="POST" class="" >
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-6">
