@@ -79,6 +79,9 @@ Route::post('/reset-password', [PasswordResetController::class, 'submitResetPass
             })->name('dashboard-patient');
         });
         */
+
+        // Routes resource pour rendez-vous
+        Route::resource('rendezvous', App\Http\Controllers\RendezVousController::class);
     });
 
 // Route POST pour traiter la connexion
@@ -130,9 +133,9 @@ Route::delete('/secretaire/{id}', [SecretaireController::class, 'destroy'])->nam
 
 
 // Dashboard médecin
-Route::get('/dashboard-medecin', function () {
-    return view('pages.front-end.medecin.DashboardMedecin');
-})->name('dashboard-medecin');
+// Route::get('/dashboard-medecin', function () {
+//     return view('pages.front-end.medecin.DashboardMedecin');
+// })->name('dashboard-medecin');
 
 /*
 // Dashboard médecin
@@ -150,9 +153,9 @@ Route::put('/medecin/{id}', [medecinController::class, 'update'])->name('medecin
 Route::delete('/medecin/{id}', [medecinController::class, 'destroy'])->name('medecin.destroy');
 
 // Dashboard patient
-Route::get('/dashboard-patient', function () {
-    return view('pages.front-end.patient.DashboardPatient');
-})->name('dashboard-patient');
+// Route::get('/dashboard-patient', function () {
+//     return view('pages.front-end.patient.DashboardPatient');
+// })->name('dashboard-patient');
 
 /*
 // Dashboard patient

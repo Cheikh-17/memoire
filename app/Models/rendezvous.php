@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class rendezvous extends Model
 {
-    
+    protected $table = 'rendezvous';
+
     protected $fillable = [
         'idUser',
         'date-rendez-vous',
@@ -21,8 +22,5 @@ class rendezvous extends Model
         return $this->belongsTo(User::class, 'idUser');
     }
 
-    public function medecin()
-    {
-        return $this->belongsTo(Medecin::class, 'idMedecin');
-    }
+    // Suppression de la relation medecin() car la colonne idMedecin n'existe pas
 }

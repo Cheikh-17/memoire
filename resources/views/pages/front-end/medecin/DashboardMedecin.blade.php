@@ -85,7 +85,7 @@
           </a>
           <ul class="pc-submenu">
             {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/index.html"> </a></li> --}}
-            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">donner rendez-vous</a></li>
+            <li class="pc-item"><a class="pc-link" href="{{ route('rendezvous.create') }}">donner rendez-vous</a></li>
             {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/finance.html">prescrire ordonnance</a></li> --}}
             {{-- <li class="pc-item"><a class="pc-link" href="../admins/helpdesk-dashboard.html">gerer dossier patient </a></li> --}}
             
@@ -114,7 +114,7 @@
             <span class="pc-badge">2</span>
           </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">Lister patient</a></li>
+            <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">Lister patient</a></li>
           </ul>
         </li>
       </ul>

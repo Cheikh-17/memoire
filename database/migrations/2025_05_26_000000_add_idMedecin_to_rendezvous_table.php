@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddIdMedecinToRendezvousTable extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('rendezvous', function (Blueprint $table) {
+            $table->unsignedBigInteger('idMedecin')->after('idUser');
+            $table->foreign('idMedecin')->references('id')->on('medecins')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('rendezvous', function (Blueprint $table) {
+            $table->dropForeign(['idMedecin']);
+            $table->dropColumn('idMedecin');
+        });
+    }
+}
