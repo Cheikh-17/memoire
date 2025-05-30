@@ -84,7 +84,7 @@
             <span class="pc-badge">2</span>
           </a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">voir ordonnance</a></li>
+<li class="pc-item"><a class="pc-link" href="{{ route('ordonnances.index') }}">voir ordonnance</a></li>
           </ul>
         </li>
         <li class="pc-item pc-hasmenu">

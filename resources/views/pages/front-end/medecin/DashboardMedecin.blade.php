@@ -60,64 +60,91 @@
       </a>
     </div>
     <div class="navbar-content">
-      <ul class="pc-navbar">
-        <li class="pc-item pc-caption">
-          <label>Navigation</label>
-        </li>
-        <li class="pc-item pc-hasmenu">
+          <ul class="pc-navbar">
+            <li class="pc-item pc-caption">
+              <label>Navigation</label>
+            </li>
+              <li class="pc-item pc-hasmenu">
           <a href="#!" class="pc-link">
             <span class="pc-micon">
-              <i class="ph-duotone ph-gauge"></i>
+              <i class="ph-duotone ph-house"></i>
             </span>
             <span class="pc-mtext">Dashboard</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
             <span class="pc-badge">2</span>
           </a>
         </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
-            <span class="pc-micon">
-              <i class="ph-duotone ph-calendar-check"></i>
-            </span>
-            <span class="pc-mtext">Rendez-vous</span>
-            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
-          </a>
-          <ul class="pc-submenu">
-            {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/index.html"> </a></li> --}}
-            <li class="pc-item"><a class="pc-link" href="{{ route('rendezvous.create') }}">donner rendez-vous</a></li>
-            {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/finance.html">prescrire ordonnance</a></li> --}}
-            {{-- <li class="pc-item"><a class="pc-link" href="../admins/helpdesk-dashboard.html">gerer dossier patient </a></li> --}}
-            
+           
+            <li class="pc-item pc-hasmenu">
+              <a href="#!" class="pc-link">
+                <span class="pc-micon">
+                  <i class="ph-duotone ph-notepad"></i>
+                </span>
+                <span class="pc-mtext">Consultation</span>
+                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                <span class="pc-badge">2</span>
+              </a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.consultations.create')}}">Creer consultation</a></li>
+                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.consultations.liste') }}">Lister consultation</a></li>
+                {{-- <li class="pc-item"><a class="pc-link" href="{{ route('medecin.consultations.lister') }}">Lister consultation</a></li> --}}
+              </ul>
+            </li>
+            <li class="pc-item pc-hasmenu">
+              <a href="#!" class="pc-link">
+                <span class="pc-micon">
+                  <i class="ph-duotone ph-prescription"></i>
+                </span>
+                <span class="pc-mtext">Ordonnance</span>
+                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                <span class="pc-badge">2</span>
+              </a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.ordonnances.index') }}">Voir Ordonnance</a></li>
+                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.ordonnances.create') }}">Créer Ordonnance</a></li>
+              </ul>
+            </li>
+            <li class="pc-item pc-hasmenu">
+              <a href="#!" class="pc-link">
+                <span class="pc-micon">
+                  <i class="ph-duotone ph-file-text"></i>
+                </span>
+                <span class="pc-mtext">Traitement</span>
+                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                <span class="pc-badge">2</span>
+              </a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.traitements.index') }}">Voir Traitement</a></li>
+                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.traitements.create') }}">Créer Traitement</a></li>
+              </ul>
+            </li>
+            <li class="pc-item pc-hasmenu">
+              <a href="#!" class="pc-link">
+                <span class="pc-micon">
+                  <i class="ph-duotone ph-calendar"></i>
+                </span>
+                <span class="pc-mtext">Rendez-vous</span>
+                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                <span class="pc-badge">2</span>
+              </a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="{{ route('rendezvous.create') }}">donner rendez-vous</a></li>
+              </ul>
+            </li>
+            <li class="pc-item pc-hasmenu">
+              <a href="#!" class="pc-link">
+                <span class="pc-micon">
+                  <i class="ph-duotone ph-folder-open"></i>
+                </span>
+                <span class="pc-mtext">Dossier patient</span>
+                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                <span class="pc-badge">2</span>
+              </a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">Lister patient</a></li>
+              </ul>
+            </li>
           </ul>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
-            <span class="pc-micon">
-              <i class="ph-duotone ph-file-text"></i>
-            </span>
-            <span class="pc-mtext">Ordonnance</span>
-            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
-          </a>
-          <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">Prescrire ordonnance</a></li>
-          </ul>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
-            <span class="pc-micon">
-              <i class="ph-duotone ph-folder-open"></i>
-            </span>
-            <span class="pc-mtext">Dossier patient</span>
-            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
-          </a>
-          <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">Lister patient</a></li>
-          </ul>
-        </li>
-      </ul>
     </div>
   </div>
 </nav>

@@ -7,21 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class traitement extends Model
 {
     protected $fillable = [
-        'idUser',
+        'consultation_id',
         'date',
         'heure',
         'observation',
         'description',
-    
+        'is_hidden',
     ];
 
-    public function user()
+    public function consultation()
     {
-        return $this->belongsTo(User::class, 'idUser');
-    }
-
-    public function ordonnance()
-    {
-        return $this->hasMany(ordonnance::class);
+        return $this->belongsTo(Consultation::class, 'consultation_id');
     }
 }
