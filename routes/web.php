@@ -6,7 +6,7 @@ use App\Http\Controllers\SecretaireController;
 use App\Http\Controllers\medecinController;
 use App\Http\Controllers\patientController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\devisController;
 // Page d'accueil
 Route::get('/', function () {
     return view('welcome');
@@ -129,10 +129,10 @@ Route::put('/secretaire/{id}', [SecretaireController::class, 'update'])->name('s
 Route::delete('/secretaire/{id}', [SecretaireController::class, 'destroy'])->name('secretaire.destroy');
 
 
-// Dashboard médecin
-Route::get('/dashboard-medecin', function () {
-    return view('pages.front-end.medecin.DashboardMedecin');
-})->name('dashboard-medecin');
+// // Dashboard médecin
+// Route::get('/dashboard-medecin', function () {
+//     return view('pages.front-end.medecin.DashboardMedecin');
+// })->name('dashboard-medecin');
 
 /*
 // Dashboard médecin
@@ -149,10 +149,10 @@ Route::get('/medecin/{id}/edit', [medecinController::class, 'edit'])->name('mede
 Route::put('/medecin/{id}', [medecinController::class, 'update'])->name('medecin.update');
 Route::delete('/medecin/{id}', [medecinController::class, 'destroy'])->name('medecin.destroy');
 
-// Dashboard patient
-Route::get('/dashboard-patient', function () {
-    return view('pages.front-end.patient.DashboardPatient');
-})->name('dashboard-patient');
+// // Dashboard patient
+// Route::get('/dashboard-patient', function () {
+//     return view('pages.front-end.patient.DashboardPatient');
+// })->name('dashboard-patient');
 
 /*
 // Dashboard patient
@@ -170,15 +170,16 @@ Route::get('/create' , function () {
 
 
 //route secretaire pour le patient
-Route::get('/patients/create', [PatientController::class, 'create'])->name('patients.create');
+Route::get('/formPatient', [PatientController::class, 'create'])->name('formPatient');
 Route::post('/patients', [PatientController::class, 'store'])->name('patients.store');
 Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
+Route::post('/devis', [devisController::class, 'store'])->middleware('auth')->name('devis.store');
 //Route::get('/factures', [FactureControllerr::class, 'index'])->name('factures.index');
-//Route::get('/devis/create', [devisController::class, 'create'])->name('devis.create');
 Route::resource('devis', App\Http\Controllers\devisController::class);
 Route::get('/create' , function () {
     return view('pages.front-end.admin.medecin.createMedecin');
 })->name('create');
+Route::get('/secretaire/dashboard', [SecretaireController::class, 'dashboard'])->name('secretaire.dashboard');
 
 
 

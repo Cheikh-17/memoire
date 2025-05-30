@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class devis extends Model
 {
@@ -10,7 +11,7 @@ class devis extends Model
     protected $fillable = [
         'idUser',
         'description',
-        'cout-estimer',
+        'cout_estimer',
         
     ];
 
@@ -21,6 +22,6 @@ class devis extends Model
 
     public function devisDetails()
     {
-        return $this->hasMany(Devis::class);
+        return $this->hasMany(self::class);
     }
 }

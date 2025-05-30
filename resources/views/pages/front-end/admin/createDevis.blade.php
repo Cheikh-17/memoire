@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="montant" class="form-label" style="font-size: 1.2rem; color: #1e90ff;">Montant (CFA)</label>
+                    <label for="montant" class="form-label" style="font-size: 1.2rem; color: #1e90ff;">cout_estimer (CFA)</label>
                     <input type="number" name="montant" id="montant" class="form-control form-control-lg" step="0.01" required>
                 </div>
 

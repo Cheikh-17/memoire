@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 
-
+@section('content')
     <!-- [ Main Content ] start -->
     <div class="pc-container">
       <div class="pc-content">
@@ -443,4 +443,6 @@
       </div>
     </div>
     <!-- [ Main Content ] end -->
+
+    @endsection
     

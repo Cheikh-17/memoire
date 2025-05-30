@@ -331,7 +331,7 @@
                 <img src="{{asset('../assets/images/widget/img-status-4.svg')}}" alt="img" class="img-fluid img-bg mb-3">
                 <h5 class="mb-3">Créer dossier & compte patient</h5>
                 <p class="text-muted mb-3">Enregistrez un nouveau patient et créez son compte pour accéder à ses informations médicales.</p>
-                <a href="{{ route('patients.create') }}" class="btn btn-primary">Nouveau patient</a>
+                <a href="{{ route('formPatient') }}" class="btn btn-primary">Nouveau patient</a>
               </div>
             </div>
           </div>
