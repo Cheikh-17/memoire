@@ -1,5 +1,4 @@
-@extends('app1')
-@section('content')
+ 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -45,4 +44,4 @@
     </div>
 </body>
 </html>
-@endsection
+ 
