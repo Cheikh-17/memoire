@@ -6,6 +6,7 @@ use App\Http\Controllers\SecretaireController;
 use App\Http\Controllers\medecinController;
 use App\Http\Controllers\patientController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MailController;
 
 // Page d'accueil
 Route::get('/', function () {
@@ -189,3 +190,5 @@ Route::get('/patients/{id}', [patientController::class, 'show'])->name('patients
 Route::get('/patients/{id}/edit', [patientController::class, 'edit'])->name('patients.edit');
 Route::put('/patients/{id}', [patientController::class, 'update'])->name('patients.update');
 Route::delete('/patients/{id}', [patientController::class, 'destroy'])->name('patients.destroy');
+// routr pour affichafge mailWe
+Route::get('/mail', [App\Http\Controllers\MailController::class, 'sendMail'])->name('mail.send');

@@ -1,3 +1,7 @@
+@extends('app1')
+@section('content')
+    
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,7 +36,11 @@
                 <input type="email" name="email" id="email" class="form-control" placeholder="Entrez votre adresse email" required>
             </div>
             <button type="submit" class="btn btn-primary mt-3">Envoyer le lien de réinitialisation</button>
+
+            <p class="text-center text-muted">Back to <a href="{{route('login')}}"> Login</a> </p>
+
         </form>
     </div>
 </body>
 </html>
+@endsection
