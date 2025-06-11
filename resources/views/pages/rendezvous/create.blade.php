@@ -53,6 +53,15 @@
                             <input type="text" name="type-de-soins" id="type-de-soins" class="form-control" required placeholder="Ex: Consultation, traitement...">
                         </div>
 
+                        <div class="mb-3">
+                            <label for="idMedecin" class="form-label fw-semibold">Médecin</label>
+                            <select name="idMedecin" id="idMedecin" class="form-select" required>
+                                <option value="">Sélectionnez un médecin</option>
+                                @foreach ($medecins as $medecin)
+                                    <option value="{{ $medecin->id }}">{{ $medecin->nom }} {{ $medecin->prenom }} - {{ $medecin->specialite }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary px-4">Enregistrer</button>
                         </div>

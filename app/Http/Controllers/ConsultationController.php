@@ -68,8 +68,9 @@ class ConsultationController extends Controller
 
         $consultation = Consultation::create($validated);
 
+
         return redirect()->route('medecin.consultations.show', $consultation->id)
-            ->with('success', 'Consultation créée avec succès.');
+            ->with('success', 'Consultation créée avec succès et fiche médicale générée.');
     }
 
     /**

@@ -54,10 +54,16 @@ Route::post('/reset-password', [PasswordResetController::class, 'submitResetPass
         // Route unique dashboard
         Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-         
+        // Routes pour modification profil utilisateur connecté
+        Route::get('/profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
+        Route::post('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
 
         // Routes resource pour rendez-vous
         Route::resource('rendezvous', App\Http\Controllers\RendezVousController::class);
+
+        // Routes pour changement de mot de passe utilisateur connecté
+        Route::get('/password/change', [UserController::class, 'changePasswordForm'])->name('password.change');
+        Route::post('/password/update', [UserController::class, 'updatePassword'])->name('password.update');
     });
 
 // Route POST pour traiter la connexion
@@ -99,6 +105,7 @@ Route::middleware(['auth'])->group(function () {
     // Routes pour le patient
     Route::prefix('patient')->name('patient.')->group(function () {
         Route::resource('ordonnances', ordonnanceController::class)->only(['index', 'show', 'destroy']);
+
     });
 });
 
