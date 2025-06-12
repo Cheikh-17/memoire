@@ -378,12 +378,12 @@
                                 <th>Motif</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
+                        <tbody>
                             @forelse($consultations as $consultation)
                                 <tr>
                                     <td>{{ $consultation->heure }}</td>
-                                    <td>{{ $consultation->patient->nom }} {{ $consultation->patient->prenom }}</td>
-                                    <td>{{ $consultation->medecin->nom }} {{ $consultation->medecin->prenom }}</td>
+                                    <td>{{ $consultation->patient ? $consultation->patient->nom . ' ' . $consultation->patient->prenom : 'N/A' }}</td>
+                                    <td>{{ $consultation->medecin && $consultation->medecin->user ? $consultation->medecin->user->nom . ' ' . $consultation->medecin->user->prenom : 'N/A' }}</td>
                                     <td>{{ $consultation->motif }}</td>
                                 </tr>
                             @empty
@@ -391,7 +391,7 @@
                                     <td colspan="4" class="text-center">Aucune consultation prévue aujourd'hui.</td>
                                 </tr>
                             @endforelse
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
             </div>

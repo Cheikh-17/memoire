@@ -113,6 +113,22 @@
             <label for="password">Mot de passe :</label>
             <input type="password" name="password" id="password" required>
         </div>
+        <div class="form-group">
+            <label for="historique_dentaire">Historique dentaire :</label>
+            <textarea name="historique_dentaire" id="historique_dentaire" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="allergies">Allergies :</label>
+            <textarea name="allergies" id="allergies" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="traitements_en_cours">Traitements en cours :</label>
+            <textarea name="traitements_en_cours" id="traitements_en_cours" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="observations">Observations :</label>
+            <textarea name="observations" id="observations" rows="3"></textarea>
+        </div>
         <button type="submit">Enregistrer</button>
     </form>
 </div>

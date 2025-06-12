@@ -53,32 +53,10 @@ Route::post('/reset-password', [PasswordResetController::class, 'submitResetPass
         // Route unique dashboard
         Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-        /*
-        // Dashboards protégés par middleware auth et profil
-        Route::middleware(['profil:ADMINISTRATEUR'])->group(function () {
-            Route::get('/dashboard-admin', function () {
-                return view('pages.front-end.admin.dashboardAdmin');
-            })->name('dashboard-admin');
-        });
+         
 
-        Route::middleware(['profil:SECRETAIRE'])->group(function () {
-            Route::get('/dashboard-secretaire', function () {
-                return view('pages.front-end.Secretaire.DashboardSecretaire');
-            })->name('dashboard-secretaire');
-        });
-
-        Route::middleware(['profil:MEDECIN'])->group(function () {
-            Route::get('/dashboard-medecin', function () {
-                return view('pages.front-end.medecin.DashboardMedecin');
-            })->name('dashboard-medecin');
-        });
-
-        Route::middleware(['profil:PATIENT'])->group(function () {
-            Route::get('/dashboard-patient', function () {
-                return view('pages.front-end.patient.DashboardPatient');
-            })->name('dashboard-patient');
-        });
-        */
+        // Routes resource pour rendez-vous
+        Route::resource('rendezvous', App\Http\Controllers\RendezVousController::class);
     });
 
 // Route POST pour traiter la connexion
@@ -88,6 +66,40 @@ Route::post('/connexion', [UserController::class, 'login'])->name('login.post');
 Route::get('/connexion', function () {
     return view('pages.front-end.auth.connexion');
 })->name('login');
+
+// Routes pour consultations, traitements et ordonnances
+use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\traitementController;
+use App\Http\Controllers\ordonnanceController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('consultations', ConsultationController::class)->only(['index', 'show']);
+    Route::get('consultations/{id}/download-ordonnance', [ConsultationController::class, 'downloadOrdonnance'])->name('consultations.downloadOrdonnance');
+
+    Route::resource('traitements', traitementController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('ordonnances', ordonnanceController::class)->only(['index', 'show', 'destroy']);
+
+    // Routes pour le médecin
+    Route::prefix('medecin')->name('medecin.')->group(function () {
+        // Nouvelle route pour la liste des consultations (vue liste.blade.php)
+        Route::get('consultations/liste', [ConsultationController::class, 'indexMedecin'])->name('consultations.liste');
+
+        Route::resource('consultations', ConsultationController::class)->except(['destroy']);
+         
+        Route::resource('traitements', traitementController::class)->except(['destroy']);
+        Route::resource('ordonnances', ordonnanceController::class)->except(['destroy']);
+
+         
+
+        // Route API pour récupérer les consultations d'un patient
+        Route::get('api/patients/{patientId}/consultations', [ConsultationController::class, 'getConsultationsByPatient']);
+    });
+
+    // Routes pour le patient
+    Route::prefix('patient')->name('patient.')->group(function () {
+        Route::resource('ordonnances', ordonnanceController::class)->only(['index', 'show', 'destroy']);
+    });
+});
 
 Route::get('/reset', function () {
     return view('pages.front-end.Accueil.reset-password');
@@ -108,17 +120,8 @@ Route::get('/propos', function () {
     return view('pages.front-end.Accueil.propos');
 })->name('propos');
 
-/*
-// Dashboard administrateur
-Route::get('/dashboard-admin', function () {
-    return view('pages.front-end.admin.dashboardAdmin');
-})->name('dashboard-admin');
 
-// Dashboard secrétaire
-Route::get('/dashboard-secretaire', function () {
-    return view('pages.front-end.Secretaire.DashboardSecretaire');
-})->name('dashboard-secretaire');
-*/
+ 
 
 // Route pour afficher la liste des secrétaires
 Route::get('/secretaire', [SecretaireController::class, 'dashboard'])->name('secretaire.index');
@@ -127,19 +130,10 @@ Route::get('/secretaire/{id}', [SecretaireController::class, 'show'])->name('sec
 Route::get('/secretaire/{id}/edit', [SecretaireController::class, 'edit'])->name('secretaire.edit');
 Route::put('/secretaire/{id}', [SecretaireController::class, 'update'])->name('secretaire.update');
 Route::delete('/secretaire/{id}', [SecretaireController::class, 'destroy'])->name('secretaire.destroy');
+Route::get('/secretaire/consultations-jour', [ConsultationController::class, 'consultationsDuJour'])
+    ->name('secretaire.consultations.jour');
 
-
-// // Dashboard médecin
-// Route::get('/dashboard-medecin', function () {
-//     return view('pages.front-end.medecin.DashboardMedecin');
-// })->name('dashboard-medecin');
-
-/*
-// Dashboard médecin
-Route::get('/dashboard-medecin', function () {
-    return view('pages.front-end.medecin.DashboardMedecin');
-})->name('dashboard-medecin');
-*/
+ 
 
 // Route pour afficher la liste des médecins
 Route::get('/medecin', [medecinController::class, 'index'])->name('medecin.index');
@@ -149,17 +143,7 @@ Route::get('/medecin/{id}/edit', [medecinController::class, 'edit'])->name('mede
 Route::put('/medecin/{id}', [medecinController::class, 'update'])->name('medecin.update');
 Route::delete('/medecin/{id}', [medecinController::class, 'destroy'])->name('medecin.destroy');
 
-// // Dashboard patient
-// Route::get('/dashboard-patient', function () {
-//     return view('pages.front-end.patient.DashboardPatient');
-// })->name('dashboard-patient');
-
-/*
-// Dashboard patient
-Route::get('/dashboard-patient', function () {
-    return view('pages.front-end.patient.DashboardPatient');
-})->name('dashboard-patient');
-*/
+ 
 
 // Formulaire de création de médecin (admin)
 Route::get('/create' , function () {
@@ -197,7 +181,7 @@ Route::post('/formPatient', [patientController::class, 'store'])->name('formPati
 
 Route::get('/form' , function () {
     return view('pages.front-end.admin.form');
-})->name('form');
+})->name('form.get');
 // Route pour enregistrer un secrétaire (POST)
 Route::post('/form', [UserController::class, 'store'])->name('form');
 
@@ -207,3 +191,4 @@ Route::get('/patients/{id}', [patientController::class, 'show'])->name('patients
 Route::get('/patients/{id}/edit', [patientController::class, 'edit'])->name('patients.edit');
 Route::put('/patients/{id}', [patientController::class, 'update'])->name('patients.update');
 Route::delete('/patients/{id}', [patientController::class, 'destroy'])->name('patients.destroy');
+
