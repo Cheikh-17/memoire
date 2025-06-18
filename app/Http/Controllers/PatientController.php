@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Consultation;
+use App\Models\traitement;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PatientController extends Controller
 {
@@ -39,5 +43,29 @@ class PatientController extends Controller
         ]);
 
         return redirect()->route('patients.create')->with('success', 'Patient créé avec succès.');
+    }
+
+    public function ficheMedicale()
+    {
+        $user = Auth::user();
+
+        $consultations = Consultation::with('traitements')
+            ->where('idUser', $user->id)
+            ->get();
+
+        return view('pages.patient.fiche-medicale', compact('user', 'consultations'));
+    }
+
+    public function ficheMedicalePdf()
+    {
+        $user = Auth::user();
+
+        $consultations = Consultation::with('traitements')
+            ->where('idUser', $user->id)
+            ->get();
+
+        $pdf = Pdf::loadView('pages.patient.fiche-medicale-pdf', compact('user', 'consultations'));
+
+        return $pdf->download('fiche_medicale_' . $user->id . '.pdf');
     }
 }

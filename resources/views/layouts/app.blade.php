@@ -143,6 +143,20 @@
             <li class="pc-item"><a class="pc-link" href="">lister les patients du jours</a></li>
           </ul>
         </li>
+        @if(auth()->user()->profil === 'PATIENT')
+        <li class="pc-item pc-hasmenu">
+          <a href="#!" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-file-text"></i>
+            </span>
+            <span class="pc-mtext">Fiche Medical</span>
+            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+          </a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="{{route('patient.fiche-medicale')}}">Voir la fiche</a></li>
+          </ul>
+        </li>
+        @endif
         <li class="pc-item pc-hasmenu">
           <a href="#!" class="pc-link">
             <span class="pc-micon">

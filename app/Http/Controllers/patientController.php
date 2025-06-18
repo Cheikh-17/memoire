@@ -73,7 +73,5 @@ class PatientController extends Controller
             'profil' => 'PATIENT',
         ]);
 
-        
-        return redirect()->route('patients.create')->with('success', 'Patient et fiche médicale créés avec succès.');
     }
 }

@@ -105,8 +105,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Routes pour le patient
     Route::prefix('patient')->name('patient.')->group(function () {
-        Route::resource('ordonnances', ordonnanceController::class)->only(['index', 'show', 'destroy']);
+        Route::resource('ordonnances', ordonnancecontroller::class)->only(['index', 'show', 'destroy']);
 
+        Route::get('fiche-medicale', [App\Http\Controllers\PatientController::class, 'ficheMedicale'])->name('fiche-medicale');
+        Route::get('fiche-medicale/pdf', [App\Http\Controllers\PatientController::class, 'ficheMedicalePdf'])->name('fiche-medicale.pdf');
     });
 });
 

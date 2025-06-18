@@ -1,4 +1,5 @@
-
+@extends('pages.front-end.Secretaire.DashboardSecretaire')
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,3 +26,4 @@
     // Ou utiliser un modal Bootstrap
     $('#successModal').modal('show');
 </script>
+@endsection
