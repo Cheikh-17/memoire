@@ -1,6 +1,26 @@
-@extends('app1')
+{{-- @extends('app1')
 
-@section('content')
+@section('content') --}}
+@extends('pages.front-end.patient.DashboardPatient')
+    @section('content')
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            text-align: center;
+        }
+        .btn {
+            margin: 5px;
+        }
+    </style>
 <div class="container">
     <h1>Mes ordonnances</h1>
     @if($ordonnances->isEmpty())

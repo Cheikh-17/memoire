@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasColumn('rendezvous', 'idMedecin')) {
-            Schema::table('rendezvous', function (Blueprint $table) {
-                $table->unsignedBigInteger('idMedecin')->nullable()->after('idUser');
-                $table->foreign('idMedecin')->references('id')->on('medecins')->onDelete('cascade');
-            });
-        }
+        Schema::table('consultations', function (Blueprint $table) {
+            $table->unsignedBigInteger('idMedecin')->nullable()->after('idUser');
+            $table->foreign('idMedecin')->references('id')->on('medecins')->onDelete('set null');
+        });
     }
 
     /**
@@ -24,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('rendezvous', function (Blueprint $table) {
+        Schema::table('consultations', function (Blueprint $table) {
             $table->dropForeign(['idMedecin']);
             $table->dropColumn('idMedecin');
         });

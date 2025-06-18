@@ -49,7 +49,7 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'telephone' => 'required|string|max:20',
@@ -57,21 +57,21 @@ class PatientController extends Controller
             'date_naissance' => 'required|date',
             'sexe' => 'required|string',
             'password' => 'required|string|min:6',
+            
         ]);
 
         // Création du patient dans la table users
-        \App\Models\User::create([
-            'name' => $validated['nom'],
+        $patient = \App\Models\User::create([
+            'nom' => $validated['nom'],
             'prenom' => $validated['prenom'],
             'email' => $validated['email'],
             'telephone' => $validated['telephone'],
             'adresse' => $validated['adresse'],
             //'date_naissance' => $validated['date_naissance'],
-           // 'sexe' => $validated['sexe'],
+            //'sexe' => $validated['sexe'],
             'password' => bcrypt($validated['password']),
-            // Ajoutez d'autres champs si nécessaire
+            'profil' => 'PATIENT',
         ]);
 
-        return redirect()->route('patients.create')->with('success', 'Patient créé avec succès.');
     }
 }

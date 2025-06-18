@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('idUser');
             $table->string('description');
-            $table->decimal('cout-estimer', 10, 2);
+            $table->decimal('cout_estimer', 10, 2);
             $table->boolean('is_hidden')->default(false);
             $table->timestamps();
 

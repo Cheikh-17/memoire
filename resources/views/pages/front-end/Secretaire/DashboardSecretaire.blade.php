@@ -259,7 +259,7 @@
                 <img src="{{asset('../assets/images/widget/img-status-4.svg')}}" alt="img" class="img-fluid img-bg mb-3">
                 <h5 class="mb-3">Créer dossier & compte patient</h5>
                 <p class="text-muted mb-3">Enregistrez un nouveau patient et créez son compte pour accéder à ses informations médicales.</p>
-                <a href="{{route('formPatient')}}" class="btn btn-primary">Nouveau patient</a>
+                <a href="{{ route('formPatient') }}" class="btn btn-primary">Nouveau patient</a>
               </div>
             </div>
           </div>
@@ -298,7 +298,7 @@
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-striped mb-0">
-                        <thead>
+                        <thead> 
                             <tr>
                                 <th>Heure</th>
                                 <th>Patient</th>
@@ -306,12 +306,12 @@
                                 <th>Motif</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
+                        <tbody>
                             @forelse($consultations as $consultation)
                                 <tr>
                                     <td>{{ $consultation->heure }}</td>
-                                    <td>{{ $consultation->patient->nom }} {{ $consultation->patient->prenom }}</td>
-                                    <td>{{ $consultation->medecin->nom }} {{ $consultation->medecin->prenom }}</td>
+                                    <td>{{ $consultation->patient ? $consultation->patient->nom . ' ' . $consultation->patient->prenom : 'N/A' }}</td>
+                                    <td>{{ $consultation->medecin && $consultation->medecin->user ? $consultation->medecin->user->nom . ' ' . $consultation->medecin->user->prenom : 'N/A' }}</td>
                                     <td>{{ $consultation->motif }}</td>
                                 </tr>
                             @empty
@@ -319,7 +319,7 @@
                                     <td colspan="4" class="text-center">Aucune consultation prévue aujourd'hui.</td>
                                 </tr>
                             @endforelse
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
             </div>

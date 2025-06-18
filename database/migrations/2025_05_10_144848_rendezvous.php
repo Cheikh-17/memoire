@@ -7,28 +7,28 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécute les migrations.
      */
     public function up(): void
     {
         Schema::create('rendezvous', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('idUser');
-            
-            $table->date('date-rendez-vous');
-            $table->time('heure-rendez-vous');
-            $table->string('type-de-soins');
-            $table->enum('status',['confirmer', 'en attente', 'annuler'])->default('en attente');
-            $table->string('is-hidden')->default(false);
+            $table->unsignedBigInteger('idMedecin')->nullable();
+            $table->date('date_rendez_vous');
+            $table->time('heure_rendez_vous');
+            $table->string('type_de_soins');
+            $table->enum('status', ['confirmer', 'en attente', 'annuler'])->default('en attente');
+            $table->boolean('is_hidden')->default(false);
             $table->timestamps();
 
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('idMedecin')->references('id')->on('medecins')->onDelete('cascade');
+            $table->foreign('idMedecin')->references('id')->on('medecins')->onDelete('cascade');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Annule les migrations.
      */
     public function down(): void
     {

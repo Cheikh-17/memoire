@@ -1,6 +1,5 @@
-@extends('app1')
-
-@section('content')
+@extends('pages.front-end.patient.DashboardPatient')
+    @section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-7">
@@ -36,6 +35,16 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        {{-- <div class="mb-3">
+                            <label for="idMedecin" class="form-label fw-semibold">Médecin</label>
+                            <select name="idMedecin" id="idMedecin" class="form-select" required>
+                                <option value="">Sélectionnez un médecin</option>
+                                @foreach ($medecins as $medecin)
+                                    <option value="{{ $medecin->id }}">{{ $medecin->nom }} {{ $medecin->prenom }}</option>
+                                @endforeach
+                            </select>
+                        </div> --}}
 
                         <div class="row mb-3">
                             <div class="col-md-6">

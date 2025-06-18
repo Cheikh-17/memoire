@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Consultation;
 use App\Models\traitement;
 use App\Models\ordonnance;
+use Carbon\Carbon;
+use App\Models\User; // Assurez-vous d'importer le modèle User si nécessaire
+use App\Models\medecin; // Correction du nom du modèle avec majuscule
 
 class ConsultationController extends Controller
 {
@@ -14,10 +17,13 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        $userId = auth()->id();
-        $consultations = Consultation::with(['traitements', 'ordonnances'])
-            ->where('idUser', $userId)
-            ->get();
+        // $userId = auth()->id();
+        // $consultations = Consultation::with(['traitements', 'ordonnances'])
+        //     ->where('idUser', $userId)
+        //     ->get();
+
+            $consultations = \App\Models\Consultation::whereDate('date', now()->toDateString())->get();
+
 
         return view('pages.patient.consultations.index', compact('consultations'));
     }
@@ -25,7 +31,7 @@ class ConsultationController extends Controller
     /**
      * Affiche la liste de toutes les consultations (pour le médecin).
      */
-    public function indexMedecin()
+    public function indexmedecin()
     {
         $consultations = Consultation::all();
 
@@ -42,6 +48,16 @@ class ConsultationController extends Controller
             ->findOrFail($id);
 
         return view('pages.patient.consultations.show', compact('consultation'));
+    }
+    public function consultationsDuJour()
+    {
+        // Correction : utiliser le champ 'date' au lieu de 'date_consultation' pour filtrer les consultations du jour
+        $consultations = Consultation::with(['patient', 'medecin'])
+            ->whereDate('date', Carbon::today())
+            ->orderBy('heure', 'asc')
+            ->get();
+
+        return view('pages.front-end.Secretaire.DashboardSecretaire', compact('consultations'));
     }
 
     /**
@@ -65,6 +81,16 @@ class ConsultationController extends Controller
             'idUser' => 'required|integer',
             'heure' => 'nullable',
         ]);
+
+        // Récupérer le medecin lié à l'utilisateur authentifié
+        $medecin = \App\Models\medecin::where('idUser', auth()->id())->first();
+
+        if (!$medecin) {
+            return redirect()->back()->withErrors(['error' => 'Utilisateur authentifié n\'est pas un médecin valide.']);
+        }
+
+        // Ajouter idMedecin depuis le medecin trouvé
+        $validated['idMedecin'] = $medecin->getKey();
 
         $consultation = Consultation::create($validated);
 

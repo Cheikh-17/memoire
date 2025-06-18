@@ -6,6 +6,7 @@ use App\Http\Controllers\SecretaireController;
 use App\Http\Controllers\medecinController;
 use App\Http\Controllers\patientController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\devisController;
 use App\Http\Controllers\MailController;
 
 // Page d'accueil
@@ -104,8 +105,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Routes pour le patient
     Route::prefix('patient')->name('patient.')->group(function () {
-        Route::resource('ordonnances', ordonnanceController::class)->only(['index', 'show', 'destroy']);
+        Route::resource('ordonnances', ordonnancecontroller::class)->only(['index', 'show', 'destroy']);
 
+        Route::get('fiche-medicale', [App\Http\Controllers\PatientController::class, 'ficheMedicale'])->name('fiche-medicale');
+        Route::get('fiche-medicale/pdf', [App\Http\Controllers\PatientController::class, 'ficheMedicalePdf'])->name('fiche-medicale.pdf');
     });
 });
 
@@ -132,13 +135,14 @@ Route::get('/propos', function () {
  
 
 // Route pour afficher la liste des secrétaires
-Route::get('/secretaire', [SecretaireController::class, 'index'])->name('secretaire.index');
+Route::get('/secretaire', [SecretaireController::class, 'dashboard'])->name('secretaire.index');
 
 Route::get('/secretaire/{id}', [SecretaireController::class, 'show'])->name('secretaire.show');
 Route::get('/secretaire/{id}/edit', [SecretaireController::class, 'edit'])->name('secretaire.edit');
 Route::put('/secretaire/{id}', [SecretaireController::class, 'update'])->name('secretaire.update');
 Route::delete('/secretaire/{id}', [SecretaireController::class, 'destroy'])->name('secretaire.destroy');
-
+Route::get('/secretaire/consultations-jour', [ConsultationController::class, 'consultationsDuJour'])
+    ->name('secretaire.consultations.jour');
 
  
 
@@ -161,15 +165,16 @@ Route::get('/create' , function () {
 
 
 //route secretaire pour le patient
-Route::get('/patients/create', [PatientController::class, 'create'])->name('patients.create');
+Route::get('/formPatient', [PatientController::class, 'create'])->name('formPatient');
 Route::post('/patients', [PatientController::class, 'store'])->name('patients.store');
 Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
+Route::post('/devis', [devisController::class, 'store'])->middleware('auth')->name('devis.store');
 //Route::get('/factures', [FactureControllerr::class, 'index'])->name('factures.index');
-//Route::get('/devis/create', [devisController::class, 'create'])->name('devis.create');
 Route::resource('devis', App\Http\Controllers\devisController::class);
 Route::get('/create' , function () {
     return view('pages.front-end.admin.medecin.createMedecin');
 })->name('create');
+Route::get('/secretaire/dashboard', [SecretaireController::class, 'dashboard'])->name('secretaire.dashboard');
 
 
 
