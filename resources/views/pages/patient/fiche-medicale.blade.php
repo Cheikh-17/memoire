@@ -1,8 +1,7 @@
-{{-- @extends('app1')
+@extends('app1')
 
-@section('content') --}}
-@extends('pages.front-end.patient.DashboardPatient')
-    @section('content')
+@section('content')
+
 <div class="container mt-4">
     <h2>Fiche Médicale de {{ $user->name }} {{ $user->prenom }}</h2>
 

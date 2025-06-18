@@ -1,4 +1,5 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
+@extends('pages.front-end.Secretaire.DashboardSecretaire')
 @section('content')
     <div class="card-header" style="padding-top: 80px; padding-left: 314px;">Créer un Utilisateurs</div>
         <div class="card-body " style="padding-left: 314px; padding-right: 200px; padding-top: 20px; ">

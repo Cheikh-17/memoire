@@ -65,7 +65,7 @@
           <label>Navigation</label>
         </li>
         <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
+          <a href="#" class="pc-link">
             <span class="pc-micon">
               <i class="ph-duotone ph-house"></i>
             </span>
@@ -224,11 +224,10 @@
 </div> </div>
 </header>
 <!-- [ Header ] end -->
-
-
-
-    <!-- [ Main Content ] start -->
-    <div class="pc-container">
+<div class="main-container">
+  @yield('content')
+</div>
+<div class="pc-container">
       <div class="pc-content">
         <!-- [ breadcrumb ] start -->
         <div class="page-header">
@@ -325,7 +324,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
+{{-- @include('pages.front-end.Secretaire.DashboardS') --}}
 
 
         <!-- [ Main Content ] end -->

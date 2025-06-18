@@ -1,8 +1,6 @@
-{{-- @extends('app1')
+@extends('app1')
 
-@section('content') --}}
-@extends('pages.front-end.patient.DashboardPatient')
-    @section('content')
+@section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-10">

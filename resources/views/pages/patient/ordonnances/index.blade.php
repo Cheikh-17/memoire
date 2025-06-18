@@ -1,8 +1,6 @@
-{{-- @extends('app1')
+@extends('app1')
 
-@section('content') --}}
-@extends('pages.front-end.patient.DashboardPatient')
-    @section('content')
+@section('content')
     <style>
         .container {
             margin-top: 20px;

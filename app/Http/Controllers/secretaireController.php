@@ -15,7 +15,7 @@ class SecretaireController extends Controller
             ->orderBy('heure')
             ->get();
 
-        return view('pages.front-end.Secretaire.DashboardSecretaire', compact('consultations'));
+        return view('pages.front-end.Secretaire.DashboardS', compact('consultations'));
     }
 
     public function index()
