@@ -1,6 +1,14 @@
 @extends('app')
 @section('content')
 
+{{-- <a href="{{ route('dashboard') }}" class="btn btn-primary mb-3">Retour au dashboard</a> --}}
+                <div class="col-md-12">
+                    <ul class="breadcrumb" style="background-color: transparent;">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('dashboard') }}" style="color: #6c757d;">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
  <!-- Header Start -->
  <div class="container-fluid header bg-primary p-0 mb-5">
     <div class="row g-0 align-items-center flex-column-reverse flex-lg-row">

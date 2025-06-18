@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,12 +28,20 @@
 
         <form action="{{ route('passeForget.post') }}" method="POST">
             @csrf
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label for="email">Adresse email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="Entrez votre adresse email" required>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Envoyer le lien de réinitialisation</button>
-        </form>
+
+            <div class="mb-4">
+                <button type="submit" class="btn btn-primary mt-3">Envoyer le lien de réinitialisation</button>
+            </div>
+
+            <div class="mb-2">
+                <p class="text-center text-muted md-3">
+                    <a href="{{ route('login') }}" class="btn btn-primary mt-3">Retour à la connexion</a>
+                </p>  
+            </div>  </form>
     </div>
 </body>
 </html>

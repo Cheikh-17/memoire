@@ -36,7 +36,7 @@ class RendezVousController extends Controller
         // Récupérer la liste des patients (utilisateurs avec profil patient)
         $patients = User::where('profil', 'PATIENT')->get();
         // Récupérer la liste des médecins
-        $medecins = User::where('profil', 'MEDECIN')->get();
+        $medecins = \App\Models\medecin::all();
         return view('pages.rendezvous.create', compact('patients', 'medecins'));
     }
 
@@ -48,7 +48,7 @@ class RendezVousController extends Controller
     {
         $request->validate([
             'idUser' => 'required|exists:users,id',
-          //  'idMedecin' => 'required|exists:medecins,id',
+            'idMedecin' => 'required|exists:medecins,id',
             'date-rendez-vous' => 'required|date',
             'heure-rendez-vous' => 'required',
             'type-de-soins' => 'required|string|max:255',
@@ -56,14 +56,13 @@ class RendezVousController extends Controller
 
         $rendezvous = new rendezvous();
         $rendezvous->idUser = $request->idUser;
-       // $rendezvous->idMedecin = $request->idMedecin;
+        $rendezvous->idMedecin = $request->idMedecin;
         $rendezvous->{'date-rendez-vous'} = $request->input('date-rendez-vous');
         $rendezvous->{'heure-rendez-vous'} = $request->input('heure-rendez-vous');
         $rendezvous->{'type-de-soins'} = $request->input('type-de-soins');
         $rendezvous->status = 'en attente';
         $rendezvous->save();
 
-        // Redirection avec message de succès
         return redirect()->back()->with('success', 'Rendez-vous bien enregistré.');
     }
 }

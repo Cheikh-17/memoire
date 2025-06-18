@@ -10,6 +10,7 @@ class rendezvous extends Model
 
     protected $fillable = [
         'idUser',
+        'idMedecin',
         'date-rendez-vous',
         'heure-rendez-vous',
         'type-de-soins',
@@ -22,5 +23,8 @@ class rendezvous extends Model
         return $this->belongsTo(User::class, 'idUser');
     }
 
-    // Suppression de la relation medecin() car la colonne idMedecin n'existe pas
+    public function medecin()
+    {
+        return $this->belongsTo(\App\Models\medecin::class, 'idMedecin');
+    }
 }

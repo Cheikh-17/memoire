@@ -152,11 +152,44 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Show the form for editing the profile of the authenticated user.
      */
-    public function update(Request $request, string $id)
+    public function editProfile()
     {
-        //
+        $user = auth()->user();
+        return view('pages.front-end.profil.edit', compact('user'));
+    }
+
+    /**
+     * Update the profile of the authenticated user.
+     */
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+
+        $validated = $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'adresse' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+            'telephone' => 'required|string|max:20',
+        ]);
+
+        $user->update($validated);
+
+        // Redirection selon le profil
+        switch ($user->profil) {
+            case 'ADMINISTRATEUR':
+                return redirect()->route('dashboard')->with('success', 'Profil mis à jour avec succès.');
+            case 'MEDECIN':
+                return redirect()->route('dashboard')->with('success', 'Profil mis à jour avec succès.');
+            case 'PATIENT':
+                return redirect()->route('dashboard')->with('success', 'Profil mis à jour avec succès.');
+            case 'SECRETAIRE':
+                return redirect()->route('dashboard')->with('success', 'Profil mis à jour avec succès.');
+            default:
+                return redirect()->route('dashboard')->with('success', 'Profil mis à jour avec succès.');
+        }
     }
 
     /**
@@ -165,5 +198,37 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Show the form for changing the password of the authenticated user.
+     */
+    public function changePasswordForm()
+    {
+        return view('pages.front-end.profil.change-password');
+    }
+
+    /**
+     * Update the password of the authenticated user.
+     */
+    public function updatePassword(Request $request)
+    {
+        $user = auth()->user();
+
+        $validated = $request->validate([
+            'current_password' => ['required'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        // Vérifier que le mot de passe actuel est correct
+        if (!\Hash::check($validated['current_password'], $user->password)) {
+            return back()->withErrors(['current_password' => 'Le mot de passe actuel est incorrect.']);
+        }
+
+        // Mettre à jour le mot de passe
+        $user->password = bcrypt($validated['password']);
+        $user->save();
+
+        return redirect()->route('dashboard')->with('success', 'Mot de passe mis à jour avec succès.');
     }
 }

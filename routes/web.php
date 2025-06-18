@@ -7,6 +7,8 @@ use App\Http\Controllers\medecinController;
 use App\Http\Controllers\patientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\devisController;
+use App\Http\Controllers\MailController;
+
 // Page d'accueil
 Route::get('/', function () {
     return view('welcome');
@@ -53,10 +55,16 @@ Route::post('/reset-password', [PasswordResetController::class, 'submitResetPass
         // Route unique dashboard
         Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-         
+        // Routes pour modification profil utilisateur connecté
+        Route::get('/profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
+        Route::post('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
 
         // Routes resource pour rendez-vous
         Route::resource('rendezvous', App\Http\Controllers\RendezVousController::class);
+
+        // Routes pour changement de mot de passe utilisateur connecté
+        Route::get('/password/change', [UserController::class, 'changePasswordForm'])->name('password.change');
+        Route::post('/password/update', [UserController::class, 'updatePassword'])->name('password.update');
     });
 
 // Route POST pour traiter la connexion
@@ -98,6 +106,7 @@ Route::middleware(['auth'])->group(function () {
     // Routes pour le patient
     Route::prefix('patient')->name('patient.')->group(function () {
         Route::resource('ordonnances', ordonnanceController::class)->only(['index', 'show', 'destroy']);
+
     });
 });
 
@@ -191,4 +200,5 @@ Route::get('/patients/{id}', [patientController::class, 'show'])->name('patients
 Route::get('/patients/{id}/edit', [patientController::class, 'edit'])->name('patients.edit');
 Route::put('/patients/{id}', [patientController::class, 'update'])->name('patients.update');
 Route::delete('/patients/{id}', [patientController::class, 'destroy'])->name('patients.destroy');
-
+// routr pour affichafge mailWe
+Route::get('/mail', [App\Http\Controllers\MailController::class, 'sendMail'])->name('mail.send');
