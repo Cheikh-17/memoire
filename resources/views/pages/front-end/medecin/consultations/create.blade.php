@@ -22,7 +22,7 @@
                 <option value="">Sélectionnez un patient</option>
                 @foreach ($patients as $patient)
                     <option value="{{ $patient->id }}" {{ old('idUser') == $patient->id ? 'selected' : '' }}>
-                        {{ $patient->nom }} {{ $patient->prenom }} ({{ $patient->email }})
+                        {{ $patient->nom }} {{ $patient->prenom }}
                     </option>
                 @endforeach
             </select>

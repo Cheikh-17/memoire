@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\devis;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class devisController extends Controller
 {
@@ -19,7 +23,8 @@ class devisController extends Controller
      */
     public function create()
     {
-        return view('pages.front-end.admin.createDevis');
+        $patients = User::where('profil', 'patient')->get();
+        return view('pages.front-end.Secretaire.devis.createDevis', compact('patients'));
     }
 
     /**
@@ -27,7 +32,27 @@ class devisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'patient_id' => 'required|exists:users,id',
+            'description' => 'nullable|string',
+            'montant' => 'required|numeric|min:0',
+        ]);
+
+        $devis = new devis();
+        $devis->idUser = $validatedData['patient_id'];
+        $devis->description = $validatedData['description'] ?? '';
+        $devis->{"cout-estimer"} = $validatedData['montant'];
+        $devis->save();
+
+        $devis->load('client');
+
+        if (!$devis->client) {
+            return back()->withErrors(['patient' => 'Le patient associé au devis est introuvable.']);
+        }
+
+        $pdf = Pdf::loadView('pages.front-end.Secretaire.devis.devisPdf', compact('devis'));
+
+        return $pdf->download('devis_' . $devis->id . '.pdf');
     }
 
     /**

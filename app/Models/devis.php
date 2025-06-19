@@ -16,7 +16,7 @@ class devis extends Model
 
     public function client()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'idUser');
     }
 
     public function devisDetails()

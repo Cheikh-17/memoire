@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf; // Import pour la génération PDF
+use Illuminate\Support\Facades\Auth;
 
 class PatientController extends Controller
 {
@@ -73,5 +74,25 @@ class PatientController extends Controller
         ]);
 
         return redirect()->route('patients.create')->with('success', 'Patient créé avec succès.');
+    }
+
+    // Méthode pour afficher la fiche médicale
+    public function ficheMedicale()
+    {
+        $user = Auth::user();
+        $consultations = $user->consultations()->with('traitements')->get();
+
+        return view('pages.fiche.patient.fiche-medicale', compact('user', 'consultations'));
+    }
+
+    // Méthode pour générer et télécharger la fiche médicale en PDF
+    public function ficheMedicalePdf()
+    {
+        $user = Auth::user();
+        $consultations = $user->consultations()->with('traitements')->get();
+
+        $pdf = Pdf::loadView('pages.fiche.patient.fiche-medicale-pdf', compact('user', 'consultations'));
+
+        return $pdf->download('fiche-medicale.pdf');
     }
 }

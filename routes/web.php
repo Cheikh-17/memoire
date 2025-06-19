@@ -199,3 +199,8 @@ Route::put('/patients/{id}', [patientController::class, 'update'])->name('patien
 Route::delete('/patients/{id}', [patientController::class, 'destroy'])->name('patients.destroy');
 // routr pour affichafge mailWe
 Route::get('/mail', [App\Http\Controllers\MailController::class, 'sendMail'])->name('mail.send');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('fiche-medicale', [App\Http\Controllers\PatientController::class, 'ficheMedicale'])->name('fiche-medicale');
+    Route::get('fiche-medicale/pdf', [App\Http\Controllers\PatientController::class, 'ficheMedicalePdf'])->name('fiche-medicale.pdf');
+});

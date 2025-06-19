@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Consultation;
 use App\Models\traitement;
 use App\Models\ordonnance;
-
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 class ConsultationController extends Controller
 {
     /**
@@ -66,6 +67,8 @@ class ConsultationController extends Controller
             'heure' => 'nullable',
         ]);
 
+        $validated['idMedecin'] = Auth::id(); // Ajoute l'id du médecin connecté avec la facade Auth
+
         $consultation = Consultation::create($validated);
 
 
@@ -82,12 +85,17 @@ class ConsultationController extends Controller
             ->where('idUser', auth()->id())
             ->firstOrFail();
 
-        $content = $ordonnance->contenu;
-        $filename = "ordonnance_{$ordonnance->id}.txt";
+        $user = \App\Models\User::find($ordonnance->idUser);
 
-        return response($content)
-            ->header('Content-Type', 'text/plain')
-            ->header('Content-Disposition', "attachment; filename=\"$filename\"");
+        $content = $ordonnance->contenu;
+        $filename = "ordonnance_{$ordonnance->id}.pdf";
+
+        $pdf = Pdf::loadView('pages.patient.ordonnances.pdf', [
+            'content' => $content,
+            'user' => $user,
+        ]);
+
+        return $pdf->download($filename);
     }
 
     /**

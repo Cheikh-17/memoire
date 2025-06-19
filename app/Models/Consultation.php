@@ -9,6 +9,7 @@ class Consultation extends Model
    
   protected $fillable = [
         'idUser',
+        'idMedecin',
         'diagnostic',
         'motif',
         'date',
@@ -22,7 +23,7 @@ class Consultation extends Model
 
     public function medecin()
     {
-        return $this->belongsTo(Medecin::class);
+        return $this->belongsTo(User::class, 'idMedecin');
     }
 
     public function traitements()
@@ -34,5 +35,9 @@ class Consultation extends Model
     {
         return $this->hasMany(ordonnance::class, 'consultation_id');
     }
+
+    public function rendezvous()
+    {
+        return $this->belongsTo(\App\Models\rendezvous::class, 'idUser', 'idUser');
+    }
 }
-    

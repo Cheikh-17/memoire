@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Medecin::class, 'idUser');
     }
+
+    public function consultations()
+    {
+        return $this->hasMany(\App\Models\Consultation::class, 'idUser');
+    }
 }

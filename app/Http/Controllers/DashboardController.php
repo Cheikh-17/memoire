@@ -18,7 +18,11 @@ class DashboardController extends Controller
             case 'ADMINISTRATEUR':
                 return view('pages.front-end.admin.dashboardAdmin');
             case 'SECRETAIRE':
-                return view('pages.front-end.Secretaire.DashboardSecretaire');
+                $consultations = \App\Models\Consultation::with(['patient', 'rendezvous.medecin'])
+                    ->whereDate('date', now()->toDateString())
+                    ->orderBy('heure')
+                    ->get();
+                return view('pages.front-end.Secretaire.DashboardSecretaire', compact('consultations'));
             case 'MEDECIN':
                 return view('pages.front-end.medecin.DashboardMedecin');
             case 'PATIENT':
