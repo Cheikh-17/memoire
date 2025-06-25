@@ -34,10 +34,29 @@ class medecinController extends Controller
             'prenom' => 'required|string|max:100',
             'email' => 'required|string|email|max:150|unique:users',
             'adresse' => 'required|string|max:255',
-            'telephone' => 'required|string|max:15',
+            'telephone' => ['required', 'string', 'regex:/^(77|78|70|76|75)[0-9]{7}$/'],
             'profil' => 'required|string|max:50',
             'password' => 'required|string|min:8',
             'specialite' => 'required|string|max:200',
+        ], [
+            'nom.required' => 'Le nom est obligatoire.',
+            'nom.max' => 'Le nom ne doit pas dépasser 100 caractères.',
+            'prenom.required' => 'Le prénom est obligatoire.',
+            'prenom.max' => 'Le prénom ne doit pas dépasser 100 caractères.',
+            'email.required' => 'L\'adresse email est obligatoire.',
+            'email.email' => 'L\'adresse email doit être valide.',
+            'email.unique' => 'Cet email est déjà utilisé.',
+            'email.max' => 'L\'email ne doit pas dépasser 150 caractères.',
+            'adresse.required' => 'L\'adresse est obligatoire.',
+            'adresse.max' => 'L\'adresse ne doit pas dépasser 255 caractères.',
+            'telephone.required' => 'Le téléphone est obligatoire.',
+            'telephone.regex' => 'Le numéro de téléphone doit être valide et commencer par 77, 78, 70, 76 ou 75.',
+            'profil.required' => 'Le profil est obligatoire.',
+            'profil.max' => 'Le profil ne doit pas dépasser 50 caractères.',
+            'password.required' => 'Le mot de passe est obligatoire.',
+            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+            'specialite.required' => 'La spécialité est obligatoire.',
+            'specialite.max' => 'La spécialité ne doit pas dépasser 200 caractères.',
         ]);
 
         // Utiliser une transaction pour s'assurer que les deux insertions réussissent
@@ -109,9 +128,26 @@ class medecinController extends Controller
             'prenom' => 'required|string|max:100',
             'email' => 'required|string|email|max:150|unique:users,email,' . $user->id,
             'adresse' => 'required|string|max:255',
-            'telephone' => 'required|string|max:15',
+            'telephone' => ['required', 'string', 'regex:/^(77|78|70|76|75)[0-9]{7}$/'],
             'specialite' => 'required|string|max:200',
+        ], [
+            'nom.required' => 'Le nom est obligatoire.',
+            'nom.max' => 'Le nom ne doit pas dépasser 100 caractères.',
+            'prenom.required' => 'Le prénom est obligatoire.',
+            'prenom.max' => 'Le prénom ne doit pas dépasser 100 caractères.',
+            'email.required' => 'L\'adresse email est obligatoire.',
+            'email.email' => 'L\'adresse email doit être valide.',
+            'email.unique' => 'Cet email est déjà utilisé.',
+            'email.max' => 'L\'email ne doit pas dépasser 150 caractères.',
+            'adresse.required' => 'L\'adresse est obligatoire.',
+            'adresse.max' => 'L\'adresse ne doit pas dépasser 255 caractères.',
+            'telephone.required' => 'Le téléphone est obligatoire.',
+            'telephone.max' => 'Le téléphone ne doit pas dépasser 15 caractères.',
+            'telephone.regex' => 'Le numéro de téléphone doit être valide et commencer par 77, 78, 70, 76 ou 75.',
+            'specialite.required' => 'La spécialité est obligatoire.',
+            'specialite.max' => 'La spécialité ne doit pas dépasser 200 caractères.',
         ]);
+        
 
         $user->nom = $validatedData['nom'];
         $user->prenom = $validatedData['prenom'];

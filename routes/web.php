@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\FactureController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\paiementController;
 use App\Http\Controllers\SecretaireController;
+
+Route::resource('paiement', paiementController::class);
 use App\Http\Controllers\medecinController;
 use App\Http\Controllers\patientController;
 use App\Http\Controllers\UserController;
@@ -47,7 +50,7 @@ Route::post('/reset-password', [PasswordResetController::class, 'submitResetPass
 
 
 // Groupe de routes protégées par le middleware 'auth'
-    Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
         // Déconnexion
         Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
@@ -64,6 +67,21 @@ Route::post('/reset-password', [PasswordResetController::class, 'submitResetPass
         // Routes pour changement de mot de passe utilisateur connecté
         Route::get('/password/change', [UserController::class, 'changePasswordForm'])->name('password.change');
         Route::post('/password/update', [UserController::class, 'updatePassword'])->name('password.update');
+
+        // Route pour afficher une facture
+        Route::get('/facture/{id}', [FactureController::class, 'show'])->name('facture.show');
+
+        // Route pour afficher la liste des factures
+        Route::get('/factures', [FactureController::class, 'index'])->name('factures.index');
+
+        // Route pour afficher le formulaire de création de facture
+        Route::get('/factures/create', [FactureController::class, 'create'])->name('factures.create');
+
+        // Route pour enregistrer une nouvelle facture
+        Route::post('/factures', [FactureController::class, 'store'])->name('factures.store');
+
+        // Route pour télécharger une facture en PDF
+        Route::get('/facture/{id}/download', [FactureController::class, 'download'])->name('facture.download');
     });
 
 // Route POST pour traiter la connexion

@@ -20,32 +20,50 @@
 
         <div class="form-group">
             <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" class="form-control" value="{{ old('nom', $medecin->user->nom ?? '') }}" required>
+            <input type="text" name="nom" id="nom" class="form-control @error('nom') is-invalid @enderror" value="{{ old('nom', $medecin->user->nom ?? '') }}" required>
+            @error('nom')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom" class="form-control" value="{{ old('prenom', $medecin->user->prenom ?? '') }}" required>
+            <input type="text" name="prenom" id="prenom" class="form-control @error('prenom') is-invalid @enderror" value="{{ old('prenom', $medecin->user->prenom ?? '') }}" required>
+            @error('prenom')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $medecin->user->email ?? '') }}" required>
+            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $medecin->user->email ?? '') }}" required>
+            @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="telephone">Téléphone</label>
-            <input type="text" name="telephone" id="telephone" class="form-control" value="{{ old('telephone', $medecin->user->telephone ?? '') }}" required>
+            <input type="text" name="telephone" id="telephone" class="form-control @error('telephone') is-invalid @enderror" value="{{ old('telephone', $medecin->user->telephone ?? '') }}" required>
+            @error('telephone')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="adresse">Adresse</label>
-            <input type="text" name="adresse" id="adresse" class="form-control" value="{{ old('adresse', $medecin->user->adresse ?? '') }}" required>
+            <input type="text" name="adresse" id="adresse" class="form-control @error('adresse') is-invalid @enderror" value="{{ old('adresse', $medecin->user->adresse ?? '') }}" required>
+            @error('adresse')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="specialite">Spécialité</label>
-            <input type="text" name="specialite" id="specialite" class="form-control" value="{{ old('specialite', $medecin->specialite ?? '') }}" required>
+            <input type="text" name="specialite" id="specialite" class="form-control @error('specialite') is-invalid @enderror" value="{{ old('specialite', $medecin->specialite ?? '') }}" required>
+            @error('specialite')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Mettre à jour</button>

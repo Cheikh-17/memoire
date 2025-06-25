@@ -54,10 +54,24 @@ class UserController extends Controller
         'prenom' => 'required|string',
         'adresse' => 'required|string',
         'email' => 'required|email|unique:users',
-        'telephone' => 'required|string',
+        'telephone' => ['required','string','regex:/^(77|78|70|76|75)[0-9]{7}$/'],
         'password' => 'required|string',
         'profil' => 'required|in:ADMINISTRATEUR,SECRETAIRE,MEDECIN,PATIENT',
         'specialite' => ['required_if:profil,MEDECIN', 'string', 'in:' . implode(',', $specialitesAutorisees)],
+    ], [
+        'telephone.regex' => 'Le numéro de téléphone doit être valide et commencer par 77, 78, 70, 76 ou 75.',
+        'nom.required' => 'Le nom est obligatoire.',
+        'prenom.required' => 'Le prénom est obligatoire.',
+        'adresse.required' => 'L\'adresse est obligatoire.',
+        'email.required' => 'L\'adresse e-mail est obligatoire.',
+        'email.email' => 'L\'adresse e-mail doit être valide.',
+        'email.unique' => 'Cette adresse e-mail est déjà utilisée.',
+        'telephone.required' => 'Le numéro de téléphone est obligatoire.',
+        'password.required' => 'Le mot de passe est obligatoire.',
+        'profil.required' => 'Le profil est obligatoire.',
+        'profil.in' => 'Le profil sélectionné est invalide.',
+        'specialite.required_if' => 'La spécialité est obligatoire pour le profil médecin.',
+        'specialite.in' => 'La spécialité sélectionnée est invalide.',
     ]);
 
     
@@ -172,7 +186,9 @@ class UserController extends Controller
             'prenom' => 'required|string|max:255',
             'adresse' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'telephone' => 'required|string|max:20',
+            'telephone' => ['required','string','regex:/^(77|78|70|76|75)[0-9]{7}$/'],
+        ], [
+            'telephone.regex' => 'Le numéro de téléphone doit être valide et commencer par 77, 78, 70, 76 ou 75.',
         ]);
 
         $user->update($validated);

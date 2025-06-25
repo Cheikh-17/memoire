@@ -10,7 +10,7 @@
             <label for="consultation_id" class="form-label">Consultation</label>
             <select class="form-select" id="consultation_id" name="consultation_id" required>
                 @foreach($consultations as $consultation)
-                    <option value="{{ $consultation->id }}">Consultation #{{ $consultation->id }} - {{ $consultation->date }}</option>
+                    <option value="{{ $consultation->id }}">Consultation {{ $consultation->id }} - {{ $consultation->date }} - heure {{ $consultation->heure }}</option>
                 @endforeach
             </select>
         </div>

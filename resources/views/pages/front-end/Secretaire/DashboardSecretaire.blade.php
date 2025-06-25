@@ -86,7 +86,7 @@
           <ul class="pc-submenu">
             {{-- <li class="pc-item"><a class="pc-link" href="{{route('formPatient')}}">Créer dossier et compte patient</a></li> --}}
           <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">lister patients</a></li>
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">Paiement et facture</a></li>
+<li class="pc-item"><a class="pc-link" href="{{ route('factures.create') }}">Paiement et facture</a></li>
             {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">Devis avant soins</a></li> --}}
           </ul>
         </li>
@@ -270,7 +270,7 @@
                 <img src="{{asset('../assets/images/widget/img-status-5.svg')}}" alt="img" class="img-fluid img-bg mb-3">
                 <h5 class="mb-3">Factures & Paiements</h5>
                 <p class="text-muted mb-3">Gérez les factures des patients, suivez les paiements et reliez-les à chaque dossier.</p>
-                <a href="#" class="btn btn-success">Voir les factures</a>
+                <a href="{{ route('factures.create') }}" class="btn btn-success">Paiement</a>
               </div>
             </div>
           </div>

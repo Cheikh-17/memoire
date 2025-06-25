@@ -9,61 +9,77 @@
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="nom" class="form-label">nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom" required>
+                        <input type="text" class="form-control @error('nom') is-invalid @enderror" id="nom" name="nom" value="{{ old('nom') }}" required>
+                        @error('nom')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="prenom" class="form-label">prénom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom" required>
+                        <input type="text" class="form-control @error('prenom') is-invalid @enderror" id="prenom" name="prenom" value="{{ old('prenom') }}" required>
+                        @error('prenom')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="email" class="form-label">email</label>
-                        <input type="text" class="form-control" id="email" name="email" required>
+                        <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="adresse" class="form-label">adresse</label>
-                        <input type="text" class="form-control" id="adresse" name="adresse" required>
+                        <input type="text" class="form-control @error('adresse') is-invalid @enderror" id="adresse" name="adresse" value="{{ old('adresse') }}" required>
+                        @error('adresse')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="telephone" class="form-label">telephone</label>
-                        <input type="numeric" class="form-control" id="telephone" name="telephone" required>
+                        <input type="text" class="form-control @error('telephone') is-invalid @enderror" id="telephone" name="telephone" value="{{ old('telephone') }}" required>
+                        @error('telephone')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    
                     <div class="col-md-6">
                         <label for="profil" class="form-label">profil</label>
-                        <select class="form-control" id="profil" name="profil" required>
+                        <select class="form-control @error('profil') is-invalid @enderror" id="profil" name="profil" required>
                             <option value="" disabled selected>Fait un choix</option>
-                            <option value="SECRETAIRE">SECRETAIRE</option>
-                            <option value="MEDECIN">MEDECIN</option>
-                            <option value="PATIENT">PATIENT</option>
-                            <option value="ADMINISTRATEUR">ADMINISTRATEUR</option>
+                            <option value="SECRETAIRE" {{ old('profil') == 'SECRETAIRE' ? 'selected' : '' }}>SECRETAIRE</option>
+                            <option value="MEDECIN" {{ old('profil') == 'MEDECIN' ? 'selected' : '' }}>MEDECIN</option>
+                            <option value="PATIENT" {{ old('profil') == 'PATIENT' ? 'selected' : '' }}>PATIENT</option>
+                            <option value="ADMINISTRATEUR" {{ old('profil') == 'ADMINISTRATEUR' ? 'selected' : '' }}>ADMINISTRATEUR</option>
                         </select>
+                        @error('profil')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-12">
                         <label for="password" class="form-label">password</label>
-                        <input type="text" class="form-control" id="password" name="password" required>
+                        <input type="text" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ old('password') }}" required>
+                        @error('password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row mb-3" id="specialite-container" style="display:none;">
                     <div class="col-md-6">
                         <label for="specialite" class="form-label">Spécialité</label>
-                        <select class="form-control" id="specialite" name="specialite">
+                        <select class="form-control @error('specialite') is-invalid @enderror" id="specialite" name="specialite">
                             <option value="" disabled selected>Choisissez une spécialité</option>
-                            <option value="Cardiologie">Cardiologie</option>
-                            <option value="Dermatologie">Dermatologie</option>
-                            <option value="Neurologie">Neurologie</option>
-                            <option value="Pédiatrie">Pédiatrie</option>
-                            <option value="Psychiatrie">Psychiatrie</option>
-                            <option value="Radiologie">Radiologie</option>
-                            <option value="Gynécologie">Gynécologie</option>
-                            <option value="Orthopédie">Orthopédie</option>
-                            <option value="Urologie">Urologie</option>
-                            <option value="Autre">Autre</option>
+                            <option value="Churirgien" {{ old('specialite') == 'Churirgien' ? 'selected' : '' }}>Churirgien</option>
+                            <option value="Generaliste" {{ old('specialite') == 'Generaliste' ? 'selected' : '' }}>Generaliste</option>
+                            <option value="Prothodontie" {{ old('specialite') == 'Prothodontie' ? 'selected' : '' }}>Prothodontie</option> 
+                            <option value="Autre" {{ old('specialite') == 'Autre' ? 'selected' : '' }}>Autre</option>
                         </select>
+                        @error('specialite')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">
