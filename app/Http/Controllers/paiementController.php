@@ -96,9 +96,10 @@ class paiementController extends Controller
     public function destroy(string $id)
     {
         $paiement = paiement::findOrFail($id);
-        $paiement->delete();
+        $paiement->is_hidden = true;
+        $paiement->save();
 
-        return redirect()->route('paiement.index')->with('success', 'Paiement supprimé avec succès.');
+        return redirect()->route('paiement.index')->with('success', 'Paiement masqué avec succès.');
     }
 
      

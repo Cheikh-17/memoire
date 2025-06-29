@@ -12,7 +12,7 @@ class medecinController extends Controller
      */
     public function index()
     {
-        $medecins= Medecin::with('user')->get();
+        $medecins= Medecin::with('user')->where('is_hidden', false)->get();
         return view('pages.front-end.medecin.index', compact('medecins'));
     }
 
@@ -169,11 +169,17 @@ class medecinController extends Controller
     {
         $medecin = Medecin::findOrFail($id);
         $user = $medecin->user;
-        $medecin->delete();
+
+        // Masquer le médecin
+        $medecin->is_hidden = true;
+        $medecin->save();
+
+        // Masquer l'utilisateur lié si besoin
         if ($user) {
-            $user->delete();
+            $user->is_hidden = true;
+            $user->save();
         }
 
-        return redirect()->route('medecin.index')->with('success', 'Médecin supprimé avec succès.');
+        return redirect()->route('medecin.index')->with('success', 'Médecin masqué avec succès.');
     }
 }

@@ -19,6 +19,7 @@
             </thead>
             <tbody>
                 @foreach($medecins as $medecin)
+                 
                 <tr>
                     <td>{{ $medecin->user->nom ?? '' }}</td>
                     <td>{{ $medecin->user->prenom ?? '' }}</td>
@@ -35,7 +36,7 @@
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce médecin ?')">Supprimer</button>
                         </form>
                     </td>
-                </tr>
+                </tr> 
                 @endforeach
             </tbody>
         </table>

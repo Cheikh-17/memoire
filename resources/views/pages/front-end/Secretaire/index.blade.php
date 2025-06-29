@@ -20,6 +20,7 @@
             </thead>
             <tbody>
                 @foreach($secretaires as $secretaire)
+                
                 <tr>
                     <td>{{ $secretaire->nom }}</td>
                     <td>{{ $secretaire->prenom }}</td>
@@ -36,6 +37,7 @@
                         </form>
                     </td>
                 </tr>
+                
                 @endforeach
             </tbody>
         </table>

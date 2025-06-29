@@ -16,17 +16,31 @@ class DashboardController extends Controller
 
         switch ($user->profil) {
             case 'ADMINISTRATEUR':
-                return view('pages.front-end.admin.dashboardAdmin');
+                $consultationsJour = \App\Models\Consultation::whereDate('date', now()->toDateString())->count();
+                $facturesTotal = \App\Models\facture::count();
+                $revenusMois = \App\Models\paiement::sum('montant');
+                $totalRecettes = \App\Models\paiement::whereMonth('created_at', now()->month)->sum('montant');
+                $derniersUtilisateurs = \App\Models\User::orderBy('created_at', 'desc')->limit(5)->get();
+
+                return view('pages.front-end.admin.dashboardAdmin', compact('consultationsJour', 'facturesTotal', 'revenusMois','totalRecettes', 'derniersUtilisateurs'));
+
             case 'SECRETAIRE':
                 $consultations = \App\Models\Consultation::with(['patient', 'rendezvous.medecin'])
                     ->whereDate('date', now()->toDateString())
                     ->orderBy('heure')
                     ->get();
                 return view('pages.front-end.Secretaire.DashboardSecretaire', compact('consultations'));
+
             case 'MEDECIN':
-                return view('pages.front-end.medecin.DashboardMedecin');
+                $patientsTermines = \App\Models\User::where('is_hidden', 1)->count();
+                $totalConsultationsDuJour = \App\Models\Consultation::whereDate('date', now()->toDateString())->count();
+                $totalRendezVousDuJour = \App\Models\rendezvous::whereDate('date-rendez-vous', now()->toDateString())->count();
+
+                return view('pages.front-end.medecin.DashboardMedecin', compact('patientsTermines', 'totalConsultationsDuJour', 'totalRendezVousDuJour'));
+
             case 'PATIENT':
                 return view('pages.front-end.patient.DashboardPatient');
+
             default:
                 abort(403, 'Profil utilisateur non reconnu.');
         }

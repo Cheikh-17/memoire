@@ -20,7 +20,7 @@ class SecretaireController extends Controller
 
     public function index()
     {
-        $secretaires = User::where('profil', 'secretaire')->get();
+        $secretaires = User::where('profil', 'secretaire')->where('is_hidden', false)->get();
         return view('pages.front-end.Secretaire.index', compact('secretaires'));
     }
 
@@ -46,7 +46,8 @@ class SecretaireController extends Controller
     public function destroy($id)
     {
         $secretaire = User::where('profil', 'secretaire')->findOrFail($id);
-        $secretaire->delete();
-        return redirect()->route('secretaire.index')->with('success', 'Secrétaire supprimée avec succès.');
+        $secretaire->is_hidden = true;
+        $secretaire->save();
+        return redirect()->route('secretaire.index')->with('success', 'Secrétaire masquée avec succès.');
     }
 }

@@ -5,26 +5,26 @@
                 <div class="col-md-12">
                     <ul class="breadcrumb" style="background-color: transparent;">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('dashboard') }}" style="color: #6c757d;">Dashboard</a>
+                            <a href="{{ route('dashboard') }}" style="color: #026952;">Dashboard</a>
                         </li>
                     </ul>
                 </div>
  <!-- Header Start -->
- <div class="container-fluid header bg-primary p-0 mb-5">
+ <div class="container-fluid header p-0 mb-5" style="background-color: #026952 !important;">
     <div class="row g-0 align-items-center flex-column-reverse flex-lg-row">
         <div class="col-lg-6 p-5 wow fadeIn" data-wow-delay="0.1s">
             <h1 class="display-4 text-white mb-5">Une Bonne Santé Dentaire Est La Clé Du Bonheur</h1>
             <div class="row g-4">
                 <div class="col-sm-4">
                     <div class="border-start border-light ps-4">
-                        <h2 class="text-white mb-1" data-toggle="counter-up">123</h2>
+                        <h2 class="text-white mb-1" data-toggle="counter-up">4</h2>
                         <p class="text-light mb-0">Expert Doctors</p>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="border-start border-light ps-4">
-                        <h2 class="text-white mb-1" data-toggle="counter-up">1234</h2>
-                        <p class="text-light mb-0">Medical Stuff</p>
+                        <h2 class="text-white mb-1" data-toggle="counter-up">123</h2>
+                        <p class="text-light mb-0"> Staff Medical</p>
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                <p class="d-inline-block border rounded-pill py-1 px-4">About Us</p>
+                <p class="d-inline-block border rounded-pill py-1 px-4">À propos de nous</p>
                 <h1 class="mb-4">Pourquoi Nous Faire Confiance ? Apprenez À Nous Connaître !</h1>
                 <p>Nous sommes dédiés à offrir des soins dentaires de qualité supérieure pour garantir votre santé bucco-dentaire et votre bien-être général.</p>
                 <p class="mb-4">Avec une équipe de professionnels expérimentés et des technologies de pointe, nous nous engageons à répondre à vos besoins spécifiques avec compassion et expertise.</p>
@@ -93,20 +93,20 @@
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <p class="d-inline-block border rounded-pill py-1 px-4">Services</p>
-            <h1>Health Care Solutions</h1>
+            <h1>Solutions de soins de santé</h1>
         </div>
         <div class="row g-4">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-4 col-md-6 wow fadeInUp " id="soins" data-wow-delay="0.1s">
                 <div class="service-item bg-light rounded h-100 p-5">
                     <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                         <i class="fa fa-smile text-primary fs-4"></i>
                     </div>
-                    <h4 class="mb-3">Soins Dentaires</h4>
+                    <h4 class="mb-3" >Soins Dentaires</h4>
                     <p class="mb-4">Nous proposons des soins dentaires complets pour maintenir votre santé bucco-dentaire et préserver votre sourire éclatant.</p>
                     <a class="btn" href="/services/soins-dentaires"><i class="fa fa-plus text-primary me-3"></i>En savoir plus</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" id="implan" data-wow-delay="0.3s">
                 <div class="service-item bg-light rounded h-100 p-5">
                     <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                         <i class="fa fa-tooth text-primary fs-4"></i>
@@ -116,7 +116,7 @@
                     <a class="btn" href="/services/implantologie"><i class="fa fa-plus text-primary me-3"></i>En savoir plus</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" id="ortho" data-wow-delay="0.5s">
                 <div class="service-item bg-light rounded h-100 p-5">
                     <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                         <i class="fa fa-teeth text-primary fs-4"></i>
@@ -126,7 +126,7 @@
                     <a class="btn" href="/services/orthodontie"><i class="fa fa-plus text-primary me-3"></i>En savoir plus</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" id="esthe" data-wow-delay="0.1s">
                 <div class="service-item bg-light rounded h-100 p-5">
                     <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                         <i class="fa fa-grin-beam text-primary fs-4"></i>
@@ -136,17 +136,8 @@
                     <a class="btn" href="/services/esthetic-dentistry"><i class="fa fa-plus text-primary me-3"></i>En savoir plus</a>
                 </div>
             </div>
-            {{-- <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item bg-light rounded h-100 p-5">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                        <i class="fa fa-tooth text-primary fs-4"></i>
-                    </div>
-                    <h4 class="mb-3">Dental Surgery</h4>
-                    <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                    <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
-                </div>
-            </div> --}}
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+           
+            <div class="col-lg-4 col-md-6 wow fadeInUp" id="parod" data-wow-delay="0.5s">
                 <div class="service-item bg-light rounded h-100 p-5">
                     <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                         <i class="fa fa-heartbeat text-primary fs-4"></i>
@@ -163,7 +154,7 @@
 
 
 <!-- Feature Start -->
-<div class="container-fluid bg-primary overflow-hidden my-5 px-lg-0">
+<div class="container-fluid overflow-hidden my-5 px-lg-0" style="background-color: #026952 !important;">
     <div class="container feature px-lg-0">
         <div class="row g-0 mx-lg-0">
             <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.1s">
@@ -212,7 +203,7 @@
                                 </div>
                                 <div class="ms-4">
                                     <p class="text-white mb-2">Support</p>
-                                    <h5 class="text-white mb-0">24/7</h5>
+                                    <h5 class="text-white mb-0">7j/7j</h5>
                                 </div>
                             </div>
                         </div>
@@ -246,11 +237,7 @@
                     <div class="team-text bg-light text-center p-4">
                         <h5>Nos Doctors</h5>
                         <p class="text-primary">Departement</p>
-                        <div class="team-social text-center">
-                            <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -262,11 +249,7 @@
                     <div class="team-text bg-light text-center p-4">
                         <h5>Nos Doctors</h5>
                         <p class="text-primary">Departement</p>
-                        <div class="team-social text-center">
-                            <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -278,11 +261,7 @@
                     <div class="team-text bg-light text-center p-4">
                         <h5>Nos Doctors</h5>
                         <p class="text-primary">Departement</p>
-                        <div class="team-social text-center">
-                            <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
+                         
                     </div>
                 </div>
             </div>
@@ -294,11 +273,11 @@
                     <div class="team-text bg-light text-center p-4">
                         <h5>Doctor Name</h5>
                         <p class="text-primary">Department</p>
-                        <div class="team-social text-center">
+                        {{-- <div class="team-social text-center">
                             <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -306,85 +285,6 @@
     </div>
 </div>
 <!-- Team End -->
-
-
-<!-- Appointment Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <p class="d-inline-block border rounded-pill py-1 px-4">Rendez-vous</p>
-                <h1 class="mb-4">Prenez Un Rendez-vous Pour Consulter Nos Dentistes</h1>
-                <p class="mb-4">Prenez soin de votre santé bucco-dentaire avec nos services professionnels. Contactez-nous pour planifier une consultation adaptée à vos besoins.</p>
-                <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
-                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
-                        <i class="fa fa-phone-alt text-primary"></i>
-                    </div>
-                    <div class="ms-4">
-                        <p class="mb-2">Appeler nous maintenant</p>
-                        <h5 class="mb-0">331261012</h5>
-                    </div>
-                </div>
-                <div class="bg-light rounded d-flex align-items-center p-5">
-                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
-                        <i class="fa fa-envelope-open text-primary"></i>
-                    </div>
-                    <div class="ms-4">
-                        <p class="mb-2">Notre email</p>
-                        <h5 class="mb-0">baobab.dentaire@gmail.com</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="bg-light rounded h-100 d-flex align-items-center p-5">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;">
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <select class="form-select border-0" style="height: 55px;">
-                                    <option selected>Choose Doctor</option>
-                                    <option value="1">Doctor 1</option>
-                                    <option value="2">Doctor 2</option>
-                                    <option value="3">Doctor 3</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text"
-                                        class="form-control border-0 datetimepicker-input"
-                                        placeholder="Choose Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="time" id="time" data-target-input="nearest">
-                                    <input type="text"
-                                        class="form-control border-0 datetimepicker-input"
-                                        placeholder="Choose Date" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control border-0" rows="5" placeholder="Describe your problem"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Book Appointment</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Appointment End -->
-
 
 <!-- Testimonial Start -->
 <div class="container-xxl py-5">

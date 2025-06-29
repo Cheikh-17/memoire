@@ -72,9 +72,15 @@
                         <label for="specialite" class="form-label">Spécialité</label>
                         <select class="form-control @error('specialite') is-invalid @enderror" id="specialite" name="specialite">
                             <option value="" disabled selected>Choisissez une spécialité</option>
-                            <option value="Churirgien" {{ old('specialite') == 'Churirgien' ? 'selected' : '' }}>Churirgien</option>
-                            <option value="Generaliste" {{ old('specialite') == 'Generaliste' ? 'selected' : '' }}>Generaliste</option>
-                            <option value="Prothodontie" {{ old('specialite') == 'Prothodontie' ? 'selected' : '' }}>Prothodontie</option> 
+                            <option value="Cardiologie" {{ old('specialite') == 'Cardiologie' ? 'selected' : '' }}>Cardiologie</option>
+                            <option value="Dermatologie" {{ old('specialite') == 'Dermatologie' ? 'selected' : '' }}>Dermatologie</option>
+                            <option value="Neurologie" {{ old('specialite') == 'Neurologie' ? 'selected' : '' }}>Neurologie</option>
+                            <option value="Pédiatrie" {{ old('specialite') == 'Pédiatrie' ? 'selected' : '' }}>Pédiatrie</option>
+                            <option value="Psychiatrie" {{ old('specialite') == 'Psychiatrie' ? 'selected' : '' }}>Psychiatrie</option>
+                            <option value="Radiologie" {{ old('specialite') == 'Radiologie' ? 'selected' : '' }}>Radiologie</option>
+                            <option value="Gynécologie" {{ old('specialite') == 'Gynécologie' ? 'selected' : '' }}>Gynécologie</option>
+                            <option value="Orthopédie" {{ old('specialite') == 'Orthopédie' ? 'selected' : '' }}>Orthopédie</option>
+                            <option value="Urologie" {{ old('specialite') == 'Urologie' ? 'selected' : '' }}>Urologie</option>
                             <option value="Autre" {{ old('specialite') == 'Autre' ? 'selected' : '' }}>Autre</option>
                         </select>
                         @error('specialite')

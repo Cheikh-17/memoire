@@ -11,7 +11,7 @@
 
                 <div class="mb-4">
                     <label for="patient_id" class="form-label" style="font-size: 1.2rem; color: #026952;">Patient</label>
-                    <select name="patient_id" id="patient_id" class="form-control form-control-lg" required>
+                    <select name="patient_id" id="patient_id" class="form-control form-control-lg; " required>
                         <option value="" disabled selected>Choisissez un patient</option>
                         @foreach($patients as $patient)
                             <option value="{{ $patient->id }}">{{ $patient->nom }} {{ $patient->prenom }}</option>

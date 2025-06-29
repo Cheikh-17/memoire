@@ -17,7 +17,7 @@ class PatientController extends Controller
 
     public function index()
     {
-        $patients = User::where('profil', 'patient')->get();
+        $patients = User::where('profil', 'patient')->where('is_hidden', false)->get();
         return view('pages.front-end.patient.index', compact('patients'));
     }
 
@@ -43,8 +43,9 @@ class PatientController extends Controller
     public function destroy($id)
     {
         $patient = User::where('profil', 'patient')->findOrFail($id);
-        $patient->delete();
-        return redirect()->route('patients.index')->with('success', 'Patient supprimé avec succès.');
+        $patient->is_hidden = true;
+        $patient->save();
+        return redirect()->route('patients.index')->with('success', 'Patient masqué avec succès.');
     }
 
     public function store(Request $request)

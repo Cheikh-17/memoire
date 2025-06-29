@@ -92,8 +92,9 @@ class traitementController extends Controller
     public function destroy(string $id)
     {
         $traitement = traitement::findOrFail($id);
-        $traitement->delete();
+        $traitement->is_hidden = true;
+        $traitement->save();
 
-        return redirect()->route('traitements.index')->with('success', 'Traitement supprimé avec succès.');
+        return redirect()->route('traitements.index')->with('success', 'Traitement masqué avec succès.');
     }
 }

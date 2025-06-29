@@ -1,951 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- [Head] start -->
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Light Able admin and dashboard template offer a variety of UI elements and pages, ensuring your admin panel is both fast and effective." />
+  <meta name="author" content="phoenixcoded" />
 
-  <head>
-    <title>Dashboard</title>
-    <!-- [Meta] -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="description"
-      content="Light Able admin and dashboard template offer a variety of UI elements and pages, ensuring your admin panel is both fast and effective."
-    />
-    <meta name="author" content="phoenixcoded" />
+  <!-- Favicon -->
+  <link rel="icon" href="{{asset('../assets/images/favicon.svg')}}" type="image/x-icon" />
 
-    <!-- [Favicon] icon -->
-    <link rel="icon" href="{{asset('../assets/images/favicon.svg')}}" type="image/x-icon" />
+  <!-- CSS Plugins -->
+  <link rel="stylesheet" href="{{asset('../assets/css/plugins/jsvectormap.min.css')}}">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('../assets/fonts/tabler-icons.min.css')}}" >
+  <link rel="stylesheet" href="{{asset('../assets/fonts/feather.css')}}" >
+  <link rel="stylesheet" href="{{asset('../assets/fonts/fontawesome.css')}}" >
+  <link rel="stylesheet" href="{{asset('../assets/fonts/material.css')}}" >
+  <link rel="stylesheet" href="{{asset('../assets/css/style.css')}}" id="main-style-link" >
+  <link rel="stylesheet" href="{{asset('../assets/css/style-preset.css')}}" >
+</head>
 
-    <!-- map-vector css -->
-    <link rel="stylesheet" href="{{asset('../assets/css/plugins/jsvectormap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('../assets/css/plugins/jsvectormap.min.css')}}">
-    <!-- [Google Font : Public Sans] icon -->
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet" href="{{asset('../assets/fonts/tabler-icons.min.css')}}" >
-    <!-- [Feather Icons] https://feathericons.com -->
-    <link rel="stylesheet" href="{{asset('../assets/fonts/feather.css')}}" >
-    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-    <link rel="stylesheet" href="{{asset('../assets/fonts/fontawesome.css')}}" >
-    <!-- [Material Icons] https://fonts.google.com/icons -->
-    <link rel="stylesheet" href="{{asset('../assets/fonts/material.css')}}" >
-    <!-- [Template CSS Files] -->
-    <link rel="stylesheet" href="{{asset('../assets/css/style.css')}}" id="main-style-link" >
-    <link rel="stylesheet" href="{{asset('../assets/css/style-preset.css')}}" >
-
-  </head>
-  <!-- [Head] end -->
-  <!-- [Body] Start -->
-
-  <body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
-    <!-- [ Pre-loader ] start -->
-<div class="loader-bg">
-  <div class="loader-track">
-    <div class="loader-fill"></div>
-  </div>
-</div>
-<!-- [ Pre-loader ] End -->
- <!-- [ Sidebar Menu ] start -->
-<nav class="pc-sidebar">
-  <div class="navbar-wrapper">
-    <div class="m-header">
-      <a href="{{asset('../dashboard/index.html')}}" class="b-brand text-primary">
-        <!-- ========   Change your logo from here   ============ -->
-      </a>
-      <a href="{{ route('home') }}" class="b-brand text-primary d-flex align-items-center">
-        <img src="assets/images/dent.png" alt="Logo Cabinet" style="height:40px; width:auto; margin-right:10px;">
-        <span class="fw-bold fs-5">BAOBAB DENTAIRE</span>
-      </a>
-    </div>
-    
-    <div class="navbar-content">
-      
-      <ul class="pc-navbar">
-        <li class="pc-item pc-caption">
-          <label>Navigation</label>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
-            <span class="pc-micon">
-              <i class="ph-duotone ph-house"></i>
-            </span>
-            <span class="pc-mtext">Dashboard</span>
-            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
-          </a>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
-            <span class="pc-micon">
-                <i class="ph-duotone ph-users-three"></i>
-            </span>
-            <span class="pc-mtext">Users</span>
-            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
-          </a>
-          <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="{{route('form')}}">creer Users</a></li>
-            {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">lister medecin </a></li> --}}
-          </ul>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
-            <span class="pc-micon">
-              <i class="ph-duotone ph-stethoscope"></i>
-            </span>
-            <span class="pc-mtext">Medecin</span>
-            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
-          </a>
-          <ul class="pc-submenu">
-            {{-- <li class="pc-item"><a class="pc-link" href="">creer medecin</a></li> --}}
-            <li class="pc-item"><a class="pc-link" href="{{route('medecin.index')}}">lister medecin </a></li>
-          </ul>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
-            <span class="pc-micon">
-              <i class="ph-duotone ph-user-circle"></i>
-            </span>
-            <span class="pc-mtext">Secretaire</span>
-            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
-          </a>
-          <ul class="pc-submenu">
-            {{-- <li class="pc-item"><a class="pc-link" href="{{route('creerSecretaire')}}">creer secretaire</a></li> --}}
-            <li class="pc-item"><a class="pc-link" href="{{route('secretaire.index')}}">lister secretaire</a></li>
-          </ul>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
-            <span class="pc-micon">
-              <i class="ph-duotone ph-users"></i>
-            </span>
-            <span class="pc-mtext">Patient</span>
-            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
-          </a>
-          <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">lister patient</a></li>
-            <li class="pc-item"><a class="pc-link" href="">lister les patients du jours</a></li>
-          </ul>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link">
-            <span class="pc-micon">
-              <i class="ph-duotone ph-wallet"></i>
-            </span>
-            <span class="pc-mtext">Finance</span>
-            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
-          </a>
-          <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">recettes et depenses</a></li>
-          </ul>
-        </li>
-      </ul>
+<body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
+  <!-- Pre-loader -->
+  <div class="loader-bg">
+    <div class="loader-track">
+      <div class="loader-fill"></div>
     </div>
   </div>
-</nav>
- 
-<header class="pc-header">
-  <div class="header-wrapper"> <!-- [Bloc Média Mobile] début -->
-<div class="me-auto pc-mob-drp">
-  <ul class="list-unstyled">
-    <!-- ======= Icône de réduction du menu ===== -->
-    <li class="pc-h-item pc-sidebar-collapse">
-      <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
-        <i class="ti ti-menu-2"></i>
-      </a>
-    </li>
-    <li class="pc-h-item pc-sidebar-popup">
-      <a href="#" class="pc-head-link ms-0" id="mobile-collapse">
-        <i class="ti ti-menu-2"></i>
-      </a>
-    </li>
-    <li class="dropdown pc-h-item d-inline-flex d-md-none">
-      <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#" role="button"
-        aria-haspopup="false" aria-expanded="false">
-        <i class="ph-duotone ph-magnifying-glass"></i>
-      </a>
-      <div class="dropdown-menu pc-h-dropdown drp-search">
-        <form class="px-3">
-          <div class="mb-0 d-flex align-items-center">
-            <input type="search" class="form-control border-0 shadow-none" placeholder="Rechercher..." />
-            <button class="btn btn-light-secondary btn-search">Rechercher</button>
-          </div>
-        </form>
+  <!-- Sidebar Menu -->
+  <nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+      <div class="m-header">
+        <a href="{{asset('../dashboard/index.html')}}" class="b-brand text-primary"></a>
+        <a href="{{ route('home') }}" class="b-brand text-primary d-flex align-items-center">
+          <img src="assets/images/dent.png" alt="Logo Cabinet" style="height:40px; width:auto; margin-right:10px;">
+          <span class="fw-bold fs-5">BAOBAB DENTAIRE</span>
+        </a>
       </div>
-    </li>
-    <li class="pc-h-item d-none d-md-inline-flex">
-      <form class="form-search">
-        <i class="ph-duotone ph-magnifying-glass icon-search"></i>
-        <input type="search" class="form-control" placeholder="Rechercher..." />
+      <div class="navbar-content">
+        <ul class="pc-navbar">
+          <li class="pc-item pc-caption"><label>Navigation</label></li>
+          <li class="pc-item pc-hasmenu">
+            <a href="#!" class="pc-link">
+              <span class="pc-micon"><i class="ph-duotone ph-house"></i></span>
+              <span class="pc-mtext">Dashboard</span>
+              <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+              <span class="pc-badge">2</span>
+            </a>
+          </li>
+          <li class="pc-item pc-hasmenu">
+            <a href="#!" class="pc-link">
+              <span class="pc-micon"><i class="ph-duotone ph-users-three"></i></span>
+              <span class="pc-mtext">Users</span>
+              <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+              <span class="pc-badge">2</span>
+            </a>
+            <ul class="pc-submenu">
+              <li class="pc-item"><a class="pc-link" href="{{route('form')}}">creer Users</a></li>
+            </ul>
+          </li>
+          <li class="pc-item pc-hasmenu">
+            <a href="#!" class="pc-link">
+              <span class="pc-micon"><i class="ph-duotone ph-stethoscope"></i></span>
+              <span class="pc-mtext">Medecin</span>
+              <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+              <span class="pc-badge">2</span>
+            </a>
+            <ul class="pc-submenu">
+              <li class="pc-item"><a class="pc-link" href="{{route('medecin.index')}}">lister medecin </a></li>
+            </ul>
+          </li>
+          <li class="pc-item pc-hasmenu">
+            <a href="#!" class="pc-link">
+              <span class="pc-micon"><i class="ph-duotone ph-user-circle"></i></span>
+              <span class="pc-mtext">Secretaire</span>
+              <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+              <span class="pc-badge">2</span>
+            </a>
+            <ul class="pc-submenu">
+              <li class="pc-item"><a class="pc-link" href="{{route('secretaire.index')}}">lister secretaire</a></li>
+            </ul>
+          </li>
+          <li class="pc-item pc-hasmenu">
+            <a href="#!" class="pc-link">
+              <span class="pc-micon"><i class="ph-duotone ph-users"></i></span>
+              <span class="pc-mtext">Patient</span>
+              <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+              <span class="pc-badge">2</span>
+            </a>
+            <ul class="pc-submenu">
+              <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">lister patient</a></li>
+              <li class="pc-item"><a class="pc-link" href="">lister les patients du jours</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-        <button class="btn btn-search" style="padding: 0"><kbd>ctrl+k</kbd></button>
-      </form>
-    </li>
-  </ul>
-</div>
-<!-- [Bloc Média Mobile fin] -->
-<div class="ms-auto">
-  <ul class="list-unstyled">
-    
-    <li class="dropdown pc-h-item">
-      <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button"
-        aria-haspopup="false" aria-expanded="false">
-        <i class="ph-duotone ph-sun-dim"></i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
-        <a href="#!" class="dropdown-item" onclick="layout_change('dark')">
-          <i class="ph-duotone ph-moon"></i>
-          <span>Sombre</span>
-        </a>
-        <a href="#!" class="dropdown-item" onclick="layout_change('light')">
-          <i class="ph-duotone ph-sun-dim"></i>
-          <span>Clair</span>
-        </a>
-        <a href="#!" class="dropdown-item" onclick="layout_change_default()">
-          <i class="ph-duotone ph-cpu"></i>
-          <span>Par défaut</span>
-        </a>
-      </div>
-    </li>
-    <li class="pc-h-item">
-      <a class="pc-head-link pct-c-btn" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_pc_layout">
-        <i class="ph-duotone ph-gear-six"></i>
-      </a>
-    </li>
-     
-    <li class="dropdown pc-h-item header-user-profile">
-      <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button"
-        aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
-        <img src="{{asset('../assets/images/user/avatar-2.jpg')}}" alt="image-utilisateur" class="user-avtar" />
-      </a>
-      <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
-        <div class="dropdown-header d-flex align-items-center justify-content-between">
-          <h5 class="m-0">Profil</h5>
-        </div>
-        <div class="dropdown-body">
-          <div class="profile-notification-scroll position-relative" style="max-height: calc(100vh - 225px)">
-            <ul class="list-group list-group-flush w-100">
-              <li class="list-group-item">
-                <div class="d-flex align-items-center">
-                  <div class="flex-shrink-0">
-                    <img src="{{asset('../assets/images/user/avatar-2.jpg')}}" alt="image-utilisateur" class="wid-50 rounded-circle" />
-                  </div>
-                  <div class="flex-grow-1 mx-3">
-                    <h5 class="mb-0">{{ Auth::user()->name }}</h5>
-                    <a class="link-primary" href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a>
-                  </div>
-                  <span class="badge bg-primary">PRO</span>
+  <!-- Header -->
+  <header class="pc-header">
+    <div class="header-wrapper">
+      <!-- Mobile Media Block -->
+      <div class="me-auto pc-mob-drp">
+        <ul class="list-unstyled">
+          <li class="pc-h-item pc-sidebar-collapse">
+            <a href="#" class="pc-head-link ms-0" id="sidebar-hide"><i class="ti ti-menu-2"></i></a>
+          </li>
+          <li class="pc-h-item pc-sidebar-popup">
+            <a href="#" class="pc-head-link ms-0" id="mobile-collapse"><i class="ti ti-menu-2"></i></a>
+          </li>
+          <li class="dropdown pc-h-item d-inline-flex d-md-none">
+            <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+              <i class="ph-duotone ph-magnifying-glass"></i>
+            </a>
+            <div class="dropdown-menu pc-h-dropdown drp-search">
+              <form class="px-3">
+                <div class="mb-0 d-flex align-items-center">
+                  <input type="search" class="form-control border-0 shadow-none" placeholder="Rechercher..." />
+                  <button class="btn btn-light-secondary btn-search">Rechercher</button>
                 </div>
-              </li>
-              <li class="list-group-item">
-                <a href="{{ route('password.change') }}" class="dropdown-item">
-                  <span class="d-flex align-items-center">
-                    <i class="ph-duotone ph-key"></i>
-                    <span>Changer le mot de passe</span>
-                  </span>
-                </a>
-                
+              </form>
+            </div>
+          </li>
+          <li class="pc-h-item d-none d-md-inline-flex">
+            <form class="form-search">
+              <i class="ph-duotone ph-magnifying-glass icon-search"></i>
+              <input type="search" class="form-control" placeholder="Rechercher..." />
+              <button class="btn btn-search" style="padding: 0"><kbd>ctrl+k</kbd></button>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <!-- End Mobile Media Block -->
+      <div class="ms-auto">
+        <ul class="list-unstyled">
+          <li class="dropdown pc-h-item">
+            <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+              <i class="ph-duotone ph-sun-dim"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
+              <a href="#!" class="dropdown-item" onclick="layout_change('dark')">
+                <i class="ph-duotone ph-moon"></i>
+                <span>Sombre</span>
+              </a>
+              <a href="#!" class="dropdown-item" onclick="layout_change('light')">
+                <i class="ph-duotone ph-sun-dim"></i>
+                <span>Clair</span>
+              </a>
+              <a href="#!" class="dropdown-item" onclick="layout_change_default()">
+                <i class="ph-duotone ph-cpu"></i>
+                <span>Par défaut</span>
+              </a>
+            </div>
+          </li>
+          <li class="pc-h-item">
+            <a class="pc-head-link pct-c-btn" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_pc_layout">
+              <i class="ph-duotone ph-gear-six"></i>
+            </a>
+          </li>
+          <li class="dropdown pc-h-item header-user-profile">
+            <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
+              <img src="{{asset('../assets/images/user/avatar-2.jpg')}}" alt="image-utilisateur" class="user-avtar" />
+            </a>
+            <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
+              <div class="dropdown-header d-flex align-items-center justify-content-between">
+                <h5 class="m-0">Profil</h5>
+              </div>
+              <div class="dropdown-body">
+                <div class="profile-notification-scroll position-relative" style="max-height: calc(100vh - 225px)">
+                  <ul class="list-group list-group-flush w-100">
+                    <li class="list-group-item">
+                      <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                          <img src="{{asset('../assets/images/user/avatar-2.jpg')}}" alt="image-utilisateur" class="wid-50 rounded-circle" />
+                        </div>
+                        <div class="flex-grow-1 mx-3">
+                          <h5 class="mb-0">{{ Auth::user()->name }}</h5>
+                          <a class="link-primary" href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a>
+                        </div>
+                        <span class="badge bg-primary">PRO</span>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="{{ route('password.change') }}" class="dropdown-item">
+                        <span class="d-flex align-items-center">
+                          <i class="ph-duotone ph-key"></i>
+                          <span>Changer le mot de passe</span>
+                        </span>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="{{route('profile.edit')}}" class="dropdown-item">
+                        <span class="d-flex align-items-center">
+                          <i class="ph-duotone ph-user-circle"></i>
+                          <span>Modifier le profil</span>
+                        </span>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="dropdown-item btn btn-link d-flex align-items-center p-0" style="color: inherit; text-decoration: none; justify-content: flex-start;">
+                          <i class="ph-duotone ph-power"></i>
+                          <span>Déconnexion</span>
+                        </button>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- Main Content -->
+  <div class="pc-container">
+    <div class="pc-content">
+      <!-- Breadcrumb -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
+              </ul>
+            </div>
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h2 class="mb-0">Home</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Breadcrumb -->
+
+      <!-- Dashboard Widgets -->
+      <div class="row">
+        <!-- Statistiques principales -->
+        <div class="col-md-4 col-sm-6">
+          <div class="card statistics-card-1 overflow-hidden ">
+            <div class="card-body">
+              <img src="{{asset('../assets/images/widget/img-status-4.svg')}}" alt="img" class="img-fluid img-bg" >
+              <h5 class="mb-4">Consultations du jour</h5>
+              <div class="d-flex align-items-center mt-3">
+                <h3 class="f-w-300 d-flex align-items-center m-b-0">{{ $consultationsJour ?? 0 }}</h3>
+              </div>
+              <p class="text-muted mb-2 text-sm mt-3">Nombre de consultations réalisées aujourd'hui</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="card statistics-card-1 overflow-hidden ">
+            <div class="card-body">
+              <img src="{{asset('../assets/images/widget/img-status-5.svg')}}" alt="img" class="img-fluid img-bg" >
+              <h5 class="mb-4">Factures totales</h5>
+              <div class="d-flex align-items-center mt-3">
+                <h3 class="f-w-300 d-flex align-items-center m-b-0">{{ $facturesTotal ?? 0 }}</h3>
+              </div>
+              <p class="text-muted mb-2 text-sm mt-3">Nombre total de factures générées</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <div class="card statistics-card-1 overflow-hidden bg-brand-color-3">
+            <div class="card-body">
+              <img src="{{asset('../assets/images/widget/img-status-6.svg')}}" alt="img" class="img-fluid img-bg" >
+              <h5 class="mb-4 text-white">Revenus </h5>
+              <div class="d-flex align-items-center mt-3">
+                <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">{{ $revenusMois ?? '0 FCFA' }}</h3>
+              </div>
+              <p class="text-white text-opacity-75 mb-2 text-sm mt-3">Total des paiements reçus</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte des patients -->
+        <div class="col-md-6 col-xl-7">
+          <div class="card">
+            <div class="card-header">
+              <h5>Répartition des patients</h5>
+            </div>
+            <div class="card-body">
+              <div id="world-map-markers" class="set-map" style="height:365px;"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Bloc d'informations financières -->
+        <div class="col-md-6 col-xl-5">
+          <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between py-3">
+              <h5>Finances</h5>
+            </div>
+            <div class="card-body">
+              <div class="d-flex align-items-center">
+                <div class="avtar avtar-s bg-light-primary flex-shrink-0">
+                  <i class="ph-duotone ph-money f-20"></i>
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <p class="mb-0 text-muted">Total des recettes</p>
+                  <h5 class="mb-0">{{ $totalRecettes ?? '0 FCFA' }}</h5>
+                </div>
+              </div>
+              <div id="earnings-users-chart"></div>
+            </div>
+          </div>
+          <script src="{{asset('../assets/js/plugins/apexcharts.min.js')}}"></script>
+          <div class="card mt-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <div class="avtar avtar-s bg-light-warning flex-shrink-0">
+                      <i class="ph-duotone ph-lightning f-20"></i>
+                    </div>
+                    <div class="flex-grow-1 ms-2">
+                      <p class="mb-0 text-muted">Actes réalisés</p>
+                      <h6 class="mb-0">{{ $actesRealises ?? 0 }}</h6>
+                    </div>
+                  </div>
+                </div>
                  
-            </li>
-              <li class="list-group-item">
-                <a href="{{route('profile.edit')}}" class="dropdown-item">
-                  <span class="d-flex align-items-center">
-                    <i class="ph-duotone ph-user-circle"></i>
-                    <span>Modifier le profil</span>
-                  </span>
-                </a>
-                
-                
-              </li>
-              <li class="list-group-item">
-                <form method="POST" action="{{ route('logout') }}">
-                  @csrf
-                  <button type="submit" class="dropdown-item btn btn-link d-flex align-items-center p-0" style="color: inherit; text-decoration: none; justify-content: flex-start;">
-                    <i class="ph-duotone ph-power"></i>
-                    <span>Déconnexion</span>
-                  </button>
-                </form>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div> </div>
-</header>
-<!-- [ Header ] end -->
-
-
-
-    <!-- [ Main Content ] start -->
-    <div class="pc-container">
-      <div class="pc-content">
-        <!-- [ breadcrumb ] start -->
-        <div class="page-header">
-          <div class="page-block">
-            <div class="row align-items-center">
-              <div class="col-md-12">
-                <ul class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-                  {{-- //<li class="breadcrumb-item" aria-current="page">Home</li> --}}
-                </ul>
-              </div>
-              <div class="col-md-12">
-                <div class="page-header-title">
-                  <h2 class="mb-0">Home</h2>
-                </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- [ breadcrumb ] end -->
-        <!-- [ Main Content ] start -->
-        <div class="row">
-          <div class="col-md-4 col-sm-6">
-            <div class="card statistics-card-1 overflow-hidden ">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-4.svg')}}" alt="img" class="img-fluid img-bg" >
-                <h5 class="mb-4">Daily Sales</h5>
-                <div class="d-flex align-items-center mt-3">
-                  <h3 class="f-w-300 d-flex align-items-center m-b-0">$249.95</h3>
-                  <span class="badge bg-light-success ms-2">36%</span>
-                </div>
-                <p class="text-muted mb-2 text-sm mt-3">You made an extra 35,000 this daily</p>
-                <div class="progress" style="height: 7px">
-                  <div
-                    class="progress-bar bg-brand-color-3"
-                    role="progressbar"
-                    style="width: 75%"
-                    aria-valuenow="75"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
+        <!-- Liste des derniers utilisateurs -->
+        <div class="col-md-12 col-xl-12">
+          <div class="card table-card">
+            <div class="card-header d-flex align-items-center justify-content-between py-3">
+              <h5>Derniers utilisateurs inscrits</h5>
             </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="card statistics-card-1 overflow-hidden ">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-5.svg')}}" alt="img" class="img-fluid img-bg" >
-                <h5 class="mb-4">Monthly Sales</h5>
-                <div class="d-flex align-items-center mt-3">
-                  <h3 class="f-w-300 d-flex align-items-center m-b-0">$249.95</h3>
-                  <span class="badge bg-light-primary ms-2">20%</span>
-                </div>
-                <p class="text-muted mb-2 text-sm mt-3">You made an extra 35,000 this Monthly</p>
-                <div class="progress" style="height: 7px">
-                  <div
-                    class="progress-bar bg-brand-color-3"
-                    role="progressbar"
-                    style="width: 75%"
-                    aria-valuenow="75"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="card statistics-card-1 overflow-hidden  bg-brand-color-3">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-6.svg')}}" alt="img" class="img-fluid img-bg" >
-                <h5 class="mb-4 text-white">Yearly Sales</h5>
-                <div class="d-flex align-items-center mt-3">
-                  <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">$249.95</h3>
-                </div>
-                <p class="text-white text-opacity-75 mb-2 text-sm mt-3">You made an extra 35,000 this Daily</p>
-                <div class="progress bg-white bg-opacity-10" style="height: 7px">
-                  <div
-                    class="progress-bar bg-white"
-                    role="progressbar"
-                    style="width: 75%"
-                    aria-valuenow="75"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-7">
-            <div class="card">
-              <div class="card-header">
-                <h5>Users From United States</h5>
-              </div>
-              <div class="card-body">
-                <div id="world-map-markers" class="set-map" style="height:365px;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-5">
-            <div class="card">
-              <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5>Users From United States</h5>
-                <div class="dropdown">
-                  <a
-                    class="avtar avtar-xs btn-link-secondary dropdown-toggle arrow-none"
-                    href="#"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    ><i class="material-icons-two-tone f-18">more_vert</i></a
-                  >
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">View</a>
-                    <a class="dropdown-item" href="#">Edit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-center">
-                  <div class="avtar avtar-s bg-light-primary flex-shrink-0">
-                    <i class="ph-duotone ph-money f-20"></i>
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <p class="mb-0 text-muted">Total Earnings</p>
-                    <h5 class="mb-0">$249.95</h5>
-                  </div>
-                </div>
-                <div id="earnings-users-chart"></div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-6">
-                    <div class="d-flex align-items-center">
-                      <div class="avtar avtar-s bg-light-warning flex-shrink-0">
-                        <i class="ph-duotone ph-lightning f-20"></i>
-                      </div>
-                      <div class="flex-grow-1 ms-2">
-                        <p class="mb-0 text-muted">Total ideas</p>
-                        <h6 class="mb-0">235</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="d-flex align-items-center">
-                      <div class="avtar avtar-s bg-light-danger flex-shrink-0">
-                        <i class="ph-duotone ph-map-pin f-20"></i>
-                      </div>
-                      <div class="flex-grow-1 ms-2">
-                        <p class="mb-0 text-muted">Total location</p>
-                        <h6 class="mb-0">26</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-4">
-            <div class="card statistics-card-1 overflow-hidden ">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-7.svg')}}" alt="img" class="img-fluid img-bg" >
-                <div class="d-flex align-items-center">
-                  <img src="{{asset('../assets/images/widget/img-facebook.svg')}}" alt="img" class="img-fluid" >
-                  <div class="flex-grow-1 ms-3">
-                    <p class="mb-0 text-muted">Total Likes</p>
-                    <div class="d-inline-flex align-items-center">
-                      <h5 class="f-w-300 d-flex align-items-center m-b-0">12,281</h5>
-                      <span class="badge bg-success ms-2">+7.2%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row g-3 mt-5 text-center">
-                  <div class="col-6">
-                    <p class="mb-0 text-muted">Target</p>
-                    <h5 class="mb-0">35,098</h5>
-                  </div>
-                  <div class="col-6 border-start">
-                    <p class="mb-0 text-muted">Duration</p>
-                    <h5 class="mb-0">3,539</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-4">
-            <div class="card statistics-card-1 overflow-hidden ">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-8.svg')}}" alt="img" class="img-fluid img-bg" >
-                <div class="d-flex align-items-center">
-                  <img src="{{asset('../assets/images/widget/img-google.svg')}}" alt="img" class="img-fluid" >
-                  <div class="flex-grow-1 ms-3">
-                    <p class="mb-0 text-muted">Total Likes</p>
-                    <div class="d-inline-flex align-items-center">
-                      <h5 class="f-w-300 d-flex align-items-center m-b-0">12,281</h5>
-                      <span class="badge bg-success ms-2">+5.9%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row g-3 mt-5 text-center">
-                  <div class="col-6">
-                    <p class="mb-0 text-muted">Target</p>
-                    <h5 class="mb-0">35,098</h5>
-                  </div>
-                  <div class="col-6 border-start">
-                    <p class="mb-0 text-muted">Duration</p>
-                    <h5 class="mb-0">3,539</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 col-xl-4">
-            <div class="card statistics-card-1 overflow-hidden ">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-9.svg')}}" alt="img" class="img-fluid img-bg" >
-                <div class="d-flex align-items-center">
-                  <img src="{{asset('../assets/images/widget/img-twitter.svg')}}" alt="img" class="img-fluid" >
-                  <div class="flex-grow-1 ms-3">
-                    <p class="mb-0 text-muted">Total Likes</p>
-                    <div class="d-inline-flex align-items-center">
-                      <h5 class="f-w-300 d-flex align-items-center m-b-0">12,281</h5>
-                      <span class="badge bg-success ms-2">+6.2%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row g-3 mt-5 text-center">
-                  <div class="col-6">
-                    <p class="mb-0 text-muted">Target</p>
-                    <h5 class="mb-0">35,098</h5>
-                  </div>
-                  <div class="col-6 border-start">
-                    <p class="mb-0 text-muted">Duration</p>
-                    <h5 class="mb-0">3,539</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-4">
-            <div class="card">
-              <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5>Recent Users</h5>
-                <div class="dropdown">
-                  <a
-                    class="avtar avtar-xs btn-link-secondary dropdown-toggle arrow-none"
-                    href="#"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    ><i class="material-icons-two-tone f-18">more_vert</i></a
-                  >
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">View</a>
-                    <a class="dropdown-item" href="#">Edit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                  <h2 class="mb-3"><b>4.7<small class="text-muted f-18">/5</small></b></h2>
-                  <div class="star mb-3 f-20">
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star-half-alt text-warning"></i>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">5 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 70%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">384</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">4 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 55%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">145</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">3 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 40%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">24</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">2 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 25%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">1</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3">
-                  <div class="col-auto">
-                    <h6 class="mb-0">1 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 10%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">0</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-8">
-            <div class="card table-card">
-              <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5>Recent Users</h5>
-                <div class="dropdown">
-                  <a
-                    class="avtar avtar-xs btn-link-secondary dropdown-toggle arrow-none"
-                    href="#"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    ><i class="material-icons-two-tone f-18">more_vert</i></a
-                  >
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">View</a>
-                    <a class="dropdown-item" href="#">Edit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body py-2 px-0">
-                <div class="table-responsive">
-                  <table class="table table-hover table-borderless table-sm mb-0">
-                    <tbody>
+            <div class="card-body py-2 px-0">
+              <div class="table-responsive">
+                <table class="table table-hover table-borderless table-sm mb-0">
+                  <thead>
+                    <tr>
+                      <th>Nom</th>
+                      <th>Email</th>
+                      <th>Profil</th>
+                      <th>Date d'inscription</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($derniersUtilisateurs ?? [] as $user)
                       <tr>
-                        <td>
-                          <div class="d-inline-block align-middle">
-                            <img src="{{asset('../assets/images/user/avatar-1.jpg')}}" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Quinn Flynn</h6>
-                              <p class="m-b-0">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td><p class="mb-0"><i class="ph-duotone ph-circle text-warning f-12"></i> 11 may 12:30</p></td>
-                        <td class="text-end">
-                          <button class="btn avtar avtar-xs btn-light-danger"><i class="ti ti-x"></i></button>
-                          <button class="btn avtar avtar-xs btn-light-success"><i class="ti ti-check"></i></button>
-                        </td>
+                        <td>{{ $user->nom }} {{ $user->prenom }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->profil }}</td>
+                        <td>{{ $user->created_at->format('d/m/Y') }}</td>
                       </tr>
-                      <tr>
-                        <td>
-                          <div class="d-inline-block align-middle">
-                            <img src="{{asset('../assets/images/user/avatar-2.jpg')}}" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Garrett Winters</h6>
-                              <p class="m-b-0">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td><p class="mb-0"><i class="ph-duotone ph-circle text-success f-12"></i> 11 may 12:30</p></td>
-                        <td class="text-end">
-                          <button class="btn avtar avtar-xs btn-light-danger"><i class="ti ti-x"></i></button>
-                          <button class="btn avtar avtar-xs btn-light-success"><i class="ti ti-check"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-inline-block align-middle">
-                            <img src="{{asset('../assets/images/user/avatar-3.jpg')}}" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Ashton Cox</h6>
-                              <p class="m-b-0">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td><p class="mb-0"><i class="ph-duotone ph-circle text-primary f-12"></i> 11 may 12:30</p></td>
-                        <td class="text-end">
-                          <button class="btn avtar avtar-xs btn-light-danger"><i class="ti ti-x"></i></button>
-                          <button class="btn avtar avtar-xs btn-light-success"><i class="ti ti-check"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-inline-block align-middle">
-                            <img src="{{asset('../assets/images/user/avatar-4.jpg')}}" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Cedric Kelly</h6>
-                              <p class="m-b-0">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td><p class="mb-0"><i class="ph-duotone ph-circle text-danger f-12"></i> 11 may 12:30</p></td>
-                        <td class="text-end">
-                          <button class="btn avtar avtar-xs btn-light-danger"><i class="ti ti-x"></i></button>
-                          <button class="btn avtar avtar-xs btn-light-success"><i class="ti ti-check"></i></button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                    @endforeach
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
-        </div>
-        <!-- [ Main Content ] end -->
-      </div>
-    </div>
-    <!-- [ Main Content ] end -->
-    <footer class="pc-footer">
-      <div class="footer-wrapper container-fluid">
-        <div class="row">
-          <div class="col-sm-6 my-1">
-            <p class="m-0">Made with &#9829; by Team <a href="https://themeforest.net/user/phoenixcoded" target="_blank"> Phoenixcoded</a></p>
-          </div>
-          <div class="col-sm-6 ms-auto my-1">
-            <ul class="list-inline footer-link mb-0 justify-content-sm-end d-flex">
-              <li class="list-inline-item"><a href="../index.html">Home</a></li>
-              <li class="list-inline-item"><a href="https://pcoded.gitbook.io/light-able/" target="_blank">Documentation</a></li>
-              <li class="list-inline-item"><a href="https://phoenixcoded.support-hub.io/" target="_blank">Support</a></li>
-            </ul>
           </div>
         </div>
       </div>
-    </footer>
- <div class="offcanvas border-0 pct-offcanvas offcanvas-end" tabindex="-1" id="offcanvas_pc_layout">
-  <div class="offcanvas-header justify-content-between">
-    <h5 class="offcanvas-title">Settings</h5>
-    <button type="button" class="btn btn-icon btn-link-danger" data-bs-dismiss="offcanvas" aria-label="Close"><i
-        class="ti ti-x"></i></button>
-  </div>
-  <div class="pct-body customizer-body">
-    <div class="offcanvas-body py-0">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <div class="pc-dark">
-            <h6 class="mb-1">Theme Mode</h6>
-            <p class="text-muted text-sm">Choose light or dark mode or Auto</p>
-            <div class="row theme-color theme-layout">
-              <div class="col-4">
-                <div class="d-grid">
-                  <button class="preset-btn btn active" data-value="true" onclick="layout_change('light');">
-                    <span class="btn-label">Light</span>
-                    <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
-                  </button>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="d-grid">
-                  <button class="preset-btn btn" data-value="false" onclick="layout_change('dark');">
-                    <span class="btn-label">Dark</span>
-                    <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
-                  </button>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="d-grid">
-                  <button class="preset-btn btn" data-value="default" onclick="layout_change_default();"
-                    data-bs-toggle="tooltip"
-                    title="Automatically sets the theme based on user's operating system's color scheme.">
-                    <span class="btn-label">Default</span>
-                    <span class="pc-lay-icon d-flex align-items-center justify-content-center">
-                      <i class="ph-duotone ph-cpu"></i>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <h6 class="mb-1">Sidebar Theme</h6>
-          <p class="text-muted text-sm">Choose Sidebar Theme</p>
-          <div class="row theme-color theme-sidebar-color">
-            <div class="col-6">
-              <div class="d-grid">
-                <button class="preset-btn btn" data-value="true" onclick="layout_sidebar_change('dark');">
-                  <span class="btn-label">Dark</span>
-                  <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
-                </button>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="d-grid">
-                <button class="preset-btn btn active" data-value="false" onclick="layout_sidebar_change('light');">
-                  <span class="btn-label">Light</span>
-                  <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <h6 class="mb-1">Accent color</h6>
-          <p class="text-muted text-sm">Choose your primary theme color</p>
-          <div class="theme-color preset-color">
-            <a href="#!" class="active" data-value="preset-1"><i class="ti ti-check"></i></a>
-            <a href="#!" data-value="preset-2"><i class="ti ti-check"></i></a>
-            <a href="#!" data-value="preset-3"><i class="ti ti-check"></i></a>
-            <a href="#!" data-value="preset-4"><i class="ti ti-check"></i></a>
-            <a href="#!" data-value="preset-5"><i class="ti ti-check"></i></a>
-            <a href="#!" data-value="preset-6"><i class="ti ti-check"></i></a>
-            <a href="#!" data-value="preset-7"><i class="ti ti-check"></i></a>
-            <a href="#!" data-value="preset-8"><i class="ti ti-check"></i></a>
-            <a href="#!" data-value="preset-9"><i class="ti ti-check"></i></a>
-            <a href="#!" data-value="preset-10"><i class="ti ti-check"></i></a>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <h6 class="mb-1">Sidebar Caption</h6>
-          <p class="text-muted text-sm">Sidebar Caption Hide/Show</p>
-          <div class="row theme-color theme-nav-caption">
-            <div class="col-6">
-              <div class="d-grid">
-                <button class="preset-btn btn active" data-value="true" onclick="layout_caption_change('true');">
-                  <span class="btn-label">Caption Show</span>
-                  <span
-                    class="pc-lay-icon"><span></span><span></span><span><span></span><span></span></span><span></span></span>
-                </button>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="d-grid">
-                <button class="preset-btn btn" data-value="false" onclick="layout_caption_change('false');">
-                  <span class="btn-label">Caption Hide</span>
-                  <span
-                    class="pc-lay-icon"><span></span><span></span><span><span></span><span></span></span><span></span></span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="pc-rtl">
-            <h6 class="mb-1">Theme Layout</h6>
-            <p class="text-muted text-sm">LTR/RTL</p>
-            <div class="row theme-color theme-direction">
-              <div class="col-6">
-                <div class="d-grid">
-                  <button class="preset-btn btn active" data-value="false" onclick="layout_rtl_change('false');">
-                    <span class="btn-label">LTR</span>
-                    <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
-                  </button>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="d-grid">
-                  <button class="preset-btn btn" data-value="true" onclick="layout_rtl_change('true');">
-                    <span class="btn-label">RTL</span>
-                    <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="list-group-item pc-box-width">
-          <div class="pc-container-width">
-            <h6 class="mb-1">Layout Width</h6>
-            <p class="text-muted text-sm">Choose Full or Container Layout</p>
-            <div class="row theme-color theme-container">
-              <div class="col-6">
-                <div class="d-grid">
-                  <button class="preset-btn btn active" data-value="false" onclick="change_box_container('false')">
-                    <span class="btn-label">Full Width</span>
-                    <span class="pc-lay-icon"><span></span><span></span><span></span><span><span></span></span></span>
-                  </button>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="d-grid">
-                  <button class="preset-btn btn" data-value="true" onclick="change_box_container('true')">
-                    <span class="btn-label">Fixed Width</span>
-                    <span class="pc-lay-icon"><span></span><span></span><span></span><span><span></span></span></span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="d-grid">
-            <button class="btn btn-light-danger" id="layoutreset">Reset Layout</button>
-          </div>
-        </li>
-      </ul>
+      <!-- End Dashboard Widgets -->
     </div>
   </div>
-</div>
-    <!-- [Page Specific JS] start -->
-    <script src="{{asset('../assets/js/plugins/apexcharts.min.js')}}"></script>
-    <script src="{{asset('../assets/js/plugins/jsvectormap.min.js')}}"></script>
-    <script src="{{asset('../assets/js/plugins/world.js')}}"></script>
-    <script src="{{asset('../assets/js/plugins/world-merc.js')}}"></script>
-    <script src="{{asset('../assets/js/pages/dashboard-default.js')}}"></script>
-    <!-- [Page Specific JS] end -->
-    <!-- Required Js -->
-    <script src="{{asset('../assets/js/plugins/popper.min.js')}}"></script>
-    <script src="{{asset('../assets/js/plugins/simplebar.min.js')}}"></script>
-    <script src="{{asset('../assets/js/plugins/bootstrap.min.js')}}"></script>
-    <script src="{{asset('../assets/js/fonts/custom-font.js')}}"></script>
-    <script src="{{asset('../assets/js/pcoded.js')}}"></script>
-    <script src="{{asset('../assets/js/plugins/feather.min.js')}}"></script>
+  <!-- End Main Content -->
 
-    
-    
-    
-    
-    <script>layout_change('light');</script>
-    
-    
-    
-    
-    <script>layout_sidebar_change('light');</script>
-    
-    
-    
-    <script>change_box_container('false');</script>
-    
-    
-    <script>layout_caption_change('true');</script>
-    
-    
-    
-    
-    <script>layout_rtl_change('false');</script>
-    
-    
-    <script>preset_change("preset-1");</script>
-    
-  </body>
-  <!-- [Body] end -->
+  <!-- Footer -->
+  <footer class="pc-footer">
+    <div class="footer-wrapper container-fluid">
+      <div class="row">
+        <div class="col-sm-6 my-1">
+          <p class="m-0">Made with &#9829; by Team <a href="https://themeforest.net/user/phoenixcoded" target="_blank"> Phoenixcoded</a></p>
+        </div>
+        <div class="col-sm-6 ms-auto my-1">
+          <ul class="list-inline footer-link mb-0 justify-content-sm-end d-flex">
+            <li class="list-inline-item"><a href="../index.html">Home</a></li>
+            <li class="list-inline-item"><a href="https://pcoded.gitbook.io/light-able/" target="_blank">Documentation</a></li>
+            <li class="list-inline-item"><a href="https://phoenixcoded.support-hub.io/" target="_blank">Support</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+  <!-- Offcanvas Settings -->
+  {{-- @include('partials.offcanvas-settings') --}}
+  <!-- End Offcanvas Settings -->
+
+  <!-- JS Plugins -->
+  <script src="{{asset('../assets/js/plugins/apexcharts.min.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/jsvectormap.min.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/world.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/world-merc.js')}}"></script>
+  <script src="{{asset('../assets/js/pages/dashboard-default.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/popper.min.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/simplebar.min.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/bootstrap.min.js')}}"></script>
+  <script src="{{asset('../assets/js/fonts/custom-font.js')}}"></script>
+  <script src="{{asset('../assets/js/pcoded.js')}}"></script>
+  <script src="{{asset('../assets/js/plugins/feather.min.js')}}"></script>
+
+  <!-- Layout Scripts -->
+  <script>layout_change('light');</script>
+  <script>layout_sidebar_change('light');</script>
+  <script>change_box_container('false');</script>
+  <script>layout_caption_change('true');</script>
+  <script>layout_rtl_change('false');</script>
+  <script>preset_change("preset-1");</script>
+</body>
 </html>

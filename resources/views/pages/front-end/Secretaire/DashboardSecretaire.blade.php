@@ -86,7 +86,7 @@
           <ul class="pc-submenu">
             {{-- <li class="pc-item"><a class="pc-link" href="{{route('formPatient')}}">Créer dossier et compte patient</a></li> --}}
           <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">lister patients</a></li>
-<li class="pc-item"><a class="pc-link" href="{{ route('factures.create') }}">Paiement et facture</a></li>
+          <li class="pc-item"><a class="pc-link" href="{{ route('factures.create') }}">Paiement et facture</a></li>
             {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">Devis avant soins</a></li> --}}
           </ul>
         </li>
@@ -237,8 +237,8 @@
               <div class="col-md-12">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Home</li>
+                  {{-- <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
+                  <li class="breadcrumb-item" aria-current="page">Home</li> --}}
                 </ul>
               </div>
               <div class="col-md-12">
@@ -333,13 +333,13 @@
       <div class="footer-wrapper container-fluid">
         <div class="row">
           <div class="col-sm-6 my-1">
-            <p class="m-0">Made with &#9829; by Team <a href="https://themeforest.net/user/phoenixcoded" target="_blank"> Phoenixcoded</a></p>
+            <p class="m-0">BaobabDentaire@gmail.com </p>
           </div>
           <div class="col-sm-6 ms-auto my-1">
             <ul class="list-inline footer-link mb-0 justify-content-sm-end d-flex">
               <li class="list-inline-item"><a href="../index.html">Home</a></li>
-              <li class="list-inline-item"><a href="https://pcoded.gitbook.io/light-able/" target="_blank">Documentation</a></li>
-              <li class="list-inline-item"><a href="https://phoenixcoded.support-hub.io/" target="_blank">Support</a></li>
+              {{-- <li class="list-inline-item"><a href="https://pcoded.gitbook.io/light-able/" target="_blank">Documentation</a></li>
+              <li class="list-inline-item"><a href="https://phoenixcoded.support-hub.io/" target="_blank">Support</a></li> --}}
             </ul>
           </div>
         </div>

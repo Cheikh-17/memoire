@@ -27,6 +27,19 @@
             </select>
         </div>
 
+        <script>
+            document.getElementById('idUser').addEventListener('change', function() {
+                var selectedUser = this.value;
+                var url = new URL(window.location.href);
+                if(selectedUser) {
+                    url.searchParams.set('idUser', selectedUser);
+                } else {
+                    url.searchParams.delete('idUser');
+                }
+                window.location.href = url.toString();
+            });
+        </script>
+
         <div class="mb-3">
             <label for="consultation_id" class="form-label">Consultation</label>
             <select name="consultation_id" id="consultation_id" class="form-select" required>
@@ -54,3 +67,4 @@
     </form>
 </div>
 @endsection
+ 

@@ -6,6 +6,7 @@ use App\Http\Controllers\paiementController;
 use App\Http\Controllers\SecretaireController;
 
 Route::resource('paiement', paiementController::class);
+
 use App\Http\Controllers\medecinController;
 use App\Http\Controllers\patientController;
 use App\Http\Controllers\UserController;

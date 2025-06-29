@@ -59,7 +59,7 @@
 
             <div class="row g-4 mt-5">
                 <!-- Contact Form -->
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                {{-- <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="bg-light rounded p-5">
                         <p class="d-inline-block border rounded-pill py-1 px-4">Contactez-Nous</p>
                         <h1 class="mb-4">Vous Avez Une Question ? Contactez-Nous !</h1>
@@ -96,7 +96,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Google Map -->
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">

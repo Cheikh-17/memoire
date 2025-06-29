@@ -91,8 +91,9 @@ class ordonnanceController extends Controller
     public function destroy(string $id)
     {
         $ordonnance = ordonnance::findOrFail($id);
-        $ordonnance->delete();
+        $ordonnance->is_hidden = true;
+        $ordonnance->save();
 
-        return redirect()->route('ordonnances.index')->with('success', 'Ordonnance supprimée avec succès.');
+        return redirect()->route('ordonnances.index')->with('success', 'Ordonnance masquée avec succès.');
     }
 }

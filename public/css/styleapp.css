@@ -482,7 +482,7 @@
 }
 
 .footer .btn.btn-social:hover {
-    color: var(--primary);
+    color: var(--primary) ;
 }
 
 .footer .btn.btn-link {

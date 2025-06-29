@@ -16,15 +16,21 @@ class FactureController extends Controller
         return view('pages.front-end.Secretaire.factures.index', compact('factures'));
     }
 
-    public function create()
+    public function create(\Illuminate\Http\Request $request)
     {
-        // Récupérer les utilisateurs et consultations pour le formulaire
+        // Récupérer les utilisateurs pour le formulaire
         $users = \App\Models\User::where('profil', 'patient')->get();
-        $consultations = \App\Models\Consultation::all();
 
         $montant = session('montant', '');
-        $idUser = session('idUser', '');
+        $idUser = $request->query('idUser', '');
+
         $date_emission = date('Y-m-d');
+
+        if ($idUser) {
+            $consultations = \App\Models\Consultation::where('idUser', $idUser)->get();
+        } else {
+            $consultations = collect(); // vide au départ
+        }
 
         return view('pages.front-end.Secretaire.factures.create', compact('users', 'consultations', 'montant', 'idUser', 'date_emission'));
     }
