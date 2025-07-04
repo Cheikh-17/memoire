@@ -24,6 +24,15 @@ class ConsultationController extends Controller
     }
 
     /**
+     * Retourne les détails d'une consultation pour le médecin en JSON.
+     */
+    public function showForMedecin($id)
+    {
+        $consultation = Consultation::with(['traitements', 'ordonnances'])->findOrFail($id);
+        return response()->json($consultation);
+    }
+
+    /**
      * Affiche la liste de toutes les consultations (pour le médecin).
      */
     public function indexMedecin()
@@ -72,8 +81,8 @@ class ConsultationController extends Controller
         $consultation = Consultation::create($validated);
 
 
-        return redirect()->route('medecin.consultations.show', $consultation->id)
-            ->with('success', 'Consultation créée avec succès et fiche médicale générée.');
+        return redirect()->route('medecin.consultations.liste')
+            ->with('success', 'Consultation créée avec succès.');
     }
 
     /**

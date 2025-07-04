@@ -26,7 +26,7 @@
                     <td>{{ \Carbon\Carbon::parse($consultation->date)->format('d/m/Y') }}</td>
                     <td>{{ $consultation->heure }}</td>
                     <td>
-                        <a href="{{ route('consultations.show', $consultation->id) }}" class="btn btn-primary btn-sm">Voir</a>
+                        <a href="{{ route('consultations.show', $consultation->id) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
                     </td>
                 </tr>
                 @endforeach

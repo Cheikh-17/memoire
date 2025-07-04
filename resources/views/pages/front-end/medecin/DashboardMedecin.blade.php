@@ -71,7 +71,7 @@
             </span>
             <span class="pc-mtext">Dashboard</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
+             
           </a>
         </li>
            
@@ -82,7 +82,7 @@
                 </span>
                 <span class="pc-mtext">Consultation</span>
                 <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-                <span class="pc-badge">2</span>
+                 
               </a>
               <ul class="pc-submenu">
                 <li class="pc-item"><a class="pc-link" href="{{ route('medecin.consultations.create')}}">Creer consultation</a></li>
@@ -97,7 +97,7 @@
                 </span>
                 <span class="pc-mtext">Ordonnance</span>
                 <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-                <span class="pc-badge">2</span>
+                 
               </a>
               <ul class="pc-submenu">
                 <li class="pc-item"><a class="pc-link" href="{{ route('medecin.ordonnances.index') }}">Voir Ordonnance</a></li>
@@ -111,7 +111,7 @@
                 </span>
                 <span class="pc-mtext">Traitement</span>
                 <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-                <span class="pc-badge">2</span>
+                 
               </a>
               <ul class="pc-submenu">
                 <li class="pc-item"><a class="pc-link" href="{{ route('medecin.traitements.index') }}">Voir Traitement</a></li>
@@ -125,7 +125,7 @@
                 </span>
                 <span class="pc-mtext">Rendez-vous</span>
                 <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-                <span class="pc-badge">2</span>
+                 
               </a>
               <ul class="pc-submenu">
                 <li class="pc-item"><a class="pc-link" href="{{ route('rendezvous.create') }}">donner rendez-vous</a></li>
@@ -138,7 +138,7 @@
                 </span>
                 <span class="pc-mtext">Dossier patient</span>
                 <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-                <span class="pc-badge">2</span>
+                 
               </a>
               <ul class="pc-submenu">
                 <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">Lister patient</a></li>
@@ -453,184 +453,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="card statistics-card-1 overflow-hidden bg-brand-color-3">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-6.svg')}}" alt="img" class="img-fluid img-bg">
-                <h5 class="mb-4 text-white">Patients ayant terminé leur traitement</h5>
-                <div class="d-flex align-items-center mt-3">
-                  <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">
-                    {{ $patientsTermines ?? 0 }}
-                  </h3>
-                </div>
-                <p class="text-white text-opacity-75 mb-2 text-sm mt-3">
-                  Nombre total de patients dont le traitement est terminé
-                </p>
-                <div class="progress bg-white bg-opacity-10" style="height: 7px">
-                  <div
-                    class="progress-bar bg-white"
-                    role="progressbar"
-                    style="width: 100%"
-                    aria-valuenow="100"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="card statistics-card-1 overflow-hidden ">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-5.svg')}}" alt="img" class="img-fluid img-bg" >
-                <h5 class="mb-4">Consultations du jour</h5>
-                <div class="d-flex align-items-center mt-3">
-                  <h3 class="f-w-300 d-flex align-items-center m-b-0">
-                    {{ $totalConsultationsDuJour ?? 0 }}
-                  </h3>
-                </div>
-                <p class="text-muted mb-2 text-sm mt-3">Nombre total de consultations pour aujourd'hui</p>
-                <div class="progress" style="height: 7px">
-                  <div
-                    class="progress-bar bg-brand-color-3"
-                    role="progressbar"
-                    style="width: 100%"
-                    aria-valuenow="100"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="card statistics-card-1 overflow-hidden bg-brand-color-4">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-4.svg')}}" alt="img" class="img-fluid img-bg" >
-                <h5 class="mb-4">Rendez-vous du jour</h5>
-                <div class="d-flex align-items-center mt-3">
-                  <h3 class="f-w-300 d-flex align-items-center m-b-0">
-                    {{ $totalRendezVousDuJour ?? 0 }}
-                  </h3>
-                </div>
-                <p class="text-muted mb-2 text-sm mt-3">Nombre total de rendez-vous pour aujourd'hui</p>
-                <div class="progress" style="height: 7px">
-                  <div
-                    class="progress-bar bg-brand-color-4"
-                    role="progressbar"
-                    style="width: 100%"
-                    aria-valuenow="100"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-12">
-            <div class="card">
-              <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5>Recent Users</h5>
-                <div class="dropdown">
-                  <a
-                    class="avtar avtar-xs btn-link-secondary dropdown-toggle arrow-none"
-                    href="#"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    ><i class="material-icons-two-tone f-18">more_vert</i></a
-                  >
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">View</a>
-                    <a class="dropdown-item" href="#">Edit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                  <h2 class="mb-3"><b>4.7<small class="text-muted f-18">/5</small></b></h2>
-                  <div class="star mb-3 f-20">
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star-half-alt text-warning"></i>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">5 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 70%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">384</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">4 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 55%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">145</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">3 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 40%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">24</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">2 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 25%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">1</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3">
-                  <div class="col-auto">
-                    <h6 class="mb-0">1 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 10%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">0</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-           
-        </div>
-        <!-- [ Main Content ] end -->
-      </div>
-    </div>
-    <!-- [ Main Content ] end -->
+          
     <footer class="pc-footer">
       <div class="footer-wrapper container-fluid">
         <div class="row">

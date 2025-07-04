@@ -20,7 +20,7 @@
                     <td>{{ $ordonnance->id }}</td>
                     <td>{{ $ordonnance->created_at->format('d/m/Y') }}</td>
                     <td>
-<a href="{{ route('patient.ordonnances.show', $ordonnance->id) }}" class="btn btn-primary">Voir</a>
+                        <a href="{{ route('patient.ordonnances.show', $ordonnance->id) }}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
                     </td>
                 </tr>
                 @endforeach

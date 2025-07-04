@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card shadow-sm border-0">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header" style="background-color: #026952; color: #fff;">
                     <h4 class="mb-0">Donner un rendez-vous</h4>
                 </div>
                 <div class="card-body">

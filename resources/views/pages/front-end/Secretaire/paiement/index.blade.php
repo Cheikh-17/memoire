@@ -30,12 +30,12 @@
                 <td>{{ \Carbon\Carbon::parse($paiement->{'date-paiement'})->format('d/m/Y') }}</td>
                 <td>{{ number_format($paiement->montant, 2) }}</td>
                 <td>
-                    <a href="{{ route('paiement.show', $paiement->id) }}" class="btn btn-info btn-sm">Voir</a>
-                    <a href="{{ route('paiement.edit', $paiement->id) }}" class="btn btn-warning btn-sm">Modifier</a>
+                    <a href="{{ route('paiement.show', $paiement->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></a>
+                    <a href="{{ route('paiement.edit', $paiement->id) }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen"></i></a>
                     <form action="{{ route('paiement.destroy', $paiement->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Confirmer la suppression ?')">Supprimer</button>
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Confirmer la suppression ?')"><i class="fa-solid fa-trash"></i></button>
                     </form>
                 </td>
             </tr>

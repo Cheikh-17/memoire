@@ -28,12 +28,12 @@
                     <td>{{ $medecin->user->adresse ?? '' }}</td>
                     <td>{{ $medecin->specialite }}</td>
                     <td>
-                        <a href="{{ route('medecin.show', $medecin->id) }}" class="btn btn-info btn-sm">Voir</a>
-                        <a href="{{ route('medecin.edit', $medecin->id) }}" class="btn btn-warning btn-sm">Éditer</a>
+                        <a href="{{ route('medecin.show', $medecin->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></a>
+                        <a href="{{ route('medecin.edit', $medecin->id) }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen"></i></a>
                         <form action="{{ route('medecin.destroy', $medecin->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce médecin ?')">Supprimer</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce médecin ?')"><i class="fa-solid fa-trash"></i></button>
                         </form>
                     </td>
                 </tr> 

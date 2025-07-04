@@ -1,4 +1,4 @@
- @extends('app1')
+@extends('app1')
 
 @section('content')
 
@@ -28,12 +28,12 @@
                     <td>{{ $secretaire->telephone }}</td>
                     <td>{{ $secretaire->adresse }}</td>
                     <td>
-                        <a href="{{ route('secretaire.show', $secretaire->id) }}" class="btn btn-info btn-sm">Voir</a>
-                        <a href="{{ route('secretaire.edit', $secretaire->id) }}" class="btn btn-warning btn-sm">Éditer</a>
+                        <a href="{{ route('secretaire.show', $secretaire->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></a>
+                        <a href="{{ route('secretaire.edit', $secretaire->id) }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen"></i></a>
                         <form action="{{ route('secretaire.destroy', $secretaire->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce secrétaire ?')">Supprimer</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce secrétaire ?')"><i class="fa-solid fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

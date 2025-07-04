@@ -111,6 +111,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('consultations/liste', [ConsultationController::class, 'indexMedecin'])->name('consultations.liste');
 
         Route::resource('consultations', ConsultationController::class)->except(['destroy']);
+
+        // Route pour récupérer les détails d'une consultation pour le médecin (AJAX)
+        Route::get('consultations/showForMedecin/{id}', [ConsultationController::class, 'showForMedecin'])->name('consultations.showForMedecin');
          
         Route::resource('traitements', traitementController::class)->except(['destroy']);
         Route::resource('ordonnances', ordonnanceController::class)->except(['destroy']);

@@ -71,7 +71,7 @@
             </span>
             <span class="pc-mtext">Dashboard</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
+            
           </a>
         </li>
         <li class="pc-item pc-hasmenu">
@@ -81,7 +81,7 @@
             </span>
             <span class="pc-mtext">Patient</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
+            
           </a>
           <ul class="pc-submenu">
             {{-- <li class="pc-item"><a class="pc-link" href="{{route('formPatient')}}">Créer dossier et compte patient</a></li> --}}

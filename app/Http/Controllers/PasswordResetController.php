@@ -37,9 +37,10 @@ class PasswordResetController extends Controller
     /**
      * Affiche le formulaire pour saisir le nouveau mot de passe.
      */
-    public function showResetPasswordForm($token)
+    public function showResetPasswordForm($token, \Illuminate\Http\Request $request)
     {
-        return view('pages.front-end.auth.reset-password', ['token' => $token]);
+        $email = $request->query('email');
+        return view('pages.front-end.auth.reset-password', ['token' => $token, 'email' => $email]);
     }
 
     /**

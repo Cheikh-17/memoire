@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="card shadow-sm border-0">
-                <div class="card-header bg-primary text-white d-flex align-items-center">
+                <div class="card-header" style="background-color: #026952; color: #fff; display: flex; align-items: center;">
                     <i class="bi bi-calendar-check me-2"></i>
                     <h3 class="mb-0">Mes rendez-vous</h3>
                 </div>

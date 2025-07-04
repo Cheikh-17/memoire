@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-        <div class="card shadow p-4" style="width: 450px; background-color: #f8f9fa; border-radius: 18px;">
+        <div class="card shadow p-4" style="width: 600px; background-color: #f8f9fa; border-radius: 18px;">
             <h1 class="text-center mb-4" style="color: #026952; font-size: 2.5rem; font-weight: bold;">
                 Créer un devis
             </h1>

@@ -22,7 +22,7 @@
                 <td>{{ $facture->created_at->format('d/m/Y') }}</td>
                 <td>{{ number_format($facture->montant, 2) }}</td>
                 <td>
-                    <a href="{{ route('facture.show', $facture->id) }}" class="btn btn-primary btn-sm">Voir</a>
+                    <a href="{{ route('facture.show', $facture->id) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
                 </td>
             </tr>
             @endforeach

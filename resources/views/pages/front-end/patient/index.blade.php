@@ -23,12 +23,12 @@
                 <td>{{ $patient->telephone }}</td>
                 <td>{{ $patient->adresse }}</td>
                 <td>
-                    <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm">View</a>
-                    <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i></a>
+                    <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen"></i></a>
                     <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce patient ?')">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce patient ?')"><i class="fa-solid fa-trash"></i></button>
                     </form>
                 </td>
             </tr>

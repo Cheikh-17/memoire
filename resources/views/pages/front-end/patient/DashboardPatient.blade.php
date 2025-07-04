@@ -71,7 +71,7 @@
             </span>
             <span class="pc-mtext">Dashboard</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
+             
           </a>
         </li>
         <li class="pc-item pc-hasmenu">
@@ -81,7 +81,7 @@
             </span>
             <span class="pc-mtext">Ordonnance</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
+            
           </a>
           <ul class="pc-submenu">
 <li class="pc-item"><a class="pc-link" href="{{ route('ordonnances.index') }}">voir ordonnance</a></li>
@@ -94,7 +94,7 @@
             </span>
             <span class="pc-mtext">Fiche Médicale</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
+            
           </a>
           <ul class="pc-submenu">
             <li class="pc-item"><a class="pc-link" href="{{route('fiche-medicale')}}">voir fiche médicale</a></li>
@@ -107,7 +107,7 @@
             </span>
             <span class="pc-mtext">Rendez-vous</span>
             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-            <span class="pc-badge">2</span>
+             
           </a>
           <ul class="pc-submenu">
             <li class="pc-item"><a class="pc-link" href="{{ route('rendezvous.index') }}">consultez rendez-vous</a></li>
@@ -280,12 +280,11 @@
             <div class="card statistics-card-1 overflow-hidden ">
               <div class="card-body">
                 <img src="{{asset('../assets/images/widget/img-status-4.svg')}}" alt="img" class="img-fluid img-bg" >
-                <h5 class="mb-4">Daily Sales</h5>
+                <h5 class="mb-4">Nombre total de rendez-vous</h5>
                 <div class="d-flex align-items-center mt-3">
-                  <h3 class="f-w-300 d-flex align-items-center m-b-0">$249.95</h3>
-                  <span class="badge bg-light-success ms-2">36%</span>
+                  <h3 class="f-w-300 d-flex align-items-center m-b-0">{{ $totalRendezVous }}</h3>
                 </div>
-                <p class="text-muted mb-2 text-sm mt-3">You made an extra 35,000 this daily</p>
+                <p class="text-muted mb-2 text-sm mt-3">Nombre total de rendez-vous reçus</p>
                 <div class="progress" style="height: 7px">
                   <div
                     class="progress-bar bg-brand-color-3"
@@ -303,12 +302,11 @@
             <div class="card statistics-card-1 overflow-hidden ">
               <div class="card-body">
                 <img src="{{asset('../assets/images/widget/img-status-5.svg')}}" alt="img" class="img-fluid img-bg" >
-                <h5 class="mb-4">Monthly Sales</h5>
+                <h5 class="mb-4">Nombre total d'ordonnances</h5>
                 <div class="d-flex align-items-center mt-3">
-                  <h3 class="f-w-300 d-flex align-items-center m-b-0">$249.95</h3>
-                  <span class="badge bg-light-primary ms-2">20%</span>
+                  <h3 class="f-w-300 d-flex align-items-center m-b-0">{{ $totalOrdonnances }}</h3>
                 </div>
-                <p class="text-muted mb-2 text-sm mt-3">You made an extra 35,000 this Monthly</p>
+                <p class="text-muted mb-2 text-sm mt-3">Nombre total d'ordonnances reçues</p>
                 <div class="progress" style="height: 7px">
                   <div
                     class="progress-bar bg-brand-color-3"
@@ -326,11 +324,11 @@
             <div class="card statistics-card-1 overflow-hidden  bg-brand-color-3">
               <div class="card-body">
                 <img src="{{asset('../assets/images/widget/img-status-6.svg')}}" alt="img" class="img-fluid img-bg" >
-                <h5 class="mb-4 text-white">Yearly Sales</h5>
+                <h5 class="mb-4 text-white">Nombre total de consultations</h5>
                 <div class="d-flex align-items-center mt-3">
-                  <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">$249.95</h3>
+                  <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">{{ $totalConsultations }}</h3>
                 </div>
-                <p class="text-white text-opacity-75 mb-2 text-sm mt-3">You made an extra 35,000 this Daily</p>
+                <p class="text-white text-opacity-75 mb-2 text-sm mt-3">Nombre total de consultations reçues</p>
                 <div class="progress bg-white bg-opacity-10" style="height: 7px">
                   <div
                     class="progress-bar bg-white"
@@ -365,11 +363,10 @@
                     data-bs-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    ><i class="material-icons-two-tone f-18">more_vert</i></a
-                  >
+                    ><i class="material-icons-two-tone f-18">more_vert</i></a>
                   <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">View</a>
-                    <a class="dropdown-item" href="#">Edit</a>
+                    <a class="dropdown-item" href="#">Months</a>
+                    <a class="dropdown-item" href="#">years</a>
                   </div>
                 </div>
               </div>
@@ -415,282 +412,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-xl-4">
-            <div class="card statistics-card-1 overflow-hidden ">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-7.svg')}}" alt="img" class="img-fluid img-bg" >
-                <div class="d-flex align-items-center">
-                  <img src="{{asset('../assets/images/widget/img-facebook.svg')}}" alt="img" class="img-fluid" >
-                  <div class="flex-grow-1 ms-3">
-                    <p class="mb-0 text-muted">Total Likes</p>
-                    <div class="d-inline-flex align-items-center">
-                      <h5 class="f-w-300 d-flex align-items-center m-b-0">12,281</h5>
-                      <span class="badge bg-success ms-2">+7.2%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row g-3 mt-5 text-center">
-                  <div class="col-6">
-                    <p class="mb-0 text-muted">Target</p>
-                    <h5 class="mb-0">35,098</h5>
-                  </div>
-                  <div class="col-6 border-start">
-                    <p class="mb-0 text-muted">Duration</p>
-                    <h5 class="mb-0">3,539</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-4">
-            <div class="card statistics-card-1 overflow-hidden ">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-8.svg')}}" alt="img" class="img-fluid img-bg" >
-                <div class="d-flex align-items-center">
-                  <img src="{{asset('../assets/images/widget/img-google.svg')}}" alt="img" class="img-fluid" >
-                  <div class="flex-grow-1 ms-3">
-                    <p class="mb-0 text-muted">Total Likes</p>
-                    <div class="d-inline-flex align-items-center">
-                      <h5 class="f-w-300 d-flex align-items-center m-b-0">12,281</h5>
-                      <span class="badge bg-success ms-2">+5.9%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row g-3 mt-5 text-center">
-                  <div class="col-6">
-                    <p class="mb-0 text-muted">Target</p>
-                    <h5 class="mb-0">35,098</h5>
-                  </div>
-                  <div class="col-6 border-start">
-                    <p class="mb-0 text-muted">Duration</p>
-                    <h5 class="mb-0">3,539</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 col-xl-4">
-            <div class="card statistics-card-1 overflow-hidden ">
-              <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-9.svg')}}" alt="img" class="img-fluid img-bg" >
-                <div class="d-flex align-items-center">
-                  <img src="{{asset('../assets/images/widget/img-twitter.svg')}}" alt="img" class="img-fluid" >
-                  <div class="flex-grow-1 ms-3">
-                    <p class="mb-0 text-muted">Total Likes</p>
-                    <div class="d-inline-flex align-items-center">
-                      <h5 class="f-w-300 d-flex align-items-center m-b-0">12,281</h5>
-                      <span class="badge bg-success ms-2">+6.2%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row g-3 mt-5 text-center">
-                  <div class="col-6">
-                    <p class="mb-0 text-muted">Target</p>
-                    <h5 class="mb-0">35,098</h5>
-                  </div>
-                  <div class="col-6 border-start">
-                    <p class="mb-0 text-muted">Duration</p>
-                    <h5 class="mb-0">3,539</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-4">
-            <div class="card">
-              <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5>Recent Users</h5>
-                <div class="dropdown">
-                  <a
-                    class="avtar avtar-xs btn-link-secondary dropdown-toggle arrow-none"
-                    href="#"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    ><i class="material-icons-two-tone f-18">more_vert</i></a
-                  >
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">View</a>
-                    <a class="dropdown-item" href="#">Edit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                  <h2 class="mb-3"><b>4.7<small class="text-muted f-18">/5</small></b></h2>
-                  <div class="star mb-3 f-20">
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star-half-alt text-warning"></i>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">5 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 70%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">384</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">4 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 55%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">145</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">3 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 40%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">24</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3 mb-2">
-                  <div class="col-auto">
-                    <h6 class="mb-0">2 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 25%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">1</p>
-                  </div>
-                </div>
-                <div class="row align-items-center g-3">
-                  <div class="col-auto">
-                    <h6 class="mb-0">1 <i class="fas fa-star text-warning"></i></h6>
-                  </div>
-                  <div class="col">
-                    <div class="progress" style="height: 8px">
-                      <div class="progress-bar bg-primary" style="width: 10%"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <p class="mb-0 text-muted">0</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-8">
-            <div class="card table-card">
-              <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5>Recent Users</h5>
-                <div class="dropdown">
-                  <a
-                    class="avtar avtar-xs btn-link-secondary dropdown-toggle arrow-none"
-                    href="#"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    ><i class="material-icons-two-tone f-18">more_vert</i></a
-                  >
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">View</a>
-                    <a class="dropdown-item" href="#">Edit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body py-2 px-0">
-                <div class="table-responsive">
-                  <table class="table table-hover table-borderless table-sm mb-0">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="d-inline-block align-middle">
-                            <img src="{{asset('../assets/images/user/avatar-1.jpg')}}" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Quinn Flynn</h6>
-                              <p class="m-b-0">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td><p class="mb-0"><i class="ph-duotone ph-circle text-warning f-12"></i> 11 may 12:30</p></td>
-                        <td class="text-end">
-                          <button class="btn avtar avtar-xs btn-light-danger"><i class="ti ti-x"></i></button>
-                          <button class="btn avtar avtar-xs btn-light-success"><i class="ti ti-check"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-inline-block align-middle">
-                            <img src="{{asset('../assets/images/user/avatar-2.jpg')}}" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Garrett Winters</h6>
-                              <p class="m-b-0">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td><p class="mb-0"><i class="ph-duotone ph-circle text-success f-12"></i> 11 may 12:30</p></td>
-                        <td class="text-end">
-                          <button class="btn avtar avtar-xs btn-light-danger"><i class="ti ti-x"></i></button>
-                          <button class="btn avtar avtar-xs btn-light-success"><i class="ti ti-check"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-inline-block align-middle">
-                            <img src="{{asset('../assets/images/user/avatar-3.jpg')}}" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Ashton Cox</h6>
-                              <p class="m-b-0">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td><p class="mb-0"><i class="ph-duotone ph-circle text-primary f-12"></i> 11 may 12:30</p></td>
-                        <td class="text-end">
-                          <button class="btn avtar avtar-xs btn-light-danger"><i class="ti ti-x"></i></button>
-                          <button class="btn avtar avtar-xs btn-light-success"><i class="ti ti-check"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-inline-block align-middle">
-                            <img src="{{asset('../assets/images/user/avatar-4.jpg')}}" alt="user image" class="img-radius align-top m-r-15" style="width:40px;">
-                            <div class="d-inline-block">
-                              <h6 class="m-b-0">Cedric Kelly</h6>
-                              <p class="m-b-0">Android developer</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td><p class="mb-0"><i class="ph-duotone ph-circle text-danger f-12"></i> 11 may 12:30</p></td>
-                        <td class="text-end">
-                          <button class="btn avtar avtar-xs btn-light-danger"><i class="ti ti-x"></i></button>
-                          <button class="btn avtar avtar-xs btn-light-success"><i class="ti ti-check"></i></button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- [ Main Content ] end -->
-      </div>
-    </div>
+          
     <!-- [ Main Content ] end -->
     <footer class="pc-footer">
       <div class="footer-wrapper container-fluid">
@@ -698,13 +420,7 @@
           <div class="col-sm-6 my-1">
             <p class="m-0">Made with &#9829; by Team <a href="https://themeforest.net/user/phoenixcoded" target="_blank"> Phoenixcoded</a></p>
           </div>
-          {{-- <div class="col-sm-6 ms-auto my-1">
-            <ul class="list-inline footer-link mb-0 justify-content-sm-end d-flex">
-              <li class="list-inline-item"><a href="../index.html">Home</a></li>
-              <li class="list-inline-item"><a href="https://pcoded.gitbook.io/light-able/" target="_blank">Documentation</a></li>
-              <li class="list-inline-item"><a href="https://phoenixcoded.support-hub.io/" target="_blank">Support</a></li>
-            </ul>
-          </div> --}}
+          
         </div>
       </div>
     </footer>

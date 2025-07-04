@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Login | Light Able Admin & Dashboard Template</title>
+  <title>Login</title>
   <!-- Meta -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
@@ -66,34 +66,16 @@
                   <h6 class="f-w-400 mb-0">Forgot Password?</h6>
                 </a>
               </div>
-              <div class="d-grid mt-4">
-                <button type="submit" class="btn btn-primary">Se connecter</button>
-              </div>
+                <div class="d-grid mt-4">
+                <button type="submit" class="btn" style="background-color: #026952; color: #fff;">Se connecter</button>
+                </div>
             </form>
 
-            <!-- Social Login -->
+            {{-- <!-- Social Login -->
             <div class="saprator my-3">
               <span>Or continue with</span>
-            </div>
-            <div class="text-center">
-              <ul class="list-inline mx-auto mt-3 mb-0">
-                <li class="list-inline-item">
-                  <a href="https://www.facebook.com/" class="avtar avtar-s rounded-circle bg-facebook" target="_blank">
-                    <i class="fab fa-facebook-f text-white"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="https://twitter.com/" class="avtar avtar-s rounded-circle bg-twitter" target="_blank">
-                    <i class="fab fa-twitter text-white"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="https://myaccount.google.com/" class="avtar avtar-s rounded-circle bg-googleplus" target="_blank">
-                    <i class="fab fa-google text-white"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            </div> --}}
+            
           </div>
         </div>
       </div>

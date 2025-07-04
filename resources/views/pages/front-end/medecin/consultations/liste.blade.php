@@ -27,7 +27,7 @@
                         <td>{{ $consultation->motif }}</td>
                         <td>{{ $consultation->diagnostic }}</td>
                         <td>
-                            <a href="{{ route('medecin.consultations.show', $consultation->id) }}" class="btn btn-primary btn-sm">detail</a>
+                            <button class="btn btn-primary btn-sm btn-detail" data-id="{{ $consultation->id }}">detail</button>
                         </td>
                     </tr>
                 @endforeach
@@ -35,4 +35,62 @@
         </table>
     @endif
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="consultationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="consultationModalLabel">Détails de la consultation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>ID:</strong> <span id="modal-id"></span></p>
+        <p><strong>Date:</strong> <span id="modal-date"></span></p>
+        <p><strong>Heure:</strong> <span id="modal-heure"></span></p>
+        <p><strong>Motif:</strong> <span id="modal-motif"></span></p>
+        <p><strong>Diagnostic:</strong> <span id="modal-diagnostic"></span></p>
+      </div>
+      <div class="modal-footer">
+        <a href="{{ route('medecin.ordonnances.create') }}" class="btn btn-success">Ordonnances</a>
+        <a href="{{ route('medecin.traitements.create') }}" class="btn btn-info">Traitements</a>
+        <button type="button" id="btn-retour" class="btn btn-secondary">Retour</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@endsection
+
+@section('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var consultationModal = new bootstrap.Modal(document.getElementById('consultationModal'));
+
+    document.querySelectorAll('.btn-detail').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var consultationId = this.getAttribute('data-id');
+            fetch('/medecin/consultations/showForMedecin/' + consultationId)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('modal-id').textContent = data.id;
+                    document.getElementById('modal-date').textContent = data.date;
+                    document.getElementById('modal-heure').textContent = data.heure;
+                    document.getElementById('modal-motif').textContent = data.motif;
+                    document.getElementById('modal-diagnostic').textContent = data.diagnostic;
+
+                    consultationModal.show();
+                })
+                .catch(error => {
+                    alert('Erreur lors du chargement des détails de la consultation.');
+                    console.error(error);
+                });
+        });
+    });
+
+    document.getElementById('btn-retour').addEventListener('click', function() {
+        consultationModal.hide();
+    });
+});
+</script>
 @endsection

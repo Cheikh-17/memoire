@@ -47,7 +47,7 @@
               <span class="pc-micon"><i class="ph-duotone ph-house"></i></span>
               <span class="pc-mtext">Dashboard</span>
               <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-              <span class="pc-badge">2</span>
+               
             </a>
           </li>
           <li class="pc-item pc-hasmenu">
@@ -55,7 +55,7 @@
               <span class="pc-micon"><i class="ph-duotone ph-users-three"></i></span>
               <span class="pc-mtext">Users</span>
               <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-              <span class="pc-badge">2</span>
+               
             </a>
             <ul class="pc-submenu">
               <li class="pc-item"><a class="pc-link" href="{{route('form')}}">creer Users</a></li>
@@ -66,7 +66,7 @@
               <span class="pc-micon"><i class="ph-duotone ph-stethoscope"></i></span>
               <span class="pc-mtext">Medecin</span>
               <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-              <span class="pc-badge">2</span>
+               
             </a>
             <ul class="pc-submenu">
               <li class="pc-item"><a class="pc-link" href="{{route('medecin.index')}}">lister medecin </a></li>
@@ -77,7 +77,7 @@
               <span class="pc-micon"><i class="ph-duotone ph-user-circle"></i></span>
               <span class="pc-mtext">Secretaire</span>
               <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-              <span class="pc-badge">2</span>
+               
             </a>
             <ul class="pc-submenu">
               <li class="pc-item"><a class="pc-link" href="{{route('secretaire.index')}}">lister secretaire</a></li>
@@ -88,7 +88,7 @@
               <span class="pc-micon"><i class="ph-duotone ph-users"></i></span>
               <span class="pc-mtext">Patient</span>
               <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-              <span class="pc-badge">2</span>
+               
             </a>
             <ul class="pc-submenu">
               <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">lister patient</a></li>
@@ -294,45 +294,46 @@
             </div>
           </div>
         </div>
-        <!-- Bloc d'informations financières -->
-        <div class="col-md-6 col-xl-5">
-          <div class="card">
-            <div class="card-header d-flex align-items-center justify-content-between py-3">
-              <h5>Finances</h5>
-            </div>
-            <div class="card-body">
-              <div class="d-flex align-items-center">
-                <div class="avtar avtar-s bg-light-primary flex-shrink-0">
-                  <i class="ph-duotone ph-money f-20"></i>
+            <!-- Bloc d'informations financières -->
+            <div class="col-md-6 col-xl-5">
+              <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between py-3">
+                  <h5>Finances</h5>
                 </div>
-                <div class="flex-grow-1 ms-3">
-                  <p class="mb-0 text-muted">Total des recettes</p>
-                  <h5 class="mb-0">{{ $totalRecettes ?? '0 FCFA' }}</h5>
-                </div>
-              </div>
-              <div id="earnings-users-chart"></div>
-            </div>
-          </div>
-          <script src="{{asset('../assets/js/plugins/apexcharts.min.js')}}"></script>
-          <div class="card mt-3">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-6">
+                <div class="card-body">
                   <div class="d-flex align-items-center">
-                    <div class="avtar avtar-s bg-light-warning flex-shrink-0">
-                      <i class="ph-duotone ph-lightning f-20"></i>
+                    <div class="avtar avtar-s bg-light-primary flex-shrink-0">
+                      <i class="ph-duotone ph-money f-20"></i>
                     </div>
-                    <div class="flex-grow-1 ms-2">
-                      <p class="mb-0 text-muted">Actes réalisés</p>
-                      <h6 class="mb-0">{{ $actesRealises ?? 0 }}</h6>
+                    <div class="flex-grow-1 ms-3">
+                      <p class="mb-0 text-muted">Total des recettes</p>
+                      <h5 class="mb-0">{{ $totalRecettes ?? '0 FCFA' }}</h5>
                     </div>
                   </div>
+                  <div id="earnings-users-chart"></div>
                 </div>
-                 
+              </div>
+              <script src="{{asset('../assets/js/plugins/apexcharts.min.js')}}"></script>
+              <div class="card mt-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="d-flex align-items-center">
+                        <div class="avtar avtar-s bg-light-warning flex-shrink-0">
+                          <i class="ph-duotone ph-lightning f-20"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-2">
+                          <p class="mb-0 text-muted">Actes réalisés</p>
+                          <h6 class="mb-0">{{ $actesRealises ?? 0 }}</h6>
+                        </div>
+                      </div>
+                    </div>
+                     
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+
         <!-- Liste des derniers utilisateurs -->
         <div class="col-md-12 col-xl-12">
           <div class="card table-card">
