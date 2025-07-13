@@ -4,9 +4,59 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Medecin;
+use App\Models\Rendezvous;
+use Carbon\Carbon;
 
-class medecinController extends Controller
-{
+
+
+
+class medecinController extends Controller {
+
+    /**
+     * Affiche le dashboard du médecin avec les statistiques du jour.
+     */
+    public function dashboard()
+    {
+        // Date du jour
+        $today = Carbon::today()->toDateString();
+
+        // Récupérer l'utilisateur connecté
+        $user = auth()->user();
+
+        // Nombre total de rendez-vous du jour pour le médecin connecté
+        $totalRendezVousDuJour = \App\Models\Rendezvous::where('idMedecin', $user->id)
+            ->whereDate('date_rendez_vous', $today)
+            ->count();
+
+        // Nombre total de consultations du jour pour le médecin connecté
+        $totalConsultationsDuJour = \App\Models\Consultation::where('idMedecin', $user->id)
+            ->whereDate('date', $today)
+            ->count();
+
+        // Nombre de patients ayant terminé leur traitement (exemple, à adapter selon ta logique)
+        $patientsTermines = \App\Models\Traitement::where('etat', 'termine')->distinct('patient_id')->count('patient_id');
+
+        // Récupérer le nombre de rendez-vous par jour de la semaine (Lun-Dim) pour le médecin connecté
+        $startOfWeek = Carbon::now()->startOfWeek(); // Lundi
+        $endOfWeek = Carbon::now()->endOfWeek(); // Dimanche
+
+        $rendezVousParJour = \App\Models\Rendezvous::selectRaw('DAYOFWEEK(date_rendez_vous) as jour_semaine, COUNT(*) as total')
+            ->where('idMedecin', $user->id)
+            ->whereBetween('date_rendez_vous', [$startOfWeek, $endOfWeek])
+            ->groupBy('jour_semaine')
+            ->pluck('total', 'jour_semaine')
+            ->toArray();
+
+        // Initialiser un tableau avec 7 jours (Lun=2 à Dim=1 selon DAYOFWEEK MySQL)
+        $donneesRendezVous = [];
+        for ($i = 2; $i <= 7; $i++) {
+            $donneesRendezVous[] = $rendezVousParJour[$i] ?? 0;
+        }
+        // Ajouter Dimanche (1)
+        $donneesRendezVous[] = $rendezVousParJour[1] ?? 0;
+
+        return view('pages.front-end.medecin.DashboardMedecin', compact('totalRendezVousDuJour', 'totalConsultationsDuJour', 'patientsTermines', 'donneesRendezVous'));
+    }
     /**
      * Display a listing of the resource.
      */

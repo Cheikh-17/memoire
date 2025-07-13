@@ -50,6 +50,12 @@
         <p><strong>Heure:</strong> <span id="modal-heure"></span></p>
         <p><strong>Motif:</strong> <span id="modal-motif"></span></p>
         <p><strong>Diagnostic:</strong> <span id="modal-diagnostic"></span></p>
+        <hr>
+        <h5>Informations du patient</h5>
+        <p><strong>Nom:</strong> <span id="modal-patient-nom"></span></p>
+        <p><strong>Prénom:</strong> <span id="modal-patient-prenom"></span></p>
+        <p><strong>Email:</strong> <span id="modal-patient-email"></span></p>
+        <p><strong>Téléphone:</strong> <span id="modal-patient-telephone"></span></p>
       </div>
       <div class="modal-footer">
         <a href="{{ route('medecin.ordonnances.create') }}" class="btn btn-success">Ordonnances</a>
@@ -78,6 +84,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('modal-heure').textContent = data.heure;
                     document.getElementById('modal-motif').textContent = data.motif;
                     document.getElementById('modal-diagnostic').textContent = data.diagnostic;
+
+                    // Affichage des informations du patient
+                    if(data.patient) {
+                        document.getElementById('modal-patient-nom').textContent = data.patient.nom || '';
+                        document.getElementById('modal-patient-prenom').textContent = data.patient.prenom || '';
+                        document.getElementById('modal-patient-email').textContent = data.patient.email || '';
+                        document.getElementById('modal-patient-telephone').textContent = data.patient.telephone || '';
+                    } else {
+                        document.getElementById('modal-patient-nom').textContent = '';
+                        document.getElementById('modal-patient-prenom').textContent = '';
+                        document.getElementById('modal-patient-email').textContent = '';
+                        document.getElementById('modal-patient-telephone').textContent = '';
+                    }
 
                     consultationModal.show();
                 })

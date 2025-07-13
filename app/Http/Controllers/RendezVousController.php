@@ -65,4 +65,39 @@ class RendezVousController extends Controller
 
         return redirect()->back()->with('success', 'Rendez-vous bien enregistré.');
     }
+
+    /**
+     * API pour récupérer les statistiques des rendez-vous du patient connecté.
+     */
+    public function getRendezVousStats()
+    {
+        $user = Auth::user();
+        if ($user->profil !== 'PATIENT') {
+            return response()->json(['error' => 'Accès non autorisé'], 403);
+        }
+
+        $totalRendezVous = rendezvous::where('idUser', $user->id)->count();
+
+        $rendezVousPasses = rendezvous::where('idUser', $user->id)
+            ->whereDate('date-rendez-vous', '<', now()->toDateString())
+            ->count();
+
+        $rendezVousDuJour = rendezvous::where('idUser', $user->id)
+            ->whereDate('date-rendez-vous', now()->toDateString())
+            ->count();
+
+        $rendezVousAVenir = rendezvous::where('idUser', $user->id)
+            ->whereDate('date-rendez-vous', '>', now()->toDateString())
+            ->count();
+
+        $pourcentagePasses = $totalRendezVous > 0 ? round(($rendezVousPasses / $totalRendezVous) * 100, 2) : 0;
+        $pourcentageDuJour = $totalRendezVous > 0 ? round(($rendezVousDuJour / $totalRendezVous) * 100, 2) : 0;
+        $pourcentageAVenir = $totalRendezVous > 0 ? round(($rendezVousAVenir / $totalRendezVous) * 100, 2) : 0;
+
+        return response()->json([
+            'pourcentagePasses' => $pourcentagePasses,
+            'pourcentageDuJour' => $pourcentageDuJour,
+            'pourcentageAVenir' => $pourcentageAVenir,
+        ]);
+    }
 }

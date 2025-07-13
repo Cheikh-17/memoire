@@ -271,12 +271,12 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-12">
-          <div class="card statistics-card-1 overflow-hidden bg-brand-color-3">
+          <div class="card statistics-card-1 overflow-hidden" style="background-color: #026952;">
             <div class="card-body">
               <img src="{{asset('../assets/images/widget/img-status-6.svg')}}" alt="img" class="img-fluid img-bg" >
               <h5 class="mb-4 text-white">Revenus </h5>
               <div class="d-flex align-items-center mt-3">
-                <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">{{ $revenusMois ?? '0 FCFA' }}</h3>
+                <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">{{ $revenusMois ?? 0 }} FCFA</h3>
               </div>
               <p class="text-white text-opacity-75 mb-2 text-sm mt-3">Total des paiements reçus</p>
             </div>
@@ -298,40 +298,49 @@
             <div class="col-md-6 col-xl-5">
               <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between py-3">
-                  <h5>Finances</h5>
+                  <h5>Rendez vous</h5>
                 </div>
                 <div class="card-body">
-                  <div class="d-flex align-items-center">
-                    <div class="avtar avtar-s bg-light-primary flex-shrink-0">
-                      <i class="ph-duotone ph-money f-20"></i>
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <p class="mb-0 text-muted">Total des recettes</p>
-                      <h5 class="mb-0">{{ $totalRecettes ?? '0 FCFA' }}</h5>
-                    </div>
-                  </div>
-                  <div id="earnings-users-chart"></div>
-                </div>
+                   
+                  
+                <div id="earnings-users-chart"></div>
               </div>
-              <script src="{{asset('../assets/js/plugins/apexcharts.min.js')}}"></script>
-              <div class="card mt-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-6">
-                      <div class="d-flex align-items-center">
-                        <div class="avtar avtar-s bg-light-warning flex-shrink-0">
-                          <i class="ph-duotone ph-lightning f-20"></i>
-                        </div>
-                        <div class="flex-grow-1 ms-2">
-                          <p class="mb-0 text-muted">Actes réalisés</p>
-                          <h6 class="mb-0">{{ $actesRealises ?? 0 }}</h6>
-                        </div>
-                      </div>
-                    </div>
-                     
-                  </div>
-                </div>
-              </div>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                var options = {
+                  chart: {
+                    type: 'donut',
+                    height: 300
+                  },
+                  series: [
+                    {{ $pourcentagePasses }},
+                    {{ $pourcentageDuJour }},
+                    {{ $pourcentageAVenir }}
+                  ],
+                  labels: ['Rendez-vous passés', 'Rendez-vous du jour', 'Rendez-vous à venir'],
+                  colors: ['#f44336', '#4caf50', '#673ab7'],
+                  legend: {
+                    position: 'bottom'
+                  },
+                  responsive: [{
+                    breakpoint: 480,
+                    options: {
+                      chart: {
+                        width: 300
+                      },
+                      legend: {
+                        position: 'bottom'
+                      }
+                    }
+                  }]
+                };
+
+                var chart = new ApexCharts(document.querySelector("#earnings-users-chart"), options);
+                chart.render();
+              });
+            </script>
+             
             </div>
 
         <!-- Liste des derniers utilisateurs -->

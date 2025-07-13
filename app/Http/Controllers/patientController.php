@@ -101,9 +101,9 @@ class PatientController extends Controller
     }
 
     // Méthode pour afficher la fiche médicale
-    public function ficheMedicale()
+    public function ficheMedicale($id)
     {
-        $user = Auth::user();
+        $user = User::where('profil', 'patient')->findOrFail($id);
         $consultations = $user->consultations()->with('traitements')->get();
 
         return view('pages.fiche.patient.fiche-medicale', compact('user', 'consultations'));

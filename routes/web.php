@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
 
         // Routes resource pour rendez-vous
         Route::resource('rendezvous', App\Http\Controllers\RendezVousController::class);
+        Route::get('api/rendezvous/stats', [App\Http\Controllers\RendezVousController::class, 'getRendezVousStats'])->middleware('auth');
 
         // Routes pour changement de mot de passe utilisateur connecté
         Route::get('/password/change', [UserController::class, 'changePasswordForm'])->name('password.change');
@@ -223,6 +224,9 @@ Route::delete('/patients/{id}', [patientController::class, 'destroy'])->name('pa
 Route::get('/mail', [App\Http\Controllers\MailController::class, 'sendMail'])->name('mail.send');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('fiche-medicale', [App\Http\Controllers\PatientController::class, 'ficheMedicale'])->name('fiche-medicale');
+    Route::get('fiche-medicale/{id}', [App\Http\Controllers\PatientController::class, 'ficheMedicale'])->name('fiche-medicale');
     Route::get('fiche-medicale/pdf', [App\Http\Controllers\PatientController::class, 'ficheMedicalePdf'])->name('fiche-medicale.pdf');
 });
+
+// Route pour le tableau de bord du médecin
+Route::middleware(['auth'])->get('/medecin/dashboard', [medecinController::class, 'dashboard'])->name('medecin.dashboard');

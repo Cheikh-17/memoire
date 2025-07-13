@@ -1,9 +1,9 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
     @if(Route::currentRouteName() !== 'home')
-    <button onclick="history.back()" class="btn btn-link text-decoration-none ms-3" style="font-size: 1.5rem;">
+    <a href="{{ route('dashboard') }}" class="btn btn-link text-decoration-none ms-3 py-1" style="font-size: 1.5rem; height: 32px; line-height: 1;">
         <i class="bi bi-arrow-left"></i>
-    </button>
+    </a>
     @endif
     <a href="{{route('home')}}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
         <h1 class="m-0 text-primary"><img src="assets/images/dent.png" width="60px" height="60px"> Baobab Dentaire</h1>

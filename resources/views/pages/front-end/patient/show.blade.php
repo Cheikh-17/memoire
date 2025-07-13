@@ -26,6 +26,11 @@
         </tr>
     </table>
     <a href="{{ route('patients.index') }}" class="btn btn-secondary">Retour à la liste</a>
-    <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary">Modifier</a>
+    
+    @auth
+        @if(auth()->user()->profil === 'MEDECIN')
+            <a href="{{ route('fiche-medicale', $patient->id) }}" class="btn btn-primary">fiche medicale</a>
+        @endif
+    @endauth
 </div>
 @endsection

@@ -26,9 +26,9 @@ class ConsultationController extends Controller
     /**
      * Retourne les détails d'une consultation pour le médecin en JSON.
      */
-    public function showForMedecin($id)
+public function showForMedecin($id)
     {
-        $consultation = Consultation::with(['traitements', 'ordonnances'])->findOrFail($id);
+        $consultation = Consultation::with(['traitements', 'ordonnances', 'patient'])->findOrFail($id);
         return response()->json($consultation);
     }
 

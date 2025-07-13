@@ -356,115 +356,90 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="card statistics-card-1 overflow-hidden bg-brand-color-3">
+            <div class="col-md-4 col-sm-12">
+            <div class="card statistics-card-1 overflow-hidden" style="background-color: #026952;">
               <div class="card-body">
-                <img src="{{asset('../assets/images/widget/img-status-6.svg')}}" alt="img" class="img-fluid img-bg">
-                <h5 class="mb-4 text-white">Patients ayant terminé leur traitement</h5>
-                <div class="d-flex align-items-center mt-3">
-                  <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">
-                    {{ $patientsTermines ?? 0 }}
-                  </h3>
-                </div>
-                <p class="text-white text-opacity-75 mb-2 text-sm mt-3">
-                  Nombre total de patients dont le traitement est terminé
-                </p>
-                <div class="progress bg-white bg-opacity-10" style="height: 7px">
-                  <div
-                    class="progress-bar bg-white"
-                    role="progressbar"
-                    style="width: 100%"
-                    aria-valuenow="100"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
+              <img src="{{asset('../assets/images/widget/img-status-6.svg')}}" alt="img" class="img-fluid img-bg">
+              <h5 class="mb-4 text-white">Patients ayant terminé leur traitement</h5>
+              <div class="d-flex align-items-center mt-3">
+                <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">
+                {{ $patientsTermines ?? 0 }}
+                </h3>
+              </div>
+              <p class="text-white text-opacity-75 mb-2 text-sm mt-3">
+                Nombre total de patients dont le traitement est terminé
+              </p>
+              <div class="progress bg-white bg-opacity-10" style="height: 7px">
+                <div
+                class="progress-bar bg-white"
+                role="progressbar"
+                style="width: 100%"
+                aria-valuenow="100"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                ></div>
+              </div>
               </div>
             </div>
-          </div>
+            </div>
           <div class="col-md-6 col-xl-7">
             <div class="card">
               <div class="card-header">
-                <h5>Users From United States</h5>
+                <h5>Repartitions des patients</h5>
               </div>
               <div class="card-body">
                 <div id="world-map-markers" class="set-map" style="height:365px;"></div>
               </div>
             </div>
           </div>
+
           <div class="col-md-6 col-xl-5">
             <div class="card">
-              <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5>Users From United States</h5>
-                <div class="dropdown">
-                  <a
-                    class="avtar avtar-xs btn-link-secondary dropdown-toggle arrow-none"
-                    href="#"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    ><i class="material-icons-two-tone f-18">more_vert</i></a
-                  >
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">View</a>
-                    <a class="dropdown-item" href="#">Edit</a>
-                  </div>
-                </div>
+              <div class="card-header">
+                <h5>Rendez-vous</h5>
               </div>
               <div class="card-body">
-                <div class="d-flex align-items-center">
-                  <div class="avtar avtar-s bg-light-primary flex-shrink-0">
-                    <i class="ph-duotone ph-money f-20"></i>
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <p class="mb-0 text-muted">Total Earnings</p>
-                    <h5 class="mb-0">$249.95</h5>
-                  </div>
-                </div>
-                <div id="earnings-users-chart"></div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-6">
-                    <div class="d-flex align-items-center">
-                      <div class="avtar avtar-s bg-light-warning flex-shrink-0">
-                        <i class="ph-duotone ph-lightning f-20"></i>
-                      </div>
-                      <div class="flex-grow-1 ms-2">
-                        <p class="mb-0 text-muted">Total ideas</p>
-                        <h6 class="mb-0">235</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="d-flex align-items-center">
-                      <div class="avtar avtar-s bg-light-danger flex-shrink-0">
-                        <i class="ph-duotone ph-map-pin f-20"></i>
-                      </div>
-                      <div class="flex-grow-1 ms-2">
-                        <p class="mb-0 text-muted">Total location</p>
-                        <h6 class="mb-0">26</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <div id="rendezvous-chart" style="height: 350px;"></div>
               </div>
             </div>
           </div>
-          
-    <footer class="pc-footer">
-      <div class="footer-wrapper container-fluid">
-        <div class="row">
-          <div class="col-sm-6 my-1">
-            <p class="m-0">Made with &#9829; by Team <a href="https://themeforest.net/user/phoenixcoded" target="_blank"> Phoenixcoded</a></p>
-          </div>
-          
-        </div>
+          <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              var options = {
+                chart: {
+                  type: 'bar',
+                  height: 350
+                },
+                title: {
+                  text: 'Rendez-vous',
+                  align: 'center'
+                },
+                series: [{
+                  name: 'Nombre',
+                  data: @json($donneesRendezVous)
+                }],
+                xaxis: {
+                  categories: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+                },
+                colors: ['#026259']
+              };
+              var chart = new ApexCharts(document.querySelector("#rendezvous-chart"), options);
+              chart.render();
+            });
+          </script>
+<!-- [ Main Content ] end -->
+
+<footer class="pc-footer">
+  <div class="footer-wrapper container-fluid">
+    <div class="row">
+      <div class="col-sm-6 my-1">
+        <p class="m-0">Made with &#9829; by Team <a href="https://themeforest.net/user/phoenixcoded" target="_blank"> Phoenixcoded</a></p>
       </div>
-    </footer>
- <div class="offcanvas border-0 pct-offcanvas offcanvas-end" tabindex="-1" id="offcanvas_pc_layout">
+    </div>
+  </div>
+</footer>
+<div class="offcanvas border-0 pct-offcanvas offcanvas-end" tabindex="-1" id="offcanvas_pc_layout">
   <div class="offcanvas-header justify-content-between">
     <h5 class="offcanvas-title">Settings</h5>
     <button type="button" class="btn btn-icon btn-link-danger" data-bs-dismiss="offcanvas" aria-label="Close"><i
@@ -628,7 +603,7 @@
     </div>
   </div>
 </div>
-    <!-- [Page Specific JS] start -->
+<!-- [Page Specific JS] start -->
     <script src="{{asset('../assets/js/plugins/apexcharts.min.js')}}"></script>
     <script src="{{asset('../assets/js/plugins/jsvectormap.min.js')}}"></script>
     <script src="{{asset('../assets/js/plugins/world.js')}}"></script>
