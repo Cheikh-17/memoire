@@ -22,16 +22,19 @@ class EnvoyerRappelRdv extends Command
      *
      * @var string
      */
-    protected $description = 'Envoie un rappel aux clients 2 jours avant leur rendez-vous';
+    protected $description = 'Envoie un rappel aux clients 1 heure avant leur rendez-vous';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $dateRappel = Carbon::now()->addDays(2)->toDateString();
+        $now = Carbon::now();
+        $oneHourLater = Carbon::now()->addHour();
 
-        $rendezvouss = rendezvous::where('date-rendez-vous', $dateRappel)->get();
+        $rendezvouss = rendezvous::where('date-rendez-vous', $now->toDateString())
+            ->whereBetween('heure-rendez-vous', [$now->format('H:i:s'), $oneHourLater->format('H:i:s')])
+            ->get();
 
         foreach ($rendezvouss as $rdv) {
             $user = $rdv->user;
@@ -40,6 +43,6 @@ class EnvoyerRappelRdv extends Command
             }
         }
 
-        $this->info('Rappels envoyés pour les rendez-vous du ' . $dateRappel);
+        $this->info('Rappels envoyés pour les rendez-vous entre ' . $now->format('H:i:s') . ' et ' . $oneHourLater->format('H:i:s') . ' le ' . $now->toDateString());
     }
 }
