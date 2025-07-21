@@ -57,6 +57,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $rendezvous->links() }}
                         </div>
                     @endif
                 </div>

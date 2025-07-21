@@ -33,6 +33,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $consultations->links() }}
     @endif
 </div>
 
@@ -58,7 +59,65 @@
         <p><strong>Téléphone:</strong> <span id="modal-patient-telephone"></span></p>
       </div>
       <div class="modal-footer">
-        <a href="{{ route('medecin.ordonnances.create') }}" class="btn btn-success">Ordonnances</a>
+        <a href="#" id="btn-ordonnance" class="btn btn-success">Ordonnances</a>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var consultationModal = new bootstrap.Modal(document.getElementById('consultationModal'));
+    var currentConsultationId = null;
+    var currentPatientId = null;
+
+    document.querySelectorAll('.btn-detail').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var consultationId = this.getAttribute('data-id');
+            fetch('/medecin/consultations/showForMedecin/' + consultationId)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('modal-id').textContent = data.id;
+                    document.getElementById('modal-date').textContent = data.date;
+                    document.getElementById('modal-heure').textContent = data.heure;
+                    document.getElementById('modal-motif').textContent = data.motif;
+                    document.getElementById('modal-diagnostic').textContent = data.diagnostic;
+
+                    // Affichage des informations du patient
+                    if(data.patient) {
+                        document.getElementById('modal-patient-nom').textContent = data.patient.nom || '';
+                        document.getElementById('modal-patient-prenom').textContent = data.patient.prenom || '';
+                        document.getElementById('modal-patient-email').textContent = data.patient.email || '';
+                        document.getElementById('modal-patient-telephone').textContent = data.patient.telephone || '';
+                        currentPatientId = data.patient.id;
+                    } else {
+                        document.getElementById('modal-patient-nom').textContent = '';
+                        document.getElementById('modal-patient-prenom').textContent = '';
+                        document.getElementById('modal-patient-email').textContent = '';
+                        document.getElementById('modal-patient-telephone').textContent = '';
+                        currentPatientId = null;
+                    }
+                    currentConsultationId = consultationId;
+
+                    consultationModal.show();
+                })
+                .catch(error => {
+                    alert('Erreur lors du chargement des détails de la consultation.');
+                    console.error(error);
+                });
+        });
+    });
+
+    document.getElementById('btn-retour').addEventListener('click', function() {
+        consultationModal.hide();
+    });
+
+    document.getElementById('btn-ordonnance').addEventListener('click', function() {
+        if(currentConsultationId && currentPatientId) {
+            var url = '{{ url('medecin/ordonnances/create') }}' + '?patient_id=' + currentPatientId + '&consultation_id=' + currentConsultationId;
+            window.location.href = url;
+        } else {
+            alert('Informations de consultation ou patient manquantes.');
+        }
+    });
+});
+</script>
         <a href="{{ route('medecin.traitements.create') }}" class="btn btn-info">Traitements</a>
         <button type="button" id="btn-retour" class="btn btn-secondary">Retour</button>
       </div>

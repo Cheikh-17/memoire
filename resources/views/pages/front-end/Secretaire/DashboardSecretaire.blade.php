@@ -55,7 +55,7 @@
         <!-- ========   Change your logo from here   ============ -->
       </a>
        <a href="{{ route('home') }}" class="b-brand text-primary d-flex align-items-center">
-        <img src="assets/images/dent.png" alt="Logo Cabinet" style="height:40px; width:auto; margin-right:10px;">
+        <img src="assets/images/d.png" alt="Logo Cabinet" style="height:40px; width:auto; margin-right:10px;">
         <span class="fw-bold fs-5">BAOBAB DENTAIRE</span>
       </a>
     </div>
@@ -86,7 +86,7 @@
           <ul class="pc-submenu">
             {{-- <li class="pc-item"><a class="pc-link" href="{{route('formPatient')}}">Créer dossier et compte patient</a></li> --}}
           <li class="pc-item"><a class="pc-link" href="{{route('patients.index')}}">lister patients</a></li>
-          <li class="pc-item"><a class="pc-link" href="{{ route('factures.create') }}">Paiement et facture</a></li>
+          {{-- <li class="pc-item"><a class="pc-link" href="{{ route('factures.create') }}">Paiement et facture</a></li> --}}
             {{-- <li class="pc-item"><a class="pc-link" href="../dashboard/affiliate.html">Devis avant soins</a></li> --}}
           </ul>
         </li>
@@ -125,14 +125,14 @@
         </form>
       </div>
     </li>
-    <li class="pc-h-item d-none d-md-inline-flex">
+    {{-- <li class="pc-h-item d-none d-md-inline-flex">
       <form class="form-search">
         <i class="ph-duotone ph-magnifying-glass icon-search"></i>
         <input type="search" class="form-control" placeholder="Rechercher..." />
 
         <button class="btn btn-search" style="padding: 0"><kbd>ctrl+k</kbd></button>
       </form>
-    </li>
+    </li> --}}
   </ul>
 </div>
 <!-- [Bloc Média Mobile fin] -->
@@ -257,7 +257,7 @@
             <div class="card statistics-card-1 overflow-hidden">
               <div class="card-body text-center">
                 <img src="{{asset('../assets/images/widget/img-status-4.svg')}}" alt="img" class="img-fluid img-bg mb-3">
-                <h5 class="mb-3">Créer dossier & compte patient</h5>
+                <h5 class="mb-3">Créer patient</h5>
                 <p class="text-muted mb-3">Enregistrez un nouveau patient et créez son compte pour accéder à ses informations médicales.</p>
                 <a href="{{route('formPatient')}}" class="btn btn-primary">Nouveau patient</a>
               </div>
@@ -329,7 +329,7 @@
 
 
         <!-- [ Main Content ] end -->
-    <footer class="pc-footer">
+    {{-- <footer class="pc-footer">
       <div class="footer-wrapper container-fluid">
         <div class="row">
           <div class="col-sm-6 my-1">
@@ -340,11 +340,11 @@
               <li class="list-inline-item"><a href="../index.html">Home</a></li>
               {{-- <li class="list-inline-item"><a href="https://pcoded.gitbook.io/light-able/" target="_blank">Documentation</a></li>
               <li class="list-inline-item"><a href="https://phoenixcoded.support-hub.io/" target="_blank">Support</a></li> --}}
-            </ul>
+            {{-- </ul>
           </div>
         </div>
       </div>
-    </footer>
+    </footer>  --}}
  <div class="offcanvas border-0 pct-offcanvas offcanvas-end" tabindex="-1" id="offcanvas_pc_layout">
   <div class="offcanvas-header justify-content-between">
     <h5 class="offcanvas-title">Settings</h5>

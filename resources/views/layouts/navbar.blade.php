@@ -6,7 +6,7 @@
     </a>
     @endif
     <a href="{{route('home')}}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        <h1 class="m-0 text-primary"><img src="assets/images/dent.png" width="60px" height="60px"> Baobab Dentaire</h1>
+        <h1 class="m-0 text-primary"><img src="assets/images/d.png" width="60px" height="60px"> Baobab Dentaire</h1>
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>

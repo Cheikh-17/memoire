@@ -30,17 +30,17 @@
                 <a class="btn btn-link" href="">Conditions Générales</a>
                 <a class="btn btn-link" href="">Support</a>
             </div>
-            <div class="col-lg-3 col-md-6">
+            {{-- <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4">Newsletter</h5>
                 <p>Inscrivez-vous pour recevoir nos dernières actualités et offres.</p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
                     <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Votre email">
                     <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">S'inscrire</button>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
-    <div class="container">
+    {{-- <div class="container">
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
@@ -52,6 +52,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 <!-- Footer End -->

@@ -31,10 +31,14 @@ class ordonnanceController extends Controller
     /**
      * Affiche le formulaire de création d'une ordonnance.
      */
-    public function create()
+    public function create(Request $request)
     {
         $patients = \App\Models\User::where('profil', 'PATIENT')->get();
-        return view('pages.medecin.ordonnances.create', compact('patients'));
+
+        $patientId = $request->query('patient_id');
+        $consultationId = $request->query('consultation_id');
+
+        return view('pages.medecin.ordonnances.create', compact('patients', 'patientId', 'consultationId'));
     }
 
     /**
@@ -55,7 +59,7 @@ class ordonnanceController extends Controller
         $ordonnance->contenu = $validated['contenu'];
         $ordonnance->save();
 
-        return redirect()->route('ordonnances.index')->with('success', 'Ordonnance créée avec succès.');
+        return redirect()->route('dashboard')->with('success', 'Ordonnance créée avec succès.');
     }
 
     /**

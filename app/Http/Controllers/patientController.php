@@ -17,7 +17,7 @@ class PatientController extends Controller
 
     public function index()
     {
-        $patients = User::where('profil', 'patient')->where('is_hidden', false)->get();
+        $patients = User::where('profil', 'patient')->where('is_hidden', false)->paginate(10);
         return view('pages.front-end.patient.index', compact('patients'));
     }
 
@@ -51,19 +51,17 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'telephone' => ['required','string','regex:/^(77|78|70|76|75)[0-9]{7}$/'],
             'adresse' => 'required|string|max:255',
-            'date_naissance' => 'required|date',
-            'sexe' => 'required|string',
             'password' => 'required|string|min:8',
         ], [
             'telephone.regex' => 'Le numéro de téléphone doit être valide et commencer par 77, 78, 70, 76 ou 75.',
-            'name.required' => 'Le nom est obligatoire.',
-            'name.string' => 'Le nom doit être une chaîne de caractères.',
-            'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
+            'nom.required' => 'Le nom est obligatoire.',
+            'nom.string' => 'Le nom doit être une chaîne de caractères.',
+            'nom.max' => 'Le nom ne doit pas dépasser 255 caractères.',
             'prenom.required' => 'Le prénom est obligatoire.',
             'prenom.string' => 'Le prénom doit être une chaîne de caractères.',
             'prenom.max' => 'Le prénom ne doit pas dépasser 255 caractères.',
@@ -75,10 +73,6 @@ class PatientController extends Controller
             'adresse.required' => 'L\'adresse est obligatoire.',
             'adresse.string' => 'L\'adresse doit être une chaîne de caractères.',
             'adresse.max' => 'L\'adresse ne doit pas dépasser 255 caractères.',
-            'date_naissance.required' => 'La date de naissance est obligatoire.',
-            'date_naissance.date' => 'La date de naissance doit être une date valide.',
-            'sexe.required' => 'Le sexe est obligatoire.',
-            'sexe.string' => 'Le sexe doit être une chaîne de caractères.',
             'password.required' => 'Le mot de passe est obligatoire.',
             'password.string' => 'Le mot de passe doit être une chaîne de caractères.',
             'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
@@ -86,18 +80,17 @@ class PatientController extends Controller
 
         // Création du patient dans la table users
         \App\Models\User::create([
-            'name' => $validated['name'],
+            'nom' => $validated['nom'],
             'prenom' => $validated['prenom'],
             'email' => $validated['email'],
             'telephone' => $validated['telephone'],
             'adresse' => $validated['adresse'],
-            //'date_naissance' => $validated['date_naissance'],
-           // 'sexe' => $validated['sexe'],
             'password' => bcrypt($validated['password']),
+            'profil' => 'PATIENT',
             // Ajoutez d'autres champs si nécessaire
         ]);
 
-        return redirect()->route('patients.create')->with('success', 'Patient créé avec succès.');
+        return redirect()->route('formPatient')->with('success', 'Patient créé avec succès.');
     }
 
     // Méthode pour afficher la fiche médicale

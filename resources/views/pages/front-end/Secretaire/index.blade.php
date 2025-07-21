@@ -41,6 +41,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $secretaires->links() }}
     @endif
 </div>
 @endsection

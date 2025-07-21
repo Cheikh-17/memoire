@@ -37,7 +37,7 @@ public function showForMedecin($id)
      */
     public function indexMedecin()
     {
-        $consultations = Consultation::all();
+        $consultations = Consultation::paginate(10);
 
         return view('pages.front-end.medecin.consultations.liste', compact('consultations'));
     }
@@ -69,7 +69,7 @@ public function showForMedecin($id)
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'date' => 'required|date',
+            'date' => 'required|date|after_or_equal:today',
             'diagnostic' => 'nullable|string|max:1000',
             'motif' => 'nullable|string|max:1000',
             'idUser' => 'required|integer',

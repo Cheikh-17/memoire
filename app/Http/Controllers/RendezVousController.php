@@ -18,9 +18,9 @@ class RendezVousController extends Controller
         $user = Auth::user();
         if ($user->profil === 'MEDECIN') {
             // Récupérer les rendezvous où l'idUser correspond à l'id du médecin connecté
-            $rendezvous = rendezvous::where('idUser', $user->id)->get();
+            $rendezvous = rendezvous::where('idUser', $user->id)->paginate(10);
         } elseif ($user->profil === 'PATIENT') {
-            $rendezvous = rendezvous::where('idUser', $user->id)->get();
+            $rendezvous = rendezvous::where('idUser', $user->id)->paginate(10);
         } else {
             $rendezvous = collect();
         }
@@ -49,7 +49,7 @@ class RendezVousController extends Controller
         $request->validate([
             'idUser' => 'required|exists:users,id',
             'idMedecin' => 'required|exists:medecins,id',
-            'date-rendez-vous' => 'required|date',
+            'date-rendez-vous' => 'required|date|after_or_equal:today',
             'heure-rendez-vous' => 'required',
             'type-de-soins' => 'required|string|max:255',
         ]);

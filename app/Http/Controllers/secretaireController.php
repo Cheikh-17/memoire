@@ -20,7 +20,7 @@ class SecretaireController extends Controller
 
     public function index()
     {
-        $secretaires = User::where('profil', 'secretaire')->where('is_hidden', false)->get();
+        $secretaires = User::where('profil', 'secretaire')->where('is_hidden', false)->paginate(10);
         return view('pages.front-end.Secretaire.index', compact('secretaires'));
     }
 

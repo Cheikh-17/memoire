@@ -35,7 +35,7 @@
       <div class="m-header">
         <a href="{{asset('../dashboard/index.html')}}" class="b-brand text-primary"></a>
         <a href="{{ route('home') }}" class="b-brand text-primary d-flex align-items-center">
-          <img src="assets/images/dent.png" alt="Logo Cabinet" style="height:40px; width:auto; margin-right:10px;">
+          <img src="assets/images/d.png" alt="Logo Cabinet" style="height:40px; width:auto; margin-right:10px;">
           <span class="fw-bold fs-5">BAOBAB DENTAIRE</span>
         </a>
       </div>
@@ -125,13 +125,13 @@
               </form>
             </div>
           </li>
-          <li class="pc-h-item d-none d-md-inline-flex">
+          {{-- <li class="pc-h-item d-none d-md-inline-flex">
             <form class="form-search">
               <i class="ph-duotone ph-magnifying-glass icon-search"></i>
               <input type="search" class="form-control" placeholder="Rechercher..." />
               <button class="btn btn-search" style="padding: 0"><kbd>ctrl+k</kbd></button>
             </form>
-          </li>
+          </li> --}}
         </ul>
       </div>
       <!-- End Mobile Media Block -->

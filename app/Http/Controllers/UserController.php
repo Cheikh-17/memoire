@@ -36,16 +36,12 @@ class UserController extends Controller
 
     // Liste des spécialités autorisées
     $specialitesAutorisees = [
-        'Cardiologie',
-        'Dermatologie',
-        'Neurologie',
-        'Pédiatrie',
-        'Psychiatrie',
+        'Churigien-Dentaire',
+        'Paradontologie',
+        'Orthodontie',
+        'Orthodontie-pediatrique',
         'Radiologie',
-        'Gynécologie',
-        'Orthopédie',
-        'Urologie',
-        'Autre'
+         
     ];
 
     // Valider les données avec condition sur specialite
@@ -97,7 +93,7 @@ class UserController extends Controller
 
     }
 
-    return redirect()->route('home')->with('success', 'Utilisateur enregistré avec succès.');
+    return redirect()->route('form')->with('success', 'Utilisateur enregistré avec succès.');
     }
 
     /**

@@ -62,7 +62,7 @@ class medecinController extends Controller {
      */
     public function index()
     {
-        $medecins= Medecin::with('user')->where('is_hidden', false)->get();
+        $medecins= Medecin::with('user')->where('is_hidden', false)->paginate(10);
         return view('pages.front-end.medecin.index', compact('medecins'));
     }
 

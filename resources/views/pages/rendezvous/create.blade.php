@@ -40,7 +40,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="date-rendez-vous" class="form-label fw-semibold">Date</label>
-                                <input type="date" name="date-rendez-vous" id="date-rendez-vous" class="form-control" required>
+                                <input type="date" name="date-rendez-vous" id="date-rendez-vous" class="form-control" min="{{ date('Y-m-d') }}" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="heure-rendez-vous" class="form-label fw-semibold">Heure</label>
