@@ -13,18 +13,33 @@ class RendezVousController extends Controller
      * Display a listing of the resource.
      * Affiche la liste des rendez-vous du patient connecté
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
+        $search = $request->input('search');
+
         if ($user->profil === 'MEDECIN') {
-            // Récupérer les rendezvous où l'idUser correspond à l'id du médecin connecté
-            $rendezvous = rendezvous::where('idUser', $user->id)->paginate(10);
+            $query = rendezvous::where('idUser', $user->id);
         } elseif ($user->profil === 'PATIENT') {
-            $rendezvous = rendezvous::where('idUser', $user->id)->paginate(10);
+            $query = rendezvous::where('idUser', $user->id);
         } else {
-            $rendezvous = collect();
+            $query = rendezvous::query()->whereRaw('1 = 0'); // Empty collection
         }
-        return view('pages.rendezvous.index', compact('rendezvous'));
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->whereHas('medecin.user', function($q2) use ($search) {
+                    $q2->where('nom', 'like', '%' . $search . '%')
+                       ->orWhere('prenom', 'like', '%' . $search . '%');
+                })
+                ->orWhere('type-de-soins', 'like', '%' . $search . '%')
+                ->orWhere('date-rendez-vous', 'like', '%' . $search . '%');
+            });
+        }
+
+        $rendezvous = $query->paginate(10)->appends(['search' => $search]);
+
+        return view('pages.rendezvous.index', compact('rendezvous', 'search'));
     }
 
     /**
@@ -33,8 +48,8 @@ class RendezVousController extends Controller
      */
     public function create()
     {
-        // Récupérer la liste des patients (utilisateurs avec profil patient)
-        $patients = User::where('profil', 'PATIENT')->get();
+        // Récupérer la liste des patients (utilisateurs avec profil patient) non masqués
+        $patients = User::where('profil', 'PATIENT')->where('is_hidden', false)->orderBy('created_at', 'desc')->get();
         // Récupérer la liste des médecins
         $medecins = \App\Models\medecin::all();
         return view('pages.rendezvous.create', compact('patients', 'medecins'));

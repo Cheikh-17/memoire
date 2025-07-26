@@ -58,7 +58,7 @@
                             <select name="idMedecin" id="idMedecin" class="form-select" required>
                                 <option value="">Sélectionnez un médecin</option>
                                 @foreach ($medecins as $medecin)
-                                    <option value="{{ $medecin->id }}">{{ $medecin->nom }} {{ $medecin->prenom }} - {{ $medecin->specialite }}</option>
+                                    <option value="{{ $medecin->id }}">{{ $medecin->user->nom }} {{ $medecin->user->prenom }} - {{ $medecin->specialite }}</option>
                                 @endforeach
                             </select>
                         </div>

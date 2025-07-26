@@ -15,10 +15,27 @@ class PatientController extends Controller
         return view('pages.front-end.patient.create');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $patients = User::where('profil', 'patient')->where('is_hidden', false)->paginate(10);
-        return view('pages.front-end.patient.index', compact('patients'));
+        $search = $request->input('search');
+
+        $query = User::where('profil', 'patient')->where('is_hidden', false);
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('nom', 'like', '%' . $search . '%')
+                  ->orWhere('prenom', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%')
+                  ->orWhere('telephone', 'like', '%' . $search . '%')
+                  ->orWhere('adresse', 'like', '%' . $search . '%');
+            });
+        }
+
+        $query->orderBy('created_at', 'desc');
+
+        $patients = $query->paginate(10)->appends(['search' => $search]);
+
+        return view('pages.front-end.patient.index', compact('patients', 'search'));
     }
 
     public function show($id)

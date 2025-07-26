@@ -18,10 +18,27 @@ class SecretaireController extends Controller
         return view('pages.front-end.Secretaire.DashboardSecretaire', compact('consultations'));
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $secretaires = User::where('profil', 'secretaire')->where('is_hidden', false)->paginate(10);
-        return view('pages.front-end.Secretaire.index', compact('secretaires'));
+        $search = $request->input('search');
+
+        $query = User::where('profil', 'secretaire')->where('is_hidden', false);
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('nom', 'like', '%' . $search . '%')
+                  ->orWhere('prenom', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%')
+                  ->orWhere('telephone', 'like', '%' . $search . '%')
+                  ->orWhere('adresse', 'like', '%' . $search . '%');
+            });
+        }
+
+        $query->orderBy('created_at', 'desc');
+
+        $secretaires = $query->paginate(10)->appends(['search' => $search]);
+
+        return view('pages.front-end.Secretaire.index', compact('secretaires', 'search'));
     }
 
     public function show($id)

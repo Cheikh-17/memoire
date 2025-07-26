@@ -35,11 +35,27 @@ public function showForMedecin($id)
     /**
      * Affiche la liste de toutes les consultations (pour le médecin).
      */
-    public function indexMedecin()
+    public function indexMedecin(Request $request)
     {
-        $consultations = Consultation::paginate(10);
+        $search = $request->input('search');
 
-        return view('pages.front-end.medecin.consultations.liste', compact('consultations'));
+        $query = Consultation::query();
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('motif', 'like', '%' . $search . '%')
+                  ->orWhere('diagnostic', 'like', '%' . $search . '%')
+                  ->orWhere('date', 'like', '%' . $search . '%')
+                  ->orWhere('heure', 'like', '%' . $search . '%');
+            });
+        }
+
+        // Change ordering to created_at descending to get last registered consultation first
+        $query->orderBy('created_at', 'desc');
+
+        $consultations = $query->paginate(10)->appends(['search' => $search]);
+
+        return view('pages.front-end.medecin.consultations.liste', compact('consultations', 'search'));
     }
 
     /**
@@ -59,7 +75,7 @@ public function showForMedecin($id)
      */
     public function create()
     {
-        $patients = \App\Models\User::where('profil', 'PATIENT')->get();
+        $patients = \App\Models\User::where('profil', 'PATIENT')->orderBy('created_at', 'desc')->get();
         return view('pages.front-end.medecin.consultations.create', compact('patients'));
     }
 
@@ -115,4 +131,5 @@ public function showForMedecin($id)
         $consultations = Consultation::where('idUser', $patientId)->get();
         return response()->json($consultations);
     }
+ 
 }

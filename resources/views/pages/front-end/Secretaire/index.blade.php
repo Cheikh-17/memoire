@@ -4,6 +4,14 @@
 
 <div class="container">
     <h1>Liste des secrétaires</h1>
+
+    <form method="GET" action="{{ route('secretaire.index') }}" class="mb-3">
+        <div class="input-group" style="max-width: 300px;">
+            <input type="text" name="search" class="form-control" placeholder="Rechercher un secrétaire..." value="{{ request('search') }}">
+            <button class="btn btn-primary" type="submit">Rechercher</button>
+        </div>
+    </form>
+
     @if($secretaires->isEmpty())
         <p>Aucun secrétaire trouvé.</p>
     @else
@@ -41,7 +49,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $secretaires->links() }}
+        {{ $secretaires->appends(['search' => request('search')])->links('pagination::bootstrap-5') }}
     @endif
 </div>
 @endsection

@@ -10,7 +10,7 @@
                 <th>ID</th>
                 <th>Patient</th>
                 <th>Date d'émission</th>
-                <th>Montant (€)</th>
+                <th>Montant (FC FA)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -29,6 +29,6 @@
         </tbody>
     </table>
 
-    {{ $factures->links() }}
+    {{ $factures->links('pagination::bootstrap-5') }}
 </div>
 @endsection

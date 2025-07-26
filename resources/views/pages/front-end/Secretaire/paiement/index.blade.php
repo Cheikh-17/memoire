@@ -43,6 +43,6 @@
         </tbody>
     </table>
 
-    {{ $paiements->links() }}
+    {{ $paiements->links('pagination::bootstrap-5') }}
 </div>
 @endsection

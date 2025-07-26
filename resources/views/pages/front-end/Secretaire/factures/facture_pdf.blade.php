@@ -23,7 +23,7 @@
         <strong>Diagnostic :</strong> {{ $facture->consultation->diagnostic }}<br>
     </div>
 
-    <h2>Médecin</h2>
+    {{-- <h2>Médecin</h2>
     <div>
         @if($facture->consultation && $facture->consultation->medecin)
             <strong>Nom :</strong> {{ $facture->consultation->medecin->nom }} {{ $facture->consultation->medecin->prenom }}<br>
@@ -32,7 +32,7 @@
         @else
             <strong>Informations médecin non disponibles</strong><br>
         @endif
-    </div>
+    </div> --}}
 
     <h2>Secrétaire</h2>
     <div>

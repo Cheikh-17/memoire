@@ -4,6 +4,19 @@
 <div class="container">
     <h1>Liste des Consultations</h1>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <form method="GET" action="{{ route('medecin.consultations.liste') }}" class="mb-3">
+        <div class="input-group" style="max-width: 300px;">
+            <input type="text" name="search" class="form-control" placeholder="Rechercher une consultation..." value="{{ request('search') }}">
+            <button class="btn btn-primary" type="submit">Rechercher</button>
+        </div>
+    </form>
+
     @if($consultations->isEmpty())
         <p>Aucune consultation trouvée.</p>
     @else
@@ -33,7 +46,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $consultations->links() }}
+        {{ $consultations->appends(['search' => request('search')])->links('pagination::bootstrap-5') }}
     @endif
 </div>
 

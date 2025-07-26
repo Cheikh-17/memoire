@@ -10,10 +10,29 @@ class ordonnanceController extends Controller
     /**
      * Affiche la liste des ordonnances pour l'utilisateur connecté.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ordonnances = ordonnance::where('idUser', auth()->id())->get();
-        return view('pages.patient.ordonnances.index', compact('ordonnances'));
+        $search = $request->input('search');
+        $user = auth()->user();
+
+        if ($user->profil === 'MEDECIN') {
+            // Pour le médecin, récupérer toutes les ordonnances
+            $query = ordonnance::query();
+        } else {
+            // Profil patient : ordonnances de l'utilisateur connecté
+            $query = ordonnance::where('idUser', $user->id);
+        }
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('created_at', 'like', '%' . $search . '%')
+                  ->orWhere('contenu', 'like', '%' . $search . '%');
+            });
+        }
+
+        $ordonnances = $query->paginate(10)->appends(['search' => $search]);
+
+        return view('pages.patient.ordonnances.index', compact('ordonnances', 'search'));
     }
 
     /**
@@ -47,14 +66,20 @@ class ordonnanceController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'patient_id' => 'required|exists:users,id',
             'consultation_id' => 'required|exists:consultations,id',
             'contenu' => 'required|string',
         ]);
 
         $consultation = \App\Models\Consultation::findOrFail($validated['consultation_id']);
 
+        // Vérifier que la consultation appartient bien au patient sélectionné
+        if ($consultation->idUser != $validated['patient_id']) {
+            return redirect()->back()->withErrors(['consultation_id' => 'La consultation ne correspond pas au patient sélectionné.'])->withInput();
+        }
+
         $ordonnance = new ordonnance();
-        $ordonnance->idUser = $consultation->idUser; // id du patient
+        $ordonnance->idUser = $validated['patient_id']; // id du patient
         $ordonnance->consultation_id = $validated['consultation_id'];
         $ordonnance->contenu = $validated['contenu'];
         $ordonnance->save();
@@ -100,4 +125,15 @@ class ordonnanceController extends Controller
 
         return redirect()->route('ordonnances.index')->with('success', 'Ordonnance masquée avec succès.');
     }
+
+    /**
+     * Affiche la liste complète des ordonnances.
+     */
+    public function indexMedecin()
+    {
+        $ordonnances = ordonnance::paginate(10);
+        return view('pages.patient.ordonnances.index', compact('ordonnances'));
+    }
+
+    
 }

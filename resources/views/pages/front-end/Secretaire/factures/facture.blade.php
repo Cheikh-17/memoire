@@ -26,12 +26,12 @@
         <strong>Diagnostic :</strong> {{ $facture->consultation->diagnostic }}<br>
     </div>
 
-    <h2>Médecin</h2>
+    {{-- <h2>Médecin</h2>
     <div>
         <strong>Nom :</strong> {{ $facture->consultation->medecin->nom ?? 'N/A' }} {{ $facture->consultation->medecin->prenom ?? '' }}<br>
         <strong>Email :</strong> {{ $facture->consultation->medecin->email ?? 'N/A' }}<br>
         <strong>Téléphone :</strong> {{ $facture->consultation->medecin->telephone ?? 'N/A' }}<br>
-    </div>
+    </div> --}}
 
     <a href="{{ route('facture.download', $facture->id) }}" class="btn btn-success mt-3">Télécharger la facture (PDF)</a>
 </div>

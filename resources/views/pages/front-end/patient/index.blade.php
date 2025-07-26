@@ -3,6 +3,14 @@
 @section('content')
 <div class="container">
     <h1>Liste des patients</h1>
+
+    <form method="GET" action="{{ route('patients.index') }}" class="mb-3">
+        <div class="input-group" style="max-width: 300px;">
+            <input type="text" name="search" class="form-control" placeholder="Rechercher un patient..." value="{{ request('search') }}">
+            <button class="btn btn-primary" type="submit">Rechercher</button>
+        </div>
+    </form>
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -42,6 +50,6 @@
             @endforeach
         </tbody>
     </table>
-    {{ $patients->links() }}
+    {{ $patients->appends(['search' => request('search')])->links('pagination::bootstrap-5') }}
 </div>
 @endsection

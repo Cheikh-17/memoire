@@ -186,7 +186,7 @@
                     <h5 class="mb-0">{{ Auth::user()->name }}</h5>
                     <a class="link-primary" href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a>
                   </div>
-                  <span class="badge bg-primary">PRO</span>
+                  {{-- <span class="badge bg-primary">PRO</span> --}}
                 </div>
               </li>
               <li class="list-group-item">
@@ -258,7 +258,7 @@
               <div class="card-body text-center">
                 <img src="{{asset('../assets/images/widget/img-status-4.svg')}}" alt="img" class="img-fluid img-bg mb-3">
                 <h5 class="mb-3">Créer patient</h5>
-                <p class="text-muted mb-3">Enregistrez un nouveau patient et créez son compte pour accéder à ses informations médicales.</p>
+                <p class="text-muted mb-3">Créez compte patient pour qu'il ai acces à ses informations médicales.</p>
                 <a href="{{route('formPatient')}}" class="btn btn-primary">Nouveau patient</a>
               </div>
             </div>
@@ -311,7 +311,7 @@
                                 <tr>
                                     <td>{{ $consultation->heure }}</td>
                                     <td>{{ $consultation->patient->nom ?? 'N/A' }} {{ $consultation->patient->prenom ?? '' }}</td>
-                                    <td>{{ $consultation->medecin->nom ?? 'N/A' }} {{ $consultation->rendezvous->medecin->user->prenom ?? '' }}</td>
+                                    <td> {{ $consultation->rendezvous->medecin->user->prenom ?? '' }} {{ $consultation->rendezvous->medecin->user->nom ?? '' }}</td>
                                     <td>{{ $consultation->motif }}</td>
                                 </tr>
                             @empty

@@ -17,49 +17,56 @@
                         </div>
                     @endif
 
-                    @if($rendezvous->isEmpty())
-                        <div class="alert alert-info text-center">
-                            Vous n'avez aucun rendez-vous.
-                        </div>
-                    @else
-                        <div class="table-responsive">
-                            <table class="table table-hover align-middle">
-                                <thead class="table-primary">
+                <form method="GET" action="{{ route('rendezvous.index') }}" class="mb-3">
+                    <div class="input-group" style="max-width: 300px;">
+                        <input type="text" name="search" class="form-control" placeholder="Rechercher un rendez-vous..." value="{{ request('search') }}">
+                        <button class="btn btn-primary" type="submit">Rechercher</button>
+                    </div>
+                </form>
+
+                @if($rendezvous->isEmpty())
+                    <div class="alert alert-info text-center">
+                        Vous n'avez aucun rendez-vous.
+                    </div>
+                @else
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th scope="col">Médecin</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Heure</th>
+                                    <th scope="col">Type de soins</th>
+                                    <th scope="col">Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($rendezvous as $rdv)
                                     <tr>
-                                        <th scope="col">Médecin</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Heure</th>
-                                        <th scope="col">Type de soins</th>
-                                        <th scope="col">Statut</th>
+                                        <td>
+                                            <span class="fw-semibold">
+                                                {{ $rdv->medecin ? $rdv->medecin->user->nom . ' ' . $rdv->medecin->user->prenom : 'N/A' }}
+                                            </span>
+                                        </td>
+                                        <td>{{ \Carbon\Carbon::parse($rdv->{'date-rendez-vous'})->format('d/m/Y') }}</td>
+                                        <td>{{ $rdv->{'heure-rendez-vous'} }}</td>
+                                        <td>{{ $rdv->{'type-de-soins'} }}</td>
+                                        <td>
+                                            @if($rdv->status === 'confirmé' || $rdv->status === 'confirmer')
+                                                <span class="badge bg-success">Confirmé</span>
+                                            @elseif($rdv->status === 'annulé' || $rdv->status === 'annuler')
+                                                <span class="badge bg-danger">Annulé</span>
+                                            @else
+                                                <span class="badge bg-secondary">{{ ucfirst($rdv->status) }}</span>
+                                            @endif
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($rendezvous as $rdv)
-                                        <tr>
-                                            <td>
-                                                <span class="fw-semibold">
-                                                    {{ $rdv->medecin ? $rdv->medecin->user->nom . ' ' . $rdv->medecin->user->prenom : 'N/A' }}
-                                                </span>
-                                            </td>
-                                            <td>{{ \Carbon\Carbon::parse($rdv->{'date-rendez-vous'})->format('d/m/Y') }}</td>
-                                            <td>{{ $rdv->{'heure-rendez-vous'} }}</td>
-                                            <td>{{ $rdv->{'type-de-soins'} }}</td>
-                                            <td>
-                                                @if($rdv->status === 'confirmé' || $rdv->status === 'confirmer')
-                                                    <span class="badge bg-success">Confirmé</span>
-                                                @elseif($rdv->status === 'annulé' || $rdv->status === 'annuler')
-                                                    <span class="badge bg-danger">Annulé</span>
-                                                @else
-                                                    <span class="badge bg-secondary">{{ ucfirst($rdv->status) }}</span>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            {{ $rendezvous->links() }}
-                        </div>
-                    @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $rendezvous->appends(['search' => request('search')])->links('pagination::bootstrap-5') }}
+                    </div>
+                @endif
                 </div>
             </div>
         </div>

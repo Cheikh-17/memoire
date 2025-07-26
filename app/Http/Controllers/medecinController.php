@@ -60,10 +60,27 @@ class medecinController extends Controller {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $medecins= Medecin::with('user')->where('is_hidden', false)->paginate(10);
-        return view('pages.front-end.medecin.index', compact('medecins'));
+        $search = $request->input('search');
+
+        $query = Medecin::with('user')->where('is_hidden', false);
+
+        if ($search) {
+            $query->whereHas('user', function($q) use ($search) {
+                $q->where('nom', 'like', '%' . $search . '%')
+                  ->orWhere('prenom', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%')
+                  ->orWhere('telephone', 'like', '%' . $search . '%')
+                  ->orWhere('adresse', 'like', '%' . $search . '%');
+            })->orWhere('specialite', 'like', '%' . $search . '%');
+        }
+
+        $query->orderBy('created_at', 'desc');
+
+        $medecins = $query->paginate(10)->appends(['search' => $search]);
+
+        return view('pages.front-end.medecin.index', compact('medecins', 'search'));
     }
 
     /**
@@ -233,3 +250,4 @@ class medecinController extends Controller {
         return redirect()->route('medecin.index')->with('success', 'Médecin masqué avec succès.');
     }
 }
+

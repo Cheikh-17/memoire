@@ -116,13 +116,20 @@ Route::middleware(['auth'])->group(function () {
         // Route pour récupérer les détails d'une consultation pour le médecin (AJAX)
         Route::get('consultations/showForMedecin/{id}', [ConsultationController::class, 'showForMedecin'])->name('consultations.showForMedecin');
          
+
         Route::resource('traitements', traitementController::class)->except(['destroy']);
         Route::resource('ordonnances', ordonnanceController::class)->except(['destroy']);
+        // La route show est déjà incluse dans la resource, la route explicite est redondante et peut causer conflit
+        // Je supprime la route explicite pour éviter conflit
+        // Route::get('ordonnances/{id}', [App\Http\Controllers\ordonnanceController::class, 'show'])->name('medecin.ordonnances.show');
 
-         
+       
+
 
         // Route API pour récupérer les consultations d'un patient
         Route::get('api/patients/{patientId}/consultations', [ConsultationController::class, 'getConsultationsByPatient']);
+
+        
     });
 
     // Routes pour le patient

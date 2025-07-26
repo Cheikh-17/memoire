@@ -209,7 +209,7 @@
                     <h5 class="mb-0">{{ Auth::user()->name }}</h5>
                     <a class="link-primary" href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a>
                   </div>
-                  <span class="badge bg-primary">PRO</span>
+                  {{-- <span class="badge bg-primary">PRO</span> --}}
                 </div>
               </li>
               <li class="list-group-item">
@@ -261,7 +261,7 @@
               <div class="col-md-12">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{route('home')}}">Accueil</a></li>
-                  <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
+                  {{-- <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li> --}}
                   {{-- <li class="breadcrumb-item" aria-current="page">Home</li> --}}
                 </ul>
               </div>
@@ -404,9 +404,9 @@
     <footer class="pc-footer">
       <div class="footer-wrapper container-fluid">
         <div class="row">
-          <div class="col-sm-6 my-1">
+          {{-- <div class="col-sm-6 my-1">
             <p class="m-0">Made with &#9829; by Team <a href="https://themeforest.net/user/phoenixcoded" target="_blank"> Phoenixcoded</a></p>
-          </div>
+          </div> --}}
           
         </div>
       </div>
