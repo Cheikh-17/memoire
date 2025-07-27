@@ -37,9 +37,9 @@ Route::get('/home', function () {
 })->name('home');
 
 // Page de connexion admin
-Route::get('/loginAdmin', function () {
-    return view('pages.front-end.admin.loginAdmin');
-})->name('loginAdmin');
+// Route::get('/loginAdmin', function () {
+//     return view('pages.front-end.admin.loginAdmin');
+// })->name('loginAdmin');
 
 use App\Http\Controllers\PasswordResetController;
 
@@ -119,9 +119,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resource('traitements', traitementController::class)->except(['destroy']);
         Route::resource('ordonnances', ordonnanceController::class)->except(['destroy']);
-        // La route show est déjà incluse dans la resource, la route explicite est redondante et peut causer conflit
-        // Je supprime la route explicite pour éviter conflit
-        // Route::get('ordonnances/{id}', [App\Http\Controllers\ordonnanceController::class, 'show'])->name('medecin.ordonnances.show');
+ 
 
        
 
@@ -208,7 +206,7 @@ Route::get('/create' , function () {
 
 
 // Formulaire de création de patient (secrétaire)
-Route::get('/formPatient' , function () {
+Route::middleware(['auth'])->get('/formPatient', function () {
     return view('pages.front-end.patient.formPatient');
 })->name('formPatient');
 
@@ -232,8 +230,9 @@ Route::get('/mail', [App\Http\Controllers\MailController::class, 'sendMail'])->n
 
 Route::middleware(['auth'])->group(function () {
     Route::get('fiche-medicale/{id}', [App\Http\Controllers\PatientController::class, 'ficheMedicale'])->name('fiche-medicale');
-    Route::get('fiche-medicale/pdf', [App\Http\Controllers\PatientController::class, 'ficheMedicalePdf'])->name('fiche-medicale.pdf');
+    Route::get('fiche-medicale/pdf/{id}', [App\Http\Controllers\PatientController::class, 'ficheMedicalePdf'])->name('fiche-medicale.pdf');
 });
 
 // Route pour le tableau de bord du médecin
 Route::middleware(['auth'])->get('/medecin/dashboard', [medecinController::class, 'dashboard'])->name('medecin.dashboard');
+ 

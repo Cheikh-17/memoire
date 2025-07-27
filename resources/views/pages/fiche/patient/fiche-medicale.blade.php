@@ -51,6 +51,6 @@
         </div>
     </div>
 
-    <a href="{{ route('fiche-medicale.pdf') }}" class="btn btn-primary">Télécharger la fiche en PDF</a>
+    <a href="{{ route('fiche-medicale.pdf', ['id' => $user->id]) }}" class="btn btn-primary">Télécharger la fiche en PDF</a>
 </div>
 @endsection

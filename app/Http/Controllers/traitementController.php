@@ -11,10 +11,22 @@ class traitementController extends Controller
     /**
      * Affiche la liste des traitements pour l'utilisateur connecté.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $traitements = traitement::all();
-        return view('pages.patient.traitements.index', compact('traitements'));
+        $query = $request->input('query');
+
+        $traitements = traitement::query();
+
+        if ($query) {
+            $traitements = $traitements->where(function ($q) use ($query) {
+                $q->where('observation', 'like', '%' . $query . '%')
+                  ->orWhere('description', 'like', '%' . $query . '%');
+            });
+        }
+
+        $traitements = $traitements->get();
+
+        return view('pages.patient.traitements.index', compact('traitements', 'query'));
     }
 
     /**

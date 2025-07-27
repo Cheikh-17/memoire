@@ -17,8 +17,8 @@
                         </div>
                     @endif
 
-                <form method="GET" action="{{ route('rendezvous.index') }}" class="mb-3">
-                    <div class="input-group" style="max-width: 300px;">
+                <form method="GET" action="{{ route('rendezvous.index') }}" class="mb-3 d-flex justify-content-end" style="max-width: 300px; margin-left: auto;">
+                    <div class="input-group">
                         <input type="text" name="search" class="form-control" placeholder="Rechercher un rendez-vous..." value="{{ request('search') }}">
                         <button class="btn btn-primary" type="submit">Rechercher</button>
                     </div>

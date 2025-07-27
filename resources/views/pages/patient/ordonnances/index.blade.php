@@ -4,8 +4,8 @@
 <div class="container">
     <h1>Mes ordonnances</h1>
 
-    <form method="GET" action="{{ route('patient.ordonnances.index') }}" class="mb-3">
-        <div class="input-group" style="max-width: 300px;">
+    <form method="GET" action="{{ route('patient.ordonnances.index') }}" class="mb-3 d-flex justify-content-end" style="max-width: 300px; margin-left: auto;">
+        <div class="input-group">
             <input type="text" name="search" class="form-control" placeholder="Rechercher une ordonnance..." value="{{ request('search') }}">
             <button class="btn btn-primary" type="submit">Rechercher</button>
         </div>
@@ -28,12 +28,12 @@
                     <td>{{ $ordonnance->id }}</td>
                     <td>{{ $ordonnance->created_at->format('d/m/Y') }}</td>
                     <td>
-                        @php $user = auth()->user(); @endphp
-                        @if($user->profil === 'MEDECIN')
+                        {{-- @php $user = auth()->user(); @endphp --}}
+                        {{-- @if($user->profil === 'MEDECIN')
                             <a href="{{ route('medecin.ordonnances.show', $ordonnance->id) }}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
-                        @else
+                        @else --}}
                             <a href="{{ route('patient.ordonnances.show', $ordonnance->id) }}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
-                        @endif
+                        {{-- @endif --}}
                     </td>
                 </tr>
                 @endforeach

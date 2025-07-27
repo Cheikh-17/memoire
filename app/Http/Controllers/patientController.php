@@ -120,9 +120,9 @@ class PatientController extends Controller
     }
 
     // Méthode pour générer et télécharger la fiche médicale en PDF
-    public function ficheMedicalePdf()
+    public function ficheMedicalePdf($id)
     {
-        $user = Auth::user();
+        $user = User::where('profil', 'patient')->findOrFail($id);
         $consultations = $user->consultations()->with('traitements')->get();
 
         $pdf = Pdf::loadView('pages.fiche.patient.fiche-medicale-pdf', compact('user', 'consultations'));

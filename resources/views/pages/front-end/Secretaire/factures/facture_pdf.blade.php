@@ -1,4 +1,16 @@
-<div style="font-family: DejaVu Sans, sans-serif; padding: 20px;">
+<div style="font-family: DejaVu Sans, sans-serif; padding: 20px; position: relative;">
+
+    {{-- Logo et contact du cabinet en haut à droite --}}
+    <div style="position: absolute; top: 20px; right: 20px; text-align: right;">
+        <img src="{{ $cabinet['logo'] }}" alt="Logo Cabinet" style="max-width: 120px; height: auto; margin-bottom: 10px;">
+        <div style="font-size: 10px; line-height: 1.2;">
+            <div><strong>{{ $cabinet['nom'] }}</strong></div>
+            <div>Téléphone : {{ $cabinet['telephone'] }}</div>
+            <div>Email : {{ $cabinet['email'] }}</div>
+            {{-- <div>Adresse : {{ $cabinet['adresse'] }}</div> --}}
+        </div>
+    </div>
+
     <h1>Facture {{ $facture->id }}</h1>
 
     <div>

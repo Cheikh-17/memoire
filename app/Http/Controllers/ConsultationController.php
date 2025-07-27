@@ -13,14 +13,26 @@ class ConsultationController extends Controller
     /**
      * Affiche la liste des consultations pour un utilisateur (patient).
      */
-    public function index()
+    public function index(Request $request)
     {
         $userId = auth()->id();
-        $consultations = Consultation::with(['traitements', 'ordonnances'])
-            ->where('idUser', $userId)
-            ->get();
+        $search = $request->input('search');
 
-        return view('pages.patient.consultations.index', compact('consultations'));
+        $query = Consultation::with(['traitements', 'ordonnances'])
+            ->where('idUser', $userId);
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('motif', 'like', '%' . $search . '%')
+                  ->orWhere('diagnostic', 'like', '%' . $search . '%')
+                  ->orWhere('date', 'like', '%' . $search . '%')
+                  ->orWhere('heure', 'like', '%' . $search . '%');
+            });
+        }
+
+        $consultations = $query->get();
+
+        return view('pages.patient.consultations.index', compact('consultations', 'search'));
     }
 
     /**
@@ -115,9 +127,18 @@ public function showForMedecin($id)
         $content = $ordonnance->contenu;
         $filename = "ordonnance_{$ordonnance->id}.pdf";
 
+        // Récupérer les informations du cabinet pour le logo, email, téléphone
+        $cabinet = [
+            'logo' => base_path('public/assets/images/d.png'), // chemin absolu local vers le logo
+            'nom' => 'Cabinet Baobab Dentaire',
+            'telephone' => '0123456789',
+            'email' => 'contact@baobabdentaire.com',
+        ];
+
         $pdf = Pdf::loadView('pages.patient.ordonnances.pdf', [
             'content' => $content,
             'user' => $user,
+            'cabinet' => $cabinet,
         ]);
 
         return $pdf->download($filename);

@@ -67,7 +67,16 @@ class FactureController extends Controller
         $facture = facture::with(['user', 'consultation.medecin'])->findOrFail($id);
         $secretaire = Auth::user();
 
-        $pdf = Pdf::loadView('pages.front-end.Secretaire.factures.facture_pdf', compact('facture', 'secretaire'));
+        // Informations du cabinet dentaire à afficher sur la facture
+        $cabinet = [
+            'nom' => 'Cabinet Dentaire ',
+            'telephone' => '33 126 10 12',
+            'email' => 'contact@cabinetdentaireabc.com',
+            // 'adresse' => '123 Rue de la Santé, Abidjan, Côte d\'Ivoire',
+            'logo' => public_path('assets/images/d.png'),
+        ];
+
+        $pdf = Pdf::loadView('pages.front-end.Secretaire.factures.facture_pdf', compact('facture', 'secretaire', 'cabinet'));
 
         return $pdf->download('facture_'.$facture->id.'.pdf');
     }

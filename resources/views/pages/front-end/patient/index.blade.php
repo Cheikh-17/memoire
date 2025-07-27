@@ -4,8 +4,8 @@
 <div class="container">
     <h1>Liste des patients</h1>
 
-    <form method="GET" action="{{ route('patients.index') }}" class="mb-3">
-        <div class="input-group" style="max-width: 300px;">
+    <form method="GET" action="{{ route('patients.index') }}" class="mb-3 d-flex justify-content-end" style="max-width: 300px; margin-left: auto;">
+        <div class="input-group">
             <input type="text" name="search" class="form-control" placeholder="Rechercher un patient..." value="{{ request('search') }}">
             <button class="btn btn-primary" type="submit">Rechercher</button>
         </div>

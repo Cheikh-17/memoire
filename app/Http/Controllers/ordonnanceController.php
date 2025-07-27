@@ -36,6 +36,28 @@ class ordonnanceController extends Controller
     }
 
     /**
+     * Affiche la liste des ordonnances pour le médecin.
+     */
+    public function indexMedecin(Request $request)
+    {
+        $search = $request->input('search');
+        $query = ordonnance::query();
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('created_at', 'like', '%' . $search . '%')
+                  ->orWhere('contenu', 'like', '%' . $search . '%');
+            });
+        }
+
+        $ordonnances = $query->paginate(10)->appends(['search' => $search]);
+
+        return view('pages.medecin.ordonnances.index', compact('ordonnances', 'search'));
+    }
+
+     
+
+    /**
      * Affiche une ordonnance spécifique.
      */
     public function show(string $id)
@@ -129,11 +151,4 @@ class ordonnanceController extends Controller
     /**
      * Affiche la liste complète des ordonnances.
      */
-    public function indexMedecin()
-    {
-        $ordonnances = ordonnance::paginate(10);
-        return view('pages.patient.ordonnances.index', compact('ordonnances'));
-    }
-
-    
 }
