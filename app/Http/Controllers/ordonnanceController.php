@@ -15,13 +15,10 @@ class ordonnanceController extends Controller
         $search = $request->input('search');
         $user = auth()->user();
 
-        if ($user->profil === 'MEDECIN') {
-            // Pour le médecin, récupérer toutes les ordonnances
-            $query = ordonnance::query();
-        } else {
-            // Profil patient : ordonnances de l'utilisateur connecté
+
+          // Profil patient : ordonnances de l'utilisateur connecté
             $query = ordonnance::where('idUser', $user->id);
-        }
+
 
         if ($search) {
             $query->where(function($q) use ($search) {
@@ -33,15 +30,16 @@ class ordonnanceController extends Controller
         $ordonnances = $query->paginate(10)->appends(['search' => $search]);
 
         return view('pages.patient.ordonnances.index', compact('ordonnances', 'search'));
-    }
+    }    
 
     /**
-     * Affiche la liste des ordonnances pour le médecin.
+     * Affiche la liste de toutes les ordonnances pour le médecin.
      */
     public function indexMedecin(Request $request)
     {
         $search = $request->input('search');
-        $query = ordonnance::query();
+
+        $query = ordonnance::where('is_hidden', false);
 
         if ($search) {
             $query->where(function($q) use ($search) {
@@ -50,9 +48,11 @@ class ordonnanceController extends Controller
             });
         }
 
+        $query->orderBy('created_at', 'desc');
+
         $ordonnances = $query->paginate(10)->appends(['search' => $search]);
 
-        return view('pages.medecin.ordonnances.index', compact('ordonnances', 'search'));
+        return view('pages.front-end.medecin.ordonnances.index', compact('ordonnances', 'search'));
     }
 
      
@@ -149,6 +149,11 @@ class ordonnanceController extends Controller
     }
 
     /**
-     * Affiche la liste complète des ordonnances.
+     * Affiche les détails d'une ordonnance pour le médecin.
      */
+    public function showMedecin(string $id)
+    {
+        $ordonnance = ordonnance::findOrFail($id);
+        return view('pages.front-end.medecin.ordonnances.show', compact('ordonnance'));
+    }
 }

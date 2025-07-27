@@ -87,7 +87,7 @@
               <ul class="pc-submenu">
                 <li class="pc-item"><a class="pc-link" href="{{ route('medecin.consultations.create')}}">Creer consultation</a></li>
                 <li class="pc-item"><a class="pc-link" href="{{ route('medecin.consultations.liste') }}">Lister consultation</a></li>
-                {{-- <li class="pc-item"><a class="pc-link" href="{{ route('medecin.consultations.lister') }}">Lister consultation</a></li> --}}
+                
               </ul>
             </li>
             <li class="pc-item pc-hasmenu">
@@ -100,8 +100,8 @@
                  
               </a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.ordonnances.index') }}">Voir Ordonnance</a></li>
-                {{-- <li class="pc-item"><a class="pc-link" href="{{ route('medecin.ordonnances.create') }}">Créer Ordonnance</a></li> --}}
+<li class="pc-item"><a class="pc-link" href="{{ route('medecin.ordonnances.index') }}">Voir Ordonnance</a></li>
+                 
               </ul>
             </li>
             <li class="pc-item pc-hasmenu">
@@ -115,7 +115,7 @@
               </a>
               <ul class="pc-submenu">
                 <li class="pc-item"><a class="pc-link" href="{{ route('medecin.traitements.index') }}">Voir Traitement</a></li>
-                {{-- <li class="pc-item"><a class="pc-link" href="{{ route('medecin.traitements.create') }}">Créer Traitement</a></li> --}}
+               
               </ul>
             </li>
             <li class="pc-item pc-hasmenu">
@@ -178,14 +178,7 @@
         </form>
       </div>
     </li>
-    {{-- <li class="pc-h-item d-none d-md-inline-flex">
-      <form class="form-search">
-        <i class="ph-duotone ph-magnifying-glass icon-search"></i>
-        <input type="search" class="form-control" placeholder="Rechercher..." />
-
-        <button class="btn btn-search" style="padding: 0"><kbd>ctrl+k</kbd></button>
-      </form>
-    </li> --}}
+  
   </ul>
 </div>
 <!-- [Bloc Média Mobile fin] -->

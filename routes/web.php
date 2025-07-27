@@ -36,10 +36,7 @@ Route::get('/home', function () {
     return view('pages.front-end.Accueil.home');
 })->name('home');
 
-// Page de connexion admin
-// Route::get('/loginAdmin', function () {
-//     return view('pages.front-end.admin.loginAdmin');
-// })->name('loginAdmin');
+ 
 
 use App\Http\Controllers\PasswordResetController;
 
@@ -118,8 +115,16 @@ Route::middleware(['auth'])->group(function () {
          
 
         Route::resource('traitements', traitementController::class)->except(['destroy']);
-        Route::resource('ordonnances', ordonnanceController::class)->except(['destroy']);
- 
+        // Route::resource('ordonnances', ordonnanceController::class)->except(['destroy']);
+        Route::get('ordonnances', [ordonnanceController::class, 'indexMedecin'])->name('ordonnances.index');
+        Route::get('ordonnances/create', [ordonnanceController::class, 'create'])->name('ordonnances.create');
+        Route::post('ordonnances', [ordonnanceController::class, 'store'])->name('ordonnances.store');
+        Route::get('ordonnances/{id}', [ordonnanceController::class, 'show'])->name('ordonnances.show');
+        Route::get('ordonnances/{id}/edit', [ordonnanceController::class, 'edit'])->name('ordonnances.edit');
+        Route::put('ordonnances/{id}', [ordonnanceController::class, 'update'])->name('ordonnances.update');
+        Route::delete('ordonnances/{id}', [ordonnanceController::class, 'destroy'])->name('ordonnances.destroy');
+
+        Route::get('ordonnances/{id}/showMedecin', [ordonnanceController::class, 'showMedecin'])->name('ordonnances.showMedecin');
 
        
 
@@ -192,8 +197,7 @@ Route::get('/create' , function () {
 Route::get('/patients/create', [PatientController::class, 'create'])->name('patients.create');
 Route::post('/patients', [PatientController::class, 'store'])->name('patients.store');
 Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
-//Route::get('/factures', [FactureControllerr::class, 'index'])->name('factures.index');
-//Route::get('/devis/create', [devisController::class, 'create'])->name('devis.create');
+ 
 Route::resource('devis', App\Http\Controllers\devisController::class);
 Route::get('/create' , function () {
     return view('pages.front-end.admin.medecin.createMedecin');
