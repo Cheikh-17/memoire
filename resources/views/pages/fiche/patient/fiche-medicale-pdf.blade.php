@@ -30,6 +30,27 @@
     </style>
 </head>
 <body>
+    <style>
+        .cabinet-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: right;
+            font-size: 10px;
+            line-height: 1.2;
+        }
+        .cabinet-info img {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+    <div class="cabinet-info">
+        <img src="{{ $cabinet['logo'] }}" alt="Logo Cabinet" >
+        <div><strong>{{ $cabinet['nom'] }}</strong></div>
+        <div>Téléphone : {{ $cabinet['telephone'] }}</div>
+        <div>Email : {{ $cabinet['email'] }}</div>
+    </div>
     <h1>Fiche Médicale</h1>
     <div class="patient-info">
         <h2>Informations du patient</h2>

@@ -23,7 +23,7 @@ class devisController extends Controller
      */
     public function create()
     {
-        $patients = User::where('profil', 'patient')->get();
+        $patients = User::where('profil', 'patient')->where('is_hidden', false)->get();
         return view('pages.front-end.Secretaire.devis.createDevis', compact('patients'));
     }
 
@@ -50,7 +50,14 @@ class devisController extends Controller
             return back()->withErrors(['patient' => 'Le patient associé au devis est introuvable.']);
         }
 
-        $pdf = Pdf::loadView('pages.front-end.Secretaire.devis.devisPdf', compact('devis'));
+        $cabinet = [
+            'logo' => base_path('public/assets/images/d.png'), // chemin absolu local vers le logo
+            'nom' => 'Cabinet Baobab Dentaire',
+            'telephone' => '33 126 10 12',
+            'email' => 'contact@baobabdentaire.com',
+        ];
+
+        $pdf = Pdf::loadView('pages.front-end.Secretaire.devis.devisPdf', compact('devis', 'cabinet'));
 
         return $pdf->download('devis_' . $devis->id . '.pdf');
     }

@@ -10,9 +10,28 @@
         .title { font-size: 24px; font-weight: bold; margin-bottom: 10px; color: #1e90ff; }
         .section { margin-bottom: 15px; }
         .label { font-weight: bold; }
+        .cabinet-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: right;
+            font-size: 10px;
+            line-height: 1.2;
+        }
+        .cabinet-info img {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
+    <div class="cabinet-info">
+        <img src="{{ $cabinet['logo'] }}" alt="Logo Cabinet" >
+        <div><strong>{{ $cabinet['nom'] }}</strong></div>
+        <div>Téléphone : {{ $cabinet['telephone'] }}</div>
+        <div>Email : {{ $cabinet['email'] }}</div>
+    </div>
     <div class="header">
         <h1>Devis</h1>
     </div>
@@ -20,7 +39,14 @@
         <div class="section">
             <span class="label">Patient :</span> 
             @if($devis->client)
-                {{ $devis->client->name }} {{ $devis->client->prenom }}
+                {{ $devis->client->name }} {{ $devis->client->prenom }}<br>
+                <span class="label">Email :</span> {{ $devis->client->email }}<br>
+                @if(!empty($devis->client->telephone))
+                <span class="label">Téléphone :</span> {{ $devis->client->telephone }}<br>
+                @endif
+                @if(!empty($devis->client->adresse))
+                <span class="label">Adresse :</span> {{ $devis->client->adresse }}<br>
+                @endif
             @else
                 Patient non trouvé
             @endif

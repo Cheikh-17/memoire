@@ -213,11 +213,13 @@ Route::middleware(['auth'])->get('/formPatient', function () {
 // Route POST pour enregistrer un patient via le formulaire
 Route::post('/formPatient', [patientController::class, 'store'])->name('formPatient.store');
 
-Route::get('/form' , function () {
-    return view('pages.front-end.admin.form');
-})->name('form.get');
-// Route pour enregistrer un secrétaire (POST)
-Route::post('/form', [UserController::class, 'store'])->name('form');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/form' , function () {
+        return view('pages.front-end.admin.form');
+    })->name('form.get');
+    // Route pour enregistrer un secrétaire (POST)
+    Route::post('/form', [UserController::class, 'store'])->name('form');
+});
 
 Route::get('/patients', [patientController::class, 'index'])->name('patients.index');
 

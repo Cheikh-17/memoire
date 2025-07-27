@@ -33,14 +33,14 @@
                             <select name="patient_id" id="patient_id" class="form-select" required>
                                 <option value="" disabled selected>Choisissez un patient</option>
                                 @foreach($patients as $patient)
-                                    <option value="{{ $patient->id }}">{{ $patient->nom }} {{ $patient->prenom }}</option>
+                                <option value="{{ $patient->id }}">{{ $patient->nom }} {{ $patient->prenom }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="mb-4">
                             <label for="date_devis" class="form-label fw-semibold">Date du devis</label>
-                            <input type="date" name="date_devis" id="date_devis" class="form-control" required>
+                            <input type="date" name="date_devis" id="date_devis" class="form-control" required min="{{ date('Y-m-d') }}">
                         </div>
 
                         <div class="mb-4">

@@ -30,10 +30,9 @@ class EnvoyerRappelRdv extends Command
     public function handle()
     {
         $now = Carbon::now();
-        $oneHourLater = Carbon::now()->addHour();
+        $twoDaysLater = Carbon::now()->addDays(2);
 
-        $rendezvouss = rendezvous::where('date-rendez-vous', $now->toDateString())
-            ->whereBetween('heure-rendez-vous', [$now->format('H:i:s'), $oneHourLater->format('H:i:s')])
+        $rendezvouss = rendezvous::where('date-rendez-vous', $twoDaysLater->toDateString())
             ->get();
 
         foreach ($rendezvouss as $rdv) {
@@ -43,6 +42,6 @@ class EnvoyerRappelRdv extends Command
             }
         }
 
-        $this->info('Rappels envoyés pour les rendez-vous entre ' . $now->format('H:i:s') . ' et ' . $oneHourLater->format('H:i:s') . ' le ' . $now->toDateString());
+        $this->info('Rappels envoyés pour les rendez-vous du ' . $twoDaysLater->toDateString());
     }
 }

@@ -19,7 +19,7 @@ class FactureController extends Controller
     public function create(\Illuminate\Http\Request $request)
     {
         // Récupérer les utilisateurs pour le formulaire
-        $users = \App\Models\User::where('profil', 'patient')->get();
+        $users = \App\Models\User::where('profil', 'patient')->where('is_hidden', false)->get();
 
         $montant = session('montant', '');
         $idUser = $request->query('idUser', '');

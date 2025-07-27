@@ -125,7 +125,14 @@ class PatientController extends Controller
         $user = User::where('profil', 'patient')->findOrFail($id);
         $consultations = $user->consultations()->with('traitements')->get();
 
-        $pdf = Pdf::loadView('pages.fiche.patient.fiche-medicale-pdf', compact('user', 'consultations'));
+        $cabinet = [
+            'logo' => base_path('public/assets/images/d.png'), // chemin absolu local vers le logo
+            'nom' => 'Cabinet Baobab Dentaire',
+            'telephone' => '33 126 10 12',
+            'email' => 'contact@baobabdentaire.com',
+        ];
+
+        $pdf = Pdf::loadView('pages.fiche.patient.fiche-medicale-pdf', compact('user', 'consultations', 'cabinet'));
 
         return $pdf->download('fiche-medicale.pdf');
     }
