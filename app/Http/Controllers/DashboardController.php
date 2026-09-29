@@ -18,8 +18,8 @@ public function index()
         case 'ADMINISTRATEUR':
             $consultationsJour = \App\Models\Consultation::whereDate('date', now()->toDateString())->count();
             $facturesTotal = \App\Models\facture::count();
-            $revenusMois = \App\Models\paiement::sum('montant');
-            $totalRecettes = \App\Models\paiement::whereMonth('created_at', now()->month)->sum('montant');
+            $revenusMois = \App\Models\facture::where('is_hidden', false)
+                ->sum('montant');
             $derniersUtilisateurs = \App\Models\User::orderBy('created_at', 'desc')->limit(5)->get();
 
             // Calcul des pourcentages de rendez-vous pour admin (tous les rendez-vous)
@@ -35,7 +35,7 @@ public function index()
             $pourcentageDuJour = $totalRendezVous > 0 ? round(($rendezVousDuJour / $totalRendezVous) * 100, 2) : 0;
             $pourcentageAVenir = $totalRendezVous > 0 ? round(($rendezVousAVenir / $totalRendezVous) * 100, 2) : 0;
 
-return view('pages.front-end.admin.dashboardAdmin', compact('consultationsJour', 'facturesTotal', 'revenusMois','totalRecettes', 'derniersUtilisateurs', 'pourcentagePasses', 'pourcentageDuJour', 'pourcentageAVenir'));
+return view('pages.front-end.admin.dashboardAdmin', compact('consultationsJour', 'facturesTotal', 'revenusMois', 'derniersUtilisateurs', 'pourcentagePasses', 'pourcentageDuJour', 'pourcentageAVenir'));
 
         case 'SECRETAIRE':
             $consultations = \App\Models\Consultation::with(['patient', 'rendezvous.medecin'])

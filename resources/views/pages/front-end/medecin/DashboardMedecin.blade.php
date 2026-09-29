@@ -100,7 +100,8 @@
                  
               </a>
               <ul class="pc-submenu">
-<li class="pc-item"><a class="pc-link" href="{{ route('medecin.ordonnances.index') }}">Voir Ordonnance</a></li>
+<li class="pc-item"><a class="pc-link" href="{{ route('medecin.ordonnances.create') }}">Créer une ordonnance</a></li>
+<li class="pc-item"><a class="pc-link" href="{{ route('medecin.ordonnances.index') }}">Voir les ordonnances</a></li>
                  
               </ul>
             </li>
@@ -114,7 +115,8 @@
                  
               </a>
               <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.traitements.index') }}">Voir Traitement</a></li>
+                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.traitements.create') }}">Créer un traitement</a></li>
+                <li class="pc-item"><a class="pc-link" href="{{ route('medecin.traitements.index') }}">Voir les traitements</a></li>
                
               </ul>
             </li>

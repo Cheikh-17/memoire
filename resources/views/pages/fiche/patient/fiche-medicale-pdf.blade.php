@@ -46,7 +46,9 @@
         }
     </style>
     <div class="cabinet-info">
-        <img src="{{ $cabinet['logo'] }}" alt="Logo Cabinet" >
+        @if($cabinet['logo'])
+            <img src="{{ $cabinet['logo'] }}" alt="Logo Cabinet">
+        @endif
         <div><strong>{{ $cabinet['nom'] }}</strong></div>
         <div>Téléphone : {{ $cabinet['telephone'] }}</div>
         <div>Email : {{ $cabinet['email'] }}</div>

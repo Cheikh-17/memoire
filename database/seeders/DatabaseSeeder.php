@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            
             'nom' => 'Adama',
             'prenom' => 'Diop',
             'email' => 'adama@gmail.com',
@@ -26,7 +25,9 @@ class DatabaseSeeder extends Seeder
             'profil' => 'PATIENT',
             'password' => Hash::make('password'),
             'is_hidden' => false,
+        ]);
 
+        User::factory()->create([
             'nom' => 'Cheikh',
             'prenom' => 'Diop',
             'email' => 'cheikh@gmail.com',

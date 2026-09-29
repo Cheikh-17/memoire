@@ -104,6 +104,7 @@ class PatientController extends Controller
             'adresse' => $validated['adresse'],
             'password' => bcrypt($validated['password']),
             'profil' => 'PATIENT',
+            'is_hidden' => false,
             // Ajoutez d'autres champs si nécessaire
         ]);
 
@@ -126,7 +127,9 @@ class PatientController extends Controller
         $consultations = $user->consultations()->with('traitements')->get();
 
         $cabinet = [
-            'logo' => base_path('public/assets/images/d.png'), // chemin absolu local vers le logo
+            'logo' => function_exists('imagecreatefrompng')
+                ? base_path('public/assets/images/d.png')
+                : null,
             'nom' => 'Cabinet Baobab Dentaire',
             'telephone' => '33 126 10 12',
             'email' => 'contact@baobabdentaire.com',

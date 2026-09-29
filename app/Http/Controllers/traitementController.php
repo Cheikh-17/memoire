@@ -66,7 +66,7 @@ class traitementController extends Controller
         $traitement->description = $validated['description'];
         $traitement->save();
 
-        return redirect()->route('traitements.index')->with('success', 'Traitement créé avec succès.');
+        return redirect()->route('medecin.traitements.index')->with('success', 'Traitement créé avec succès.');
     }
 
     /**

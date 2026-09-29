@@ -276,7 +276,7 @@
               <img src="{{asset('../assets/images/widget/img-status-6.svg')}}" alt="img" class="img-fluid img-bg" >
               <h5 class="mb-4 text-white">Revenus </h5>
               <div class="d-flex align-items-center mt-3">
-                <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">{{ $revenusMois ?? 0 }} FCFA</h3>
+                <h3 class="text-white f-w-300 d-flex align-items-center m-b-0">{{ number_format($revenusMois ?? 0, 0, ',', ' ') }} FCFA</h3>
               </div>
               <p class="text-white text-opacity-75 mb-2 text-sm mt-3">Total des paiements reçus</p>
             </div>
@@ -366,7 +366,7 @@
                         <td>{{ $user->nom }} {{ $user->prenom }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->profil }}</td>
-                        <td>{{ $user->created_at->format('d/m/Y') }}</td>
+                        <td>{{ $user->created_at?->format('d/m/Y') ?? '-' }}</td>
                       </tr>
                     @endforeach
                   </tbody>

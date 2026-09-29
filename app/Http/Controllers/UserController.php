@@ -80,6 +80,7 @@ class UserController extends Controller
         'telephone' => $validated['telephone'],
         'password' => bcrypt($validated['password']),
         'profil' => $validated['profil'],
+        'is_hidden' => false,
     ]);
 
     
